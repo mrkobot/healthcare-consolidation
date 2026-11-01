@@ -236,6 +236,12 @@
   #fc3 .intro p{font-family:"Libre Franklin";font-weight:500;font-size:clamp(1.1rem,2vw,1.55rem);color:var(--fcd);margin:1.5rem 0 0;max-width:42rem}
   #fc3 .intro .cue{position:absolute;bottom:4vh;font-family:"JetBrains Mono";font-size:.72rem;letter-spacing:.2em;color:var(--fcd)}
   /* timeline stem */
+  #fc3 .pacebar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem 1.1rem;padding:.7rem 1.2rem;background:rgba(11,11,14,.8);backdrop-filter:blur(4px);border-bottom:1px solid rgba(255,255,255,.08)}
+  #fc3 .pacebar .pl{font-family:"Libre Franklin";font-weight:600;font-size:.8rem;color:var(--fcd)}
+  #fc3 .pacebar .psteps{display:inline-flex;align-items:center;gap:.5rem}
+  #fc3 .pacebar .pstep{font-family:"JetBrains Mono";font-size:.82rem;color:#5f6a72;transition:color .4s}
+  #fc3 .pacebar .pstep.on{color:var(--fc);font-weight:500}
+  #fc3 .pacebar .psep{color:#3a3f45;font-size:.8rem}
   #fc3 .tl{max-width:1280px;margin:0 auto;padding:12vh 0 20vh}
   #fc3 .stem{position:absolute;left:50%;top:0;transform:translateX(-50%);width:8px;height:100%;background:rgba(255,255,255,.07);border-radius:4px}
   #fc3 .stemfill{position:absolute;left:50%;top:0;transform:translateX(-50%);width:8px;height:0;border-radius:4px;background:linear-gradient(var(--fc) 0%,var(--fc) 50%,var(--fcam) 62%,var(--fcd) 100%);box-shadow:0 0 28px rgba(230,53,18,.6)}
@@ -496,6 +502,14 @@
     <div class="cue">scroll</div>
   </div>
 
+  <div class="pacebar" id="pacebar">
+    <span class="pl">Physicians employed by a hospital or corporation</span>
+    <span class="psteps">
+      <span class="pstep" data-y="2019">2019 · 62%</span><span class="psep">→</span>
+      <span class="pstep" data-y="2021">2021 · 69%</span><span class="psep">→</span>
+      <span class="pstep" data-y="2024">2024 · 78%</span>
+    </span>
+  </div>
   <div class="tl" id="tl3"><div class="stem"></div><div class="stemfill" id="fill3"></div></div>
 
   <div class="closer" data-season="winter">
@@ -503,11 +517,11 @@
   </div>
 </section>
 
-<!-- ===== OUTCOME BEAT — THE BILL ===== -->
+<!-- ===== OUTCOME BEAT (3.5) — THE BILL ===== -->
 <section id="bill">
   <div class="billwrap">
-    <h2 class="billhead">The forecast came true.<br><em>Here is the bill.</em></h2>
-    <p class="billsub">Consolidation does not produce mixed results. Across the independent research, the same pattern holds every time: the price goes up, and the care does not.</p>
+    <h2 class="billhead">Predictable Costs of a<br><em>Predictable Pattern</em></h2>
+    <p class="billsub">Across the strongest independent evidence, the dominant pattern is consistent: prices rise, spending rises, and care does not measurably improve.</p>
 
     <div class="finding f-price">
       <div class="fnum">+12%</div>
@@ -525,15 +539,23 @@
       </div>
     </div>
 
-    <div class="finding f-value">
-      <div class="fnum">±0</div>
+    <div class="finding f-price">
+      <div class="fnum">$935B</div>
       <div class="ftxt">
-        <div class="fclaim">After an acquisition, patient-experience scores fall — and deaths and readmissions do not improve. The higher price buys no measurable gain in care.</div>
-        <div class="fsrc">Beaulieu et al. · New England Journal of Medicine, 2020</div>
+        <div class="fclaim">Up to $935 billion is wasted each year — roughly 25% of all US health spending — in a system already near 18% of GDP. Opaque, uncompetitive pricing alone accounts for about $230 billion of it.</div>
+        <div class="fsrc">Shrank, Rogstad &amp; Parekh · JAMA, 2019</div>
       </div>
     </div>
 
-    <p class="billclose">Higher cost. No better care. <em>The storm does the same damage every time it lands.</em></p>
+    <div class="finding f-value">
+      <div class="fnum">#11</div>
+      <div class="ftxt">
+        <div class="fclaim">The US ranks last of 11 high-income countries on health-system performance — despite spending far more than any of them. After an acquisition specifically, deaths and readmissions do not improve.</div>
+        <div class="fsrc">Commonwealth Fund, Mirror Mirror 2021 · Beaulieu et al., NEJM 2020</div>
+      </div>
+    </div>
+
+    <p class="billclose">Higher cost. No better care. <em>Consolidation can create value inside a company without creating any for the market.</em></p>
   </div>
 </section>
 
@@ -737,7 +759,7 @@
     {force:'Fragmentation',sub:'a market in disequilibrium',k:'heat',
      p1:'A fragmented, margin-squeezed industry is stored energy: many small players, thin profits, gains from reorganization waiting to be taken.',
      ex:'Seen in <b>home services</b>: more than 100,000 independent HVAC, plumbing, and electrical firms — the fragmented raw material private equity is now rolling up.',
-     p2:'Healthcare was built fragmented—independent hospitals, solo physicians, thin margins. In 2012, three-quarters of U.S. physicians were still independent. The energy had nowhere to go but up.'},
+     p2:'Healthcare was built fragmented—independent hospitals, solo physicians, thin margins. In 2012, 60% of U.S. physicians still worked in private practice. The energy had nowhere to go but up.'},
     {force:'Industry shock',sub:'deregulation or a payment shift',k:'front',
      p1:'Stored energy stays put until something releases it. A shock—deregulation, a technology or payment change—makes the old structure untenable and reorganization urgent.',
      ex:'Seen in <b>airlines</b>: deregulation in 1978 made the old route structure untenable, and the merger wave followed once the shock had worked through the industry.',
@@ -927,7 +949,7 @@
  const tl=document.getElementById('tl3');
  EVENTS.forEach((e,i)=>{
   const side=i%2===0?'right':'left';
-  const d=document.createElement('div'); d.className='ev '+side+(e.cls?' '+e.cls:''); d.dataset.season=e.season;
+  const d=document.createElement('div'); d.className='ev '+side+(e.cls?' '+e.cls:''); d.dataset.season=e.season; d.dataset.yr=e.yr;
   d.style.setProperty('--sz',sizeFor(e)+'px');
   let segs='';for(let s=0;s<5;s++)segs+='<span class="seg'+(s<e.forces?' on':'')+'"></span>';
   let figs='';(e.figs||[]).forEach(fg=>figs+='<div class="fig'+(fg[2]?' sec':'')+'"><div class="fv">'+fg[0]+'</div><div class="fl">'+fg[1]+'</div></div>');
@@ -953,8 +975,14 @@
  function pickSeason(){const mid=innerHeight/2;let bd=1e9,season=cur||'spring';
   document.querySelectorAll('#fc3 [data-season]').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const c=r.top+r.height/2,dd=Math.abs(c-mid);if(dd<bd){bd=dd;season=el.dataset.season;}}});
   setSeason(season);}
+ // persistent pace readout (one consistent series: PAI employment)
+ const paceSteps=[...document.querySelectorAll('#fc3 .pstep')];
+ function pickPace(){const mid=innerHeight/2;let bd=1e9,yr=0;
+  document.querySelectorAll('#fc3 .ev').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const c=r.top+r.height/2,dd=Math.abs(c-mid);if(dd<bd){bd=dd;yr=parseInt((el.dataset.yr||'').replace('~',''),10)||0;}}});
+  const active=yr>=2024?'2024':yr>=2021?'2021':yr>=2019?'2019':'';
+  paceSteps.forEach(s=>s.classList.toggle('on',s.dataset.y===active));}
  let tick=false;
- function on3(){if(tick)return;tick=true;requestAnimationFrame(()=>{grow();pickSeason();tick=false;});}
+ function on3(){if(tick)return;tick=true;requestAnimationFrame(()=>{grow();pickSeason();pickPace();tick=false;});}
  addEventListener('scroll',on3,{passive:true});addEventListener('resize',on3);on3();
 })();
 </script>
