@@ -696,7 +696,7 @@
   // ---- dolly: camera into the glass, finishes early, then arrived layer takes over ----
   const dolly=$('dolly'),scene=$('scene'),glass=document.querySelector('.glass'),bcast=$('bcast'),crt=$('crt'),room=$('room'),titlecard=$('titlecard'),hint=$('hint');
   let target=6; const END=0.6;
-  function measure(){const g=glass.getBoundingClientRect();if(g.width)target=Math.max(innerWidth/g.width,innerHeight/g.height)*1.1;}
+  function measure(){const g=glass.getBoundingClientRect();if(g.width)target=Math.min(innerWidth/g.width,innerHeight/g.height)*0.98;}
   const ease=p=>p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
   function render(p){
     const e=ease(Math.min(p/END,1));
