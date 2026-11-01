@@ -118,9 +118,17 @@
   .statuschip{display:flex;align-items:center;gap:.7rem;margin-bottom:.55rem}
   .statuschip .chip{font-family:"Archivo Black",sans-serif;font-size:.8rem;letter-spacing:.02em;color:#0b0b0e;padding:.4em .8em}
   .statuschip .chipnote{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:.85rem;color:#9fb0ba}
+  .citycard{max-height:90vh;overflow:auto}
+  .citycard .cardimg{position:relative;height:150px;margin:-1.7rem -1.8rem 1.1rem;overflow:hidden;background:#12181c}
+  .citycard .cardimg img{width:100%;height:100%;object-fit:cover;display:block}
+  .citycard .cardimg .imgfallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;text-align:center;padding:0 1.2rem;font-family:"Archivo Black",sans-serif;font-size:clamp(1.3rem,4vw,1.9rem);line-height:1;color:#f3efe8;background:linear-gradient(135deg,#1c242b,#0b0b0e)}
+  .citycard .cardimg.nofile img{display:none}
+  .citycard .cardimg.nofile .imgfallback{display:flex}
   .citycard h2{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:2.3rem;line-height:.95;margin:0 0 .25rem;color:#f3efe8}
   .citycard .yrs{font-family:var(--mono);font-size:.72rem;color:#9fb0ba;margin:0 0 .9rem}
-  .citycard .blurb{font-family:var(--sans);font-size:1rem;line-height:1.5;color:#dbe6ea;margin:0 0 1.2rem}
+  .citycard .csum{font-family:var(--sans);font-weight:400;font-size:.95rem;line-height:1.5;color:#dbe6ea;margin:0 0 .8rem}
+  .citycard .csum b{color:#fff;font-weight:700}
+  .citycard .csum.now b{color:var(--accent-hot)}
   .forecast{display:flex;align-items:flex-end;gap:1.4rem;margin-bottom:1.1rem;font-family:var(--mono)}
   .forecast .hi{font-family:"Anton",sans-serif;font-size:3.2rem;line-height:.82;color:#f3efe8}
   .forecast .lohs{font-size:.78rem;color:#9fb0ba;line-height:1.7}
@@ -153,8 +161,10 @@
   .wv.on{opacity:.9}
   .wv.landfall{mix-blend-mode:screen}
   .wv.landfall.on{opacity:.82}
-  .altitude3{position:absolute;top:4.5vh;left:50%;transform:translateX(-50%);z-index:6;font-family:var(--mono);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:#9fb0ba;text-shadow:0 1px 10px rgba(0,0,0,.7)}
-  .altitude3 b{color:var(--accent);font-weight:500}
+  .altitude3{position:absolute;top:3.4vh;left:50%;transform:translateX(-50%);z-index:6;font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(.95rem,1.7vw,1.25rem);letter-spacing:.01em;color:#e9edf0;text-align:center;max-width:92vw;text-shadow:0 1px 12px rgba(0,0,0,.85)}
+  .altitude3 b{font-family:"Archivo Black",sans-serif;font-weight:400;color:#f3efe8}
+  .forceex{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:.9rem;line-height:1.45;color:#f0c3ac;margin-top:.85rem;border-top:1px solid rgba(255,255,255,.14);padding-top:.7rem}
+  .forceex b{color:#fff;font-weight:700}
   .s3opening{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem;transition:opacity .7s ease;pointer-events:none}
   .s3opening.gone{opacity:0}
   .s3opening{overflow:hidden}
@@ -251,6 +261,7 @@
   #fc3 .ev.fc .ring{stroke:var(--fcd)}
   /* panel / card */
   #fc3 .panel{position:relative;width:35%;background:rgba(14,14,18,.92);backdrop-filter:blur(3px);border-top:.55rem solid var(--c);padding:1.6rem 1.7rem 1.8rem;box-shadow:0 22px 55px rgba(0,0,0,.6);opacity:0;transform:translateY(32px);transition:opacity .6s ease .3s,transform .6s ease .3s}
+  #fc3 .src{font-family:"Libre Franklin";font-weight:500;font-size:.72rem;line-height:1.35;color:#8795a0;margin-top:.7rem}
   #fc3 .narr{font-family:"Libre Franklin";font-weight:400;font-size:.92rem;line-height:1.6;color:#dfe7ea;margin-top:1rem}
   #fc3 .ev.right .panel{margin-left:auto} #fc3 .ev.left .panel{margin-right:auto}
   #fc3 .ev.in .panel{opacity:1;transform:none}
@@ -296,58 +307,78 @@
   #bill .billclose em{font-style:normal;color:var(--ox)}
   @media(max-width:700px){#bill .finding{grid-template-columns:1fr;gap:.6rem}}
 
-  /* ===== SECTION 4 — THE ADVISORY (Design B · 90s broadcast, interactive) ===== */
-  #advisory{position:relative;overflow:hidden;background:linear-gradient(175deg,#12486b 0%,#0a2740 60%,#06182b 100%);padding:16vh 6vw 20vh;--orange:#F26419;--gold:#FFC83D;--sky:#9FD3E8;--ink:#06182b}
-  #advisory .stormlayer{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:var(--storm,1);transition:opacity 1s ease;background:radial-gradient(120% 80% at 50% -10%,rgba(0,0,0,.6),transparent 62%),linear-gradient(180deg,rgba(6,24,43,.6),rgba(6,24,43,0) 42%)}
-  #advisory .scan{position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.035) 0 2px,transparent 2px 4px)}
-  #advisory .gridbg{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;background:linear-gradient(90deg,rgba(159,211,232,.07) 1px,transparent 1px) 0 0/64px 100%,linear-gradient(rgba(159,211,232,.07) 1px,transparent 1px) 0 0/100% 64px}
-  #advisory .advwrap{position:relative;z-index:2;max-width:1160px;margin:0 auto}
-  #advisory .akick{font-family:"Bebas Neue";letter-spacing:.12em;color:var(--gold);font-size:clamp(1.1rem,2.4vw,1.8rem);text-shadow:2px 2px 0 var(--ink);display:inline-flex;align-items:center;gap:.6rem}
-  #advisory .akick .dot{width:.6em;height:.6em;border-radius:50%;background:#ff3b30;box-shadow:0 0 12px #ff3b30;animation:livepulse 1.4s infinite}
-  @keyframes livepulse{0%,100%{opacity:1}50%{opacity:.25}}
-  #advisory h2.atitle{font-family:"Bebas Neue";color:#fff;font-size:clamp(3rem,9vw,7rem);line-height:.84;letter-spacing:.01em;margin:.4rem 0 0;text-shadow:4px 5px 0 var(--orange),8px 9px 0 rgba(0,0,0,.35)}
-  #advisory .asub{font-family:"Oswald";font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--sky);font-size:clamp(1.05rem,2.3vw,1.65rem);margin-top:1.2rem}
-  #advisory .proofbar{display:flex;flex-wrap:wrap;margin:2.4rem 0 6vh;max-width:72rem;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-  #advisory .proofbar .pb-l{background:var(--orange);color:var(--ink);font-family:"Bebas Neue";font-size:clamp(1.3rem,2.4vw,2rem);letter-spacing:.04em;padding:1rem 1.3rem;display:flex;align-items:center;line-height:.95}
-  #advisory .proofbar .pb-r{flex:1;min-width:16rem;background:rgba(6,24,43,.72);color:#ddeef6;font-family:"Oswald";font-weight:300;font-size:clamp(.95rem,1.7vw,1.12rem);padding:1rem 1.4rem;line-height:1.4}
-  #advisory .proofbar .pb-r b{color:#fff;font-weight:600}
-  /* instrument panel */
-  #advisory .panelB{border:2px solid rgba(159,211,232,.3);background:rgba(6,24,43,.55);padding:1.5rem 1.6rem 1.7rem;margin-bottom:2.5vh}
-  #advisory .gaugerow{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-  #advisory .glabel{font-family:"Oswald";text-transform:uppercase;letter-spacing:.14em;color:var(--sky);font-size:.95rem}
-  #advisory .gpct{font-family:"Bebas Neue";font-size:clamp(3rem,8vw,5.6rem);line-height:.78;color:var(--gold);text-shadow:3px 3px 0 var(--ink)}
-  #advisory .gstatus{font-family:"Bebas Neue";font-size:clamp(1.5rem,3.2vw,2.6rem);letter-spacing:.05em;color:var(--orange)}
-  #advisory .gbar{height:16px;background:rgba(255,255,255,.1);margin-top:1.1rem;position:relative;overflow:hidden}
-  #advisory .gbar i{position:absolute;left:0;top:0;bottom:0;width:100%;background:#ff3b30;transition:width .9s cubic-bezier(.3,.8,.3,1),background .9s ease}
-  #advisory .forcesrow{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.3rem}
-  #advisory .fchip{flex:1;min-width:130px;border:1px solid rgba(159,211,232,.3);padding:.55rem .7rem;font-family:"Oswald";text-transform:uppercase;letter-spacing:.03em;font-size:.8rem;color:#cfe6f1;transition:.5s}
-  #advisory .fchip .fdot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--orange);margin-right:.5em;box-shadow:0 0 8px var(--orange);transition:.5s;vertical-align:middle}
-  #advisory .fchip.off{color:#5f7a88;border-color:rgba(159,211,232,.12);text-decoration:line-through}
-  #advisory .fchip.off .fdot{background:#3a4f5c;box-shadow:none}
-  #advisory .fchip.locked .fdot{background:var(--sky);box-shadow:none}
-  #advisory .ghint{font-family:"Oswald";font-weight:300;text-transform:uppercase;letter-spacing:.08em;color:var(--sky);font-size:.82rem;margin-top:1rem;opacity:.85}
-  /* levers */
-  #advisory .tierhead{font-family:"Bebas Neue";font-size:clamp(1.7rem,3.6vw,2.8rem);letter-spacing:.04em;color:#fff;margin:5.5vh 0 .2rem;text-shadow:2px 2px 0 var(--ink)}
-  #advisory .tierhead em{font-style:normal;color:var(--gold)}
-  #advisory .tiernote{font-family:"Oswald";text-transform:uppercase;letter-spacing:.06em;color:var(--sky);font-size:.92rem;margin-bottom:1.5rem}
-  #advisory .lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
-  #advisory .lcard{position:relative;overflow:hidden;background:rgba(6,24,43,.6);border:1px solid rgba(159,211,232,.22);border-top:5px solid var(--orange);padding:1.3rem 1.3rem 1.5rem;opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s ease,border-top-color .4s}
-  #advisory .lcard.in{opacity:1;transform:none}
-  #advisory .lcard .lno{font-family:"Bebas Neue";font-size:2rem;color:rgba(159,211,232,.4);line-height:.8}
-  #advisory .lcard h4{font-family:"Bebas Neue";font-size:clamp(1.3rem,2.2vw,1.75rem);letter-spacing:.02em;color:#fff;margin:.25rem 0 .5rem;line-height:1}
-  #advisory .lcard p{font-family:"Oswald";font-weight:300;font-size:.94rem;line-height:1.45;color:#c4dbe6}
-  #advisory .lcard .lforce{font-family:"Oswald";text-transform:uppercase;letter-spacing:.05em;font-size:.76rem;color:var(--gold);margin-top:.9rem}
-  #advisory .lcard .apply{margin-top:1.05rem;font-family:"Bebas Neue";letter-spacing:.08em;font-size:1.05rem;background:var(--orange);color:var(--ink);border:none;padding:.45rem 1.1rem;cursor:pointer;transition:.25s}
-  #advisory .lcard .apply:hover{background:var(--gold)}
-  #advisory .lcard.applied{border-top-color:#2ea04e}
-  #advisory .lcard.applied .apply{background:#2ea04e;color:#fff}
-  #advisory .lcard .sweep{position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.22),transparent);transform:translateX(-120%);pointer-events:none}
-  #advisory .lcard.flash .sweep{animation:sweepx .7s ease}
-  @keyframes sweepx{to{transform:translateX(120%)}}
-  #advisory .bclose{margin-top:12vh;text-align:center}
-  #advisory .bclose p{font-family:"Bebas Neue";font-size:clamp(2.2rem,6vw,4.6rem);line-height:.92;color:#fff;letter-spacing:.01em;text-shadow:3px 4px 0 var(--orange),6px 7px 0 rgba(0,0,0,.3);max-width:22ch;margin:0 auto}
-  #advisory .bclose em{font-style:normal;color:var(--gold)}
-  @media(max-width:820px){#advisory .lgrid{grid-template-columns:1fr}}
+  /* ===== TRANSITION — forecast to advisory ===== */
+  #advtrans{position:relative;background:#0b0b0e;padding:22vh 8vw;min-height:120vh;display:flex;flex-direction:column;justify-content:center;gap:34vh}
+  #advtrans .at-line{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.6rem,3.6vw,3rem);line-height:1.26;max-width:40ch;color:#f3efe8;opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  #advtrans .at-line.in{opacity:1;transform:none}
+  #advtrans .at2{align-self:flex-end;text-align:right;color:#FFC83D}
+
+  /* ===== SECTION 4 — THE ADVISORY · Integration Ladder (Design B skin, analytical) ===== */
+  #advisory{position:relative;height:640vh;background:linear-gradient(175deg,#12486b 0%,#0a2740 55%,#06182b 100%);--orange:#F26419;--gold:#FFC83D;--sky:#9FD3E8;--ink:#06182b}
+  #advisory .stormlayer{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(120% 80% at 50% -10%,rgba(0,0,0,.5),transparent 62%)}
+  #advisory .scan{position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.03) 0 2px,transparent 2px 4px)}
+  #advisory .gridbg{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.45;background:linear-gradient(90deg,rgba(159,211,232,.06) 1px,transparent 1px) 0 0/64px 100%,linear-gradient(rgba(159,211,232,.06) 1px,transparent 1px) 0 0/100% 64px}
+  #advisory .ladderStage{position:sticky;top:0;height:100vh;z-index:2;display:flex;align-items:center;padding:4vh 6vw;overflow:hidden}
+  #advisory .advInner{width:100%;max-width:1180px;margin:0 auto}
+  #advisory .atitle{font-family:"Bebas Neue";color:#fff;font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:.015em;line-height:.9;text-shadow:3px 3px 0 var(--ink)}
+  #advisory .atitle span{color:var(--gold)}
+  #advisory .ahead{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.15rem,2.3vw,1.8rem);line-height:1.25;color:#eaf6fb;margin:.7rem 0 2.2vh;max-width:40ch;min-height:2.4em}
+  #advisory .caplayer{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem}
+  #advisory .capchip{border:1px solid rgba(159,211,232,.2);background:rgba(6,24,43,.4);padding:.55rem .7rem;font-family:"Oswald";font-weight:400;font-size:.9rem;color:#6a8492;transition:.45s;display:flex;align-items:center;gap:.5rem}
+  #advisory .capchip .cd{width:.55em;height:.55em;border-radius:50%;background:#2f4756;transition:.45s;flex:0 0 auto}
+  #advisory .capchip.lit{color:#fff;border-color:var(--gold);background:rgba(255,200,61,.08)}
+  #advisory .capchip.lit .cd{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+  #advisory .capnote{font-family:"Oswald";font-weight:300;font-size:.95rem;color:var(--sky);margin:1.1rem 0 1.4rem;height:1.3em}
+  #advisory .spectrum{position:relative;height:118px;margin:1vh 0 2.4vh}
+  #advisory .spectrum.muted{opacity:.45}
+  #advisory .spectrum .track{position:absolute;top:19px;left:10%;right:10%;height:3px;background:rgba(159,211,232,.25)}
+  #advisory .snode{position:absolute;top:0;transform:translateX(-50%);width:20%;text-align:center}
+  #advisory .snode .sd{width:18px;height:18px;border-radius:50%;background:#0a2740;border:2px solid rgba(159,211,232,.5);margin:10px auto 0;transition:.4s}
+  #advisory .snode.active .sd{background:var(--gold);border-color:var(--gold);box-shadow:0 0 16px var(--gold);transform:scale(1.25)}
+  #advisory .snode .slab{font-family:"Bebas Neue";font-size:clamp(.95rem,1.5vw,1.3rem);letter-spacing:.02em;color:#cfe6f1;margin-top:.55rem;line-height:1}
+  #advisory .snode.active .slab{color:#fff}
+  #advisory .snode .ssub{font-family:"Oswald";font-weight:300;font-size:.72rem;color:#7f9aa8;margin-top:.2rem}
+  #advisory .selector{position:absolute;top:11px;left:10%;width:34px;height:34px;border:2px solid var(--gold);border-radius:50%;transform:translateX(-50%);transition:left .55s cubic-bezier(.3,.8,.3,1),opacity .4s;box-shadow:0 0 18px rgba(255,200,61,.5);opacity:0}
+  #advisory .spectrum .ends{position:absolute;top:96px;left:10%;right:10%;display:flex;justify-content:space-between;font-family:"Oswald";font-weight:300;font-size:.74rem;color:#7f9aa8}
+  #advisory .revlayer{max-width:660px;margin:0 0 2.4vh}
+  #advisory .revhead{display:flex;justify-content:space-between;font-family:"Oswald";font-weight:400;font-size:.95rem;color:var(--sky)}
+  #advisory .revbar{height:12px;background:rgba(255,255,255,.08);margin-top:.5rem;position:relative;overflow:hidden}
+  #advisory .revbar i{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,var(--sky),#4f86a3);transition:width .6s ease}
+  #advisory .statemsg{max-width:54rem;min-height:5.5em}
+  #advisory .statemsg .sm{font-family:"Oswald";font-weight:400;font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.35;color:#eaf6fb}
+  #advisory .statemsg .sc{font-family:"Oswald";font-weight:300;font-size:.95rem;line-height:1.4;color:#a9c4d1;margin-top:.7rem;border-left:3px solid var(--sky);padding-left:.8rem}
+  #advisory .statemsg .se{font-family:"Oswald";font-weight:400;font-size:.95rem;line-height:1.45;color:#FFD98A;margin-top:.7rem}
+  @media(max-width:820px){#advisory{height:720vh}#advisory .caplayer{grid-template-columns:repeat(2,1fr)}#advisory .snode .slab{font-size:.78rem}#advisory .snode .ssub{display:none}}
+
+  /* executive decision rule */
+  #advrule{background:#06182b;padding:16vh 6vw;text-align:center}
+  #advrule .rline{font-family:"Bebas Neue";font-size:clamp(1.5rem,3.8vw,3.1rem);letter-spacing:.03em;color:#fff}
+  #advrule .rline b{color:#FFC83D;font-weight:400}
+  #advrule .rinstr{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.2rem,2.4vw,1.9rem);color:#9FD3E8;margin:2rem auto 0;max-width:40ch;line-height:1.3}
+  /* contestability */
+  #advtest{background:#0a2740;padding:16vh 6vw}
+  #advtest h3{font-family:"Bebas Neue";font-size:clamp(1.8rem,4vw,3rem);color:#fff;letter-spacing:.02em;max-width:26ch}
+  #advtest h3 span{color:#FFC83D}
+  #advtest .qs{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:3vh;max-width:1000px}
+  #advtest .q{border:1px solid rgba(159,211,232,.25);background:rgba(6,24,43,.5);padding:1.25rem;font-family:"Libre Franklin";font-weight:500;font-size:clamp(1rem,1.9vw,1.3rem);color:#eaf6fb;line-height:1.3;display:flex;gap:.8rem;align-items:baseline}
+  #advtest .q .qn{font-family:"Bebas Neue";font-size:1.7rem;color:#9FD3E8;line-height:.8}
+  #advtest .qnote{font-family:"Oswald";font-weight:300;font-size:1.05rem;color:#a9c4d1;margin-top:2rem;max-width:52rem;line-height:1.45}
+  @media(max-width:760px){#advtest .qs{grid-template-columns:1fr}}
+  /* five forces table */
+  #advforces{background:#06182b;padding:14vh 6vw 16vh}
+  #advforces h3{font-family:"Bebas Neue";font-size:clamp(1.8rem,4vw,3rem);color:#fff;letter-spacing:.02em;margin-bottom:.5rem}
+  #advforces .intro{font-family:"Oswald";font-weight:300;font-size:1.05rem;color:#9FD3E8;max-width:52rem;margin-bottom:3vh;line-height:1.45}
+  #advforces .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:1.4rem;padding:1.4rem 0;border-top:1px solid rgba(159,211,232,.18)}
+  #advforces .fname{font-family:"Bebas Neue";font-size:clamp(1.2rem,2.2vw,1.7rem);color:#F26419;letter-spacing:.02em}
+  #advforces .fdesign{font-family:"Libre Franklin";font-weight:400;font-size:clamp(.95rem,1.7vw,1.1rem);line-height:1.45;color:#dbe9f0}
+  #advforces .fnote{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.1rem,2.2vw,1.5rem);color:#fff;margin-top:3vh;max-width:48rem;line-height:1.35}
+  @media(max-width:700px){#advforces .frow{grid-template-columns:1fr;gap:.4rem}}
+  /* closing */
+  #advclose{background:linear-gradient(180deg,#0a2740,#0b0b0e);padding:20vh 6vw;text-align:center;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem}
+  #advclose .score{font-family:"Anton";font-size:clamp(4rem,12vw,9rem);line-height:.8;color:#F26419}
+  #advclose .cond{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.2rem,2.5vw,1.7rem);color:#9FD3E8}
+  #advclose .principle{font-family:"Bebas Neue";font-size:clamp(2.2rem,6vw,4.4rem);line-height:.96;color:#fff;letter-spacing:.015em;max-width:22ch;text-shadow:3px 4px 0 rgba(0,0,0,.35)}
+  #advclose .principle span{color:#FFC83D}
 </style>
 </head>
 <body>
@@ -398,10 +429,12 @@
 
       <aside class="citycard" id="citycard" aria-live="polite">
         <button class="close" id="cardClose" aria-label="Close">×</button>
+        <div class="cardimg" id="cardImg"><img id="cardImgPic" alt=""><span class="imgfallback" id="cardWordmark"></span></div>
         <div class="statuschip"><span class="chip" id="cardChip"></span><span class="chipnote" id="cardChipNote"></span></div>
         <h2 id="cardName"></h2>
         <div class="yrs" id="cardYears"></div>
-        <p class="blurb" id="cardBlurb"></p>
+        <p class="csum"><b>The consolidation —</b> <span id="cardMove"></span></p>
+        <p class="csum now"><b>Where it stands now —</b> <span id="cardNow"></span></p>
         <div class="forecast">
           <div class="hi" id="cardHi"></div>
           <div class="lohs">Low&nbsp;<b id="cardLo"></b><br>Swing&nbsp;<b id="cardSpread"></b></div>
@@ -429,7 +462,7 @@
       <div class="big">Five Market<br><em>Forces</em></div>
       <div class="sub">The conditions that produce consolidation</div>
     </div>
-    <div class="altitude3" id="altitude3"></div>
+    <div class="altitude3" id="altitude3"><b>5 Market Forces</b> Driving Toward Consolidation</div>
     <div class="cards3" id="cards3"></div>
     <div class="bumper" id="bumper">
       <div class="band"></div>
@@ -501,108 +534,120 @@
   </div>
 </section>
 
-<!-- ===== SECTION 4 — THE ADVISORY (Design B · interactive) ===== -->
+<!-- ===== TRANSITION — forecast to advisory ===== -->
+<section id="advtrans">
+  <div class="at-line at1">The problem is not that healthcare is integrating. It is what we have required healthcare to become in order to integrate.</div>
+  <div class="at-line at2">What were we actually trying to get from consolidation?</div>
+</section>
+
+<!-- ===== SECTION 4 — THE ADVISORY · Integration Ladder ===== -->
 <section id="advisory">
   <div class="stormlayer"></div>
   <div class="scan"></div>
   <div class="gridbg"></div>
-  <div class="advwrap">
-    <div class="akick"><span class="dot"></span>LIVE ADVISORY</div>
-    <h2 class="atitle">Consolidation Advisory<br>for Healthcare</h2>
-    <div class="asub">What we ought to — and what we still can — do</div>
+  <div class="ladderStage">
+    <div class="advInner">
+      <div class="atitle">Consolidation Advisory <span>for Healthcare</span></div>
+      <div class="ahead" id="ahead">What capability are we actually buying the organization to obtain?</div>
 
-    <div class="proofbar">
-      <div class="pb-l">ONE MARKET<br>RESISTED</div>
-      <div class="pb-r">Every force was present in American beer — fragmentation, capital, scale — except one: <b>you could always see the price.</b> The giants bought the craft labels anyway, and still their share fell from <b>78% to 64%</b>. When the price is visible, the storm does not land.</div>
-    </div>
+      <div class="caplayer" id="caplayer">
+        <div class="capchip" data-cap="clinical"><span class="cd"></span>Clinical coordination</div>
+        <div class="capchip" data-cap="data"><span class="cd"></span>Data infrastructure</div>
+        <div class="capchip" data-cap="risk"><span class="cd"></span>Risk sharing</div>
+        <div class="capchip" data-cap="purchasing"><span class="cd"></span>Purchasing leverage</div>
+        <div class="capchip" data-cap="capital"><span class="cd"></span>Capital access</div>
+        <div class="capchip" data-cap="admin"><span class="cd"></span>Administrative scale</div>
+        <div class="capchip" data-cap="contracting"><span class="cd"></span>Contracting leverage</div>
+        <div class="capchip" data-cap="continuity"><span class="cd"></span>Continuity of care</div>
+      </div>
+      <div class="capnote" id="capnote"></div>
 
-    <div class="panelB">
-      <div class="gaugerow">
-        <div><div class="glabel">Consolidation Pressure</div><div class="gpct" id="gpct">100%</div></div>
-        <div class="gstatus" id="gstatus">SEVERE</div>
+      <div class="spectrum" id="spectrum">
+        <div class="track"></div>
+        <div class="selector" id="selector"></div>
+        <div class="snode" style="left:10%"><div class="sd"></div><div class="slab">Contract</div><div class="ssub">Shared services · PSA</div></div>
+        <div class="snode" style="left:30%"><div class="sd"></div><div class="slab">Network</div><div class="ssub">Clinically integrated network</div></div>
+        <div class="snode" style="left:50%"><div class="sd"></div><div class="slab">Shared Risk</div><div class="ssub">ACO · shared savings</div></div>
+        <div class="snode" style="left:70%"><div class="sd"></div><div class="slab">Joint Operation</div><div class="ssub">Joint operating structure</div></div>
+        <div class="snode" style="left:90%"><div class="sd"></div><div class="slab">Ownership</div><div class="ssub">Common ownership</div></div>
+        <div class="ends"><span>More reversible · more contestable</span><span>More permanent · harder to exit</span></div>
       </div>
-      <div class="gbar"><i id="gbar"></i></div>
-      <div class="forcesrow">
-        <div class="fchip" data-f="fragmentation"><span class="fdot"></span>Fragmentation</div>
-        <div class="fchip locked" data-f="shock"><span class="fdot"></span>Industry shock · past</div>
-        <div class="fchip" data-f="capital"><span class="fdot"></span>Capital liquidity</div>
-        <div class="fchip" data-f="enforcement"><span class="fdot"></span>Enforcement vacancy</div>
-        <div class="fchip" data-f="opacity"><span class="fdot"></span>Pricing opacity</div>
-      </div>
-      <div class="ghint">Apply each measure below — watch the pressure fall. The shock already happened; the other four are ours to remove.</div>
-    </div>
 
-    <div class="tierhead">What we <em>ought</em> to do</div>
-    <div class="tiernote">Structural moves — highest leverage, each removes a force</div>
-    <div class="lgrid">
-      <div class="lcard" data-id="price" data-force="opacity"><div class="sweep"></div>
-        <div class="lno">01</div><h4>Make the price visible</h4>
-        <p>Enforce real price transparency so buyers can compare before they are billed, not after.</p>
-        <div class="lforce">Weakens · Pricing opacity</div>
-        <button class="apply">APPLY ▸</button>
+      <div class="revlayer">
+        <div class="revhead"><span>Reversibility / contestability</span><span id="revword">—</span></div>
+        <div class="revbar"><i id="revbar"></i></div>
       </div>
-      <div class="lcard" data-id="siteneutral" data-force="capital"><div class="sweep"></div>
-        <div class="lno">02</div><h4>Pay the same for the same care</h4>
-        <p>Site-neutral payment ends the 14% markup a hospital adds just by owning the clinic.</p>
-        <div class="lforce">Weakens · Capital incentive</div>
-        <button class="apply">APPLY ▸</button>
-      </div>
-      <div class="lcard" data-id="count" data-force="enforcement"><div class="sweep"></div>
-        <div class="lno">03</div><h4>Count the small deals</h4>
-        <p>Review serial, sub-threshold roll-ups as the mergers they add up to — the 2023 guidelines name the pattern.</p>
-        <div class="lforce">Weakens · Enforcement vacancy</div>
-        <button class="apply">APPLY ▸</button>
-      </div>
-    </div>
 
-    <div class="tierhead">What we <em>still can</em> do</div>
-    <div class="tiernote">Levers that do not wait for Washington — for employers, clinicians, patients</div>
-    <div class="lgrid">
-      <div class="lcard" data-id="steer" data-force="opacity"><div class="sweep"></div>
-        <div class="lno">04</div><h4>Steer the demand side</h4>
-        <p>Employers and plans route patients to transparent, independent providers and reference-price the rest.</p>
-        <div class="lforce">Weakens · Pricing opacity</div>
-        <button class="apply">APPLY ▸</button>
-      </div>
-      <div class="lcard" data-id="outside" data-force="fragmentation"><div class="sweep"></div>
-        <div class="lno">05</div><h4>Keep an outside alive</h4>
-        <p>Back physician-owned groups and direct primary care so leaving the system stays possible.</p>
-        <div class="lforce">Weakens · Fragmentation collapse</div>
-        <button class="apply">APPLY ▸</button>
-      </div>
-      <div class="lcard" data-id="report" data-force="enforcement"><div class="sweep"></div>
-        <div class="lno">06</div><h4>Report what you see</h4>
-        <p>Clinicians, employers, and patients bring roll-ups and price gaps to state AGs and the FTC.</p>
-        <div class="lforce">Weakens · Enforcement vacancy</div>
-        <button class="apply">APPLY ▸</button>
-      </div>
-    </div>
-
-    <div class="bclose">
-      <p>None of these measures is hypothetical. <em>Each is already in use — the forecast changes where they are adopted.</em></p>
+      <div class="statemsg" id="statemsg"></div>
     </div>
   </div>
+</section>
+
+<!-- executive decision rule -->
+<section id="advrule">
+  <div class="rline">Contract <b>→</b> Network <b>→</b> Shared Risk <b>→</b> Joint Operation <b>→</b> Ownership</div>
+  <div class="rinstr">Move right only when the structure to the left cannot deliver the capability you need.</div>
+</section>
+
+<!-- contestability test -->
+<section id="advtest">
+  <h3>Integration can preserve competition — or quietly end it. The test is <span>contestability</span>.</h3>
+  <div class="qs">
+    <div class="q"><span class="qn">1</span>Can a new competitor still enter?</div>
+    <div class="q"><span class="qn">2</span>Can a physician or organization leave?</div>
+    <div class="q"><span class="qn">3</span>Can a payer or purchaser contract around the structure?</div>
+    <div class="q"><span class="qn">4</span>Can a patient meaningfully choose around it?</div>
+    <div class="q"><span class="qn">5</span>Can the arrangement be unwound without destroying the capability it created?</div>
+  </div>
+  <div class="qnote">When the answer to these disappears, the market can lose competition even while the legal entities stay separate.</div>
+</section>
+
+<!-- five forces → better market design -->
+<section id="advforces">
+  <h3>The same five forces, redesigned</h3>
+  <div class="intro">Not five forces matched to five fixes — a diagnostic of how better market design changes the incentives underneath consolidation.</div>
+  <div class="frow"><div class="fname">Fragmentation</div><div class="fdesign">Make independence economically viable without isolation. Shared infrastructure and networks reduce the penalty for staying independent while preserving exit and competition.</div></div>
+  <div class="frow"><div class="fname">Industry shock</div><div class="fdesign">Build shared risk, infrastructure, liquidity support, and coordinated response that do not require an ownership transfer to absorb a disruption.</div></div>
+  <div class="frow"><div class="fname">Capital liquidity</div><div class="fdesign">Change what earns the return. Reduce structures that reward acquisition independent of operating improvement — site-neutral payment is one concrete example.</div></div>
+  <div class="frow"><div class="fname">Enforcement vacancy</div><div class="fdesign">Evaluate cumulative market control — serial, vertical, and below-threshold aggregation — not only individual headline transactions.</div></div>
+  <div class="frow"><div class="fname">Pricing opacity</div><div class="fdesign">Move past disclosure toward usable comparability: standardized price, quality, and episode definitions that let purchasers actually act.</div></div>
+  <div class="fnote">The goal is not to reduce these forces to zero. It is to reduce the extent to which they make ownership the default answer to every integration problem.</div>
+</section>
+
+<!-- closing -->
+<section id="advclose">
+  <div class="score">5 / 5</div>
+  <div class="cond">The forecast is conditional.</div>
+  <div class="principle">Integrate what must be integrated. <span>Consolidate only what must be owned.</span></div>
 </section>
 
 <script>
   const BAND=t=>t>=110?getComputedStyle(document.documentElement).getPropertyValue('--hot2'):t>=100?'#C2410C':t>=90?'#CA6A3C':t>=80?'#B9924F':'#1B3A5C';
   const cities=[
-    {ind:'Healthcare',x:52,y:60,hi:118,lo:69,status:'storm',years:'2010–present',g:[3,3,3,3,3],cool:false,
-      blurb:'In 2012, three-quarters of U.S. physicians were independent; by 2024, three-quarters were employed by hospitals or corporations. The wall between provider, insurer, and pharmacy fell—Optum now insures, employs doctors, and runs the PBM. Prices rose past 20% in concentrated markets, with no gain in quality.'},
-    {ind:'Eyewear',x:50,y:30,hi:99,lo:94,status:'entrenched',years:'1995–present',g:[1,2,3,3,3],cool:false,
-      blurb:'When Warby Parker launched in 2010, one company already owned the frames, the stores, and the vision insurer that paid for them: Ray-Ban, Oakley, LensCrafters, Sunglass Hut, EyeMed. Lens to frame to store to reimbursement, all EssilorLuxottica.'},
-    {ind:'Airlines',x:64,y:74,hi:92,lo:84,status:'entrenched',years:'2008–2013',g:[2,3,2,2,2],cool:false,
-      blurb:'Deregulation in 1978 drew in dozens of carriers. A merger wave from 2008 to 2013 closed the field to four, now holding roughly 80% of the domestic market. Fares fell after deregulation, then rose where the mergers concentrated.'},
-    {ind:'Cell phones',x:56,y:68,hi:95,lo:88,status:'entrenched',years:'2005–2020',g:[1,2,3,3,2],cool:false,
-      blurb:'In 2020 regulators approved the T-Mobile-Sprint merger, cutting four national carriers to three. Spectrum and tower costs reward scale, phone contracts lock customers in, and the deal cleared with little resistance. Verizon, AT&T, and T-Mobile now hold the field.'},
-    {ind:'Movie studios',x:26,y:37,hi:106,lo:80,status:'storm',years:'2025–2026',g:[1,2,3,2,2],cool:false,
-      blurb:'In October 2026, Paramount Skydance closed its $110 billion purchase of Warner Bros. Discovery, combining two of the five major studios: Paramount Pictures and Warner Bros., Paramount+ and HBO Max, CBS and CNN. Twelve state attorneys general sued to block it. It cleared anyway.'},
-    {ind:'DoorDash + Instacart',x:39,y:50,hi:103,lo:79,status:'storm',years:'2026',g:[2,2,3,3,2],cool:false,
-      blurb:'DoorDash has acquired Instacart in a roughly $17 billion deal, pairing the largest restaurant-delivery network with the largest grocery one. DoorDash\'s share of spending across major delivery apps had already climbed from 44% in 2021 to 59% in 2026, while Instacart\'s fell to 18%. The duopoly with Uber Eats is set.'},
-    {ind:'Home services (PE)',x:70,y:41,hi:101,lo:74,status:'brewing',years:'2022–present',g:[3,2,3,3,1],cool:false,
-      blurb:'Private equity has bought roughly 800 HVAC, plumbing, and electrical firms since 2022, out of a market still split among 100,000-plus contractors. The capital has arrived; the fragmentation has not yet closed.'},
-    {ind:'Craft beer',x:27,y:70,hi:73,lo:66,status:'resisted',years:'1980s–present',g:[3,1,3,2,0],cool:true,
-      blurb:'U.S. breweries bottomed at 89 in 1978 and passed 7,400 by 2018. Even as the two giants bought up craft labels, their combined share fell from 78% to 64%. Every condition for a storm was present except a way to hide the price.'}
+    {ind:'Healthcare',x:52,y:60,hi:118,lo:69,status:'storm',years:'2010–present',g:[3,3,3,3,3],cool:false,img:'healthcare',brand:'UnitedHealth · Optum',
+      move:'In 2012 roughly three-quarters of U.S. physicians were independent; by 2024 roughly three-quarters were employed by hospitals or corporations. The wall between insurer, provider, and pharmacy fell — Optum now insures patients, employs doctors, and runs the pharmacy benefit manager inside one company.',
+      now:'A live storm. Prices in concentrated markets have risen past 20% with no measured gain in quality, and the integration is still deepening.'},
+    {ind:'Eyewear',x:50,y:30,hi:99,lo:94,status:'entrenched',years:'1995–present',g:[1,2,3,3,3],cool:false,img:'eyewear',brand:'EssilorLuxottica',
+      move:'One company came to own the frames, the stores, and the vision insurer that pays for them: Ray-Ban, Oakley, LensCrafters, Sunglass Hut, and EyeMed — lens to frame to store to reimbursement, all EssilorLuxottica.',
+      now:'Entrenched. A single firm sits on every step of the transaction, and prices move with little competitive check.'},
+    {ind:'Airlines',x:64,y:74,hi:92,lo:84,status:'entrenched',years:'2008–2013',g:[2,3,2,2,2],cool:false,img:'airlines',brand:'The Big Four',
+      move:'Deregulation in 1978 drew dozens of carriers into the market. A merger wave from 2008 to 2013 — Delta–Northwest, United–Continental, American–US Airways — closed the field to four.',
+      now:'Entrenched. Four carriers hold roughly 80% of the domestic market; fares rose where the mergers concentrated routes.'},
+    {ind:'Cell phones',x:56,y:68,hi:95,lo:88,status:'entrenched',years:'2005–2020',g:[1,2,3,3,2],cool:false,img:'cellphones',brand:'Verizon · AT&T · T-Mobile',
+      move:'Spectrum and tower costs reward scale, and contracts lock customers in. In 2020 regulators approved T-Mobile’s purchase of Sprint, cutting four national carriers to three.',
+      now:'Entrenched. Three carriers hold the field, and the 2020 merger cleared with little resistance.'},
+    {ind:'Movie studios',x:26,y:37,hi:106,lo:80,status:'storm',years:'2025–2026',g:[1,2,3,2,2],cool:false,img:'studios',brand:'Paramount Skydance + WBD',
+      move:'In October 2026 Paramount Skydance closed its $110B purchase of Warner Bros. Discovery, combining two of the five majors — Paramount and Warner Bros., Paramount+ and HBO Max, CBS and CNN.',
+      now:'A live storm. Twelve state attorneys general sued to block it. It cleared anyway.'},
+    {ind:'DoorDash + Instacart',x:39,y:50,hi:103,lo:79,status:'storm',years:'2026',g:[2,2,3,3,2],cool:false,img:'delivery',brand:'DoorDash + Instacart',
+      move:'DoorDash acquired Instacart in a roughly $17B deal, pairing the largest restaurant-delivery network with the largest grocery one.',
+      now:'A forming duopoly with Uber Eats. DoorDash’s share of major-app delivery spending climbed from 44% in 2021 to 59% in 2026; Instacart’s fell to 18%.'},
+    {ind:'Home services (PE)',x:70,y:41,hi:101,lo:74,status:'brewing',years:'2022–present',g:[3,2,3,3,1],cool:false,img:'homeservices',brand:'Private-equity roll-ups',
+      move:'Since 2022 private equity has bought roughly 800 HVAC, plumbing, and electrical firms, assembling regional platforms out of local trades.',
+      now:'Brewing. The market is still split among 100,000-plus contractors — the capital has arrived, the fragmentation has not yet closed.'},
+    {ind:'Craft beer',x:27,y:70,hi:73,lo:66,status:'resisted',years:'1980s–present',g:[3,1,3,2,0],cool:true,img:'craftbeer',brand:'Craft beer',
+      move:'U.S. breweries bottomed at 89 in 1978 and passed 7,400 by 2018. The two largest brewers bought up craft labels aggressively.',
+      now:'Resisted. Even so, the giants’ combined share fell from 78% to 64% — every condition for a storm was present except one: you could always see the price.'}
   ];
   const GNAMES=['Fragmentation','Industry shock','Capital liquidity','Enforcement vacancy','Pricing opacity'], UNSETTLED=18, NS='http://www.w3.org/2000/svg';
   const STATUS={brewing:{label:'Brewing',color:'#C98A2B',note:'early, gathering'},storm:{label:'Storm',color:'#C2410C',note:'current flood'},late:{label:'Late',color:'#9A2B0A',note:'storm passing'},entrenched:{label:'Entrenched',color:'#5A5550',note:'storm passed'},resisted:{label:'Resisted',color:'#2D6A4F',note:'held'}};
@@ -632,7 +677,10 @@
   function openCard(i){
     const c=cities[i], swing=c.hi-c.lo, st=STATUS[c.status];
     const chip=$('cardChip'); chip.textContent=st.label; chip.style.background=st.color;
-    $('cardChipNote').textContent=st.note; $('cardName').textContent=c.ind; $('cardYears').textContent=c.years; $('cardBlurb').textContent=c.blurb;
+    $('cardChipNote').textContent=st.note; $('cardName').textContent=c.ind; $('cardYears').textContent=c.years;
+    $('cardMove').textContent=c.move; $('cardNow').textContent=c.now;
+    const wm=$('cardWordmark'); wm.textContent=c.brand||c.ind;
+    const im=$('cardImgPic'); $('cardImg').classList.remove('nofile'); im.onerror=()=>$('cardImg').classList.add('nofile'); im.src='assets/img/industry/'+c.img+'.jpg';
     $('cardHi').textContent=c.hi+'°'; $('cardLo').textContent=c.lo+'°'; $('cardSpread').textContent=swing+'°';
     const gh=$('cardGauges'); gh.innerHTML='';
     c.g.forEach((val,k)=>{let s='';for(let j=0;j<3;j++)s+=`<span class="seg ${j<val?'on':''} ${c.cool?'cool':''}"></span>`;
@@ -685,18 +733,23 @@
   const CARDS=[
     {force:'Fragmentation',sub:'a market in disequilibrium',k:'heat',
      p1:'A fragmented, margin-squeezed industry is stored energy: many small players, thin profits, gains from reorganization waiting to be taken.',
+     ex:'Seen in <b>home services</b>: more than 100,000 independent HVAC, plumbing, and electrical firms — the fragmented raw material private equity is now rolling up.',
      p2:'Healthcare was built fragmented—independent hospitals, solo physicians, thin margins. In 2012, three-quarters of U.S. physicians were still independent. The energy had nowhere to go but up.'},
     {force:'Industry shock',sub:'deregulation or a payment shift',k:'front',
      p1:'Stored energy stays put until something releases it. A shock—deregulation, a technology or payment change—makes the old structure untenable and reorganization urgent.',
+     ex:'Seen in <b>airlines</b>: deregulation in 1978 made the old route structure untenable, and the merger wave followed once the shock had worked through the industry.',
      p2:'Healthcare\'s shock was the Affordable Care Act and the turn to value-based payment. The new rules rewarded scale and punished the small and independent. It arrived in 2010.'},
     {force:'Capital liquidity',sub:'cheap, abundant money',k:'moisture',
      p1:'A shock without capital dissipates. A shock with cheap, abundant capital becomes a wave. A shock and the money to act on it are the pair no merger wave forms without.',
+     ex:'Seen in <b>media and delivery</b>: a $110B purchase of Warner Bros. Discovery and a $17B DoorDash–Instacart deal — capital abundant enough to act at scale.',
      p2:'A decade of cheap money and private equity met the shock. By 2024, corporate owners—insurers, PE, pharmacy chains—held more physician practices than hospitals did.'},
     {force:'Enforcement vacancy',sub:'weak or absent antitrust',k:'updraft',
      p1:'Strong antitrust breaks a merger wave before it organizes. Weak or absent enforcement is clear air—nothing to stop the wave from standing up and spreading.',
+     ex:'Seen in <b>wireless</b>: the T-Mobile–Sprint merger cleared in 2020, cutting four national carriers to three.',
      p2:'Regulators blocked the obvious horizontal deals—the insurer mergers that would have cut five national carriers to three. The vertical deals cleared. The wave routed through the opening.'},
     {force:'Pricing opacity',sub:'a price no buyer can see',k:'haboob',
      p1:'When buyers can see and compare prices, a firm that raises them loses business, and market power is competed away. When the price is hidden, that power accumulates unchecked.',
+     ex:'Seen in <b>eyewear</b>: EssilorLuxottica owns the lens, the frame, the store, and the insurer that pays — pricing against itself, invisible to the buyer.',
      p2:'No patient sees the price: care billed against a chargemaster no one reads, through a PBM spread no one sees, inside entities that price against themselves. The bill comes all at once.'}
   ];
   const cardsEl=document.getElementById('cards3');
@@ -708,6 +761,7 @@
           <div class="forcename">${c.force}</div><div class="frule"></div>
           <div class="forcesub">${c.sub}</div>
           <div class="cbody">${c.p1}</div>
+          <div class="forceex">${c.ex}</div>
           <div class="flipcue3">↻ in healthcare</div>
         </div>
         <div class="face3 back3">
@@ -755,12 +809,11 @@
       stage.classList.remove('ground'); dived=false;
       const seg=(p-0.06)/0.38, idx=Math.max(0,Math.min(4,Math.floor(seg*5)));
       cards.forEach((c,i)=>{c.classList.toggle('revealed',p>=0.06&&i<=idx);c.classList.remove('flipped','active');});
-      if(p>=0.06){setBed(CARDS[idx].k);altitude.innerHTML='<b>'+CARDS[idx].force+'</b>';}
-      else{setBed(null);altitude.textContent='';}
+      if(p>=0.06){setBed(CARDS[idx].k);}
+      else{setBed(null);}
     } else if(p<0.62){
       // bumper transition: cards out, Phoenix dives in behind the title
       cards.forEach(c=>c.classList.remove('revealed','flipped','active'));
-      altitude.textContent='';
       if(p>=0.50){
         stage.classList.add('ground'); setBed('landfall');
         if(!dived && map){ map.setView([PHX.lat,PHX.lng],9.6,{animate:false}); map.flyTo([PHX.lat,PHX.lng],PHX.zoom,{duration:3.2}); dived=true; }
@@ -770,7 +823,6 @@
       stage.classList.add('ground'); setBed('landfall');
       const seg=(p-0.62)/0.38, idx=Math.max(0,Math.min(4,Math.floor(seg*5)));
       cards.forEach((c,i)=>{c.classList.add('revealed');c.classList.toggle('flipped',i<=idx);c.classList.toggle('active',i===idx);});
-      altitude.innerHTML='Phoenix — <b>'+CARDS[idx].force+'</b>';
     }
   }
   initMap(); render(0);
@@ -789,56 +841,76 @@
 /* ===== Section 3 — forecast timeline ===== */
 (()=>{
  const EVENTS=[
+  {yr:'2012',st:'RECORDED',cls:'',season:'spring',
+   event:'A market fragmented by friction, not by equilibrium',
+   impact:'The economics already rewarded scale. Only frictions held practice small and independent — and frictions give way.',
+   narr:'American healthcare did not drift into consolidation; it was built to resist it, and the resistance was structural. Independent practices and hospitals persisted because frictions held them in place — the corporate-practice-of-medicine doctrine, physician autonomy, local fee-for-service, an antitrust regime that still occasionally bit — even as the underlying economics had always rewarded scale: contracting leverage, compliance and IT fixed costs, a payment system that pays for bargaining power rather than for care. In 2012, 60% of physicians still worked in private practice. That was not a stable equilibrium. It was stored energy, held on a ledge.',
+   figs:[['60%','of physicians still in private practice — the stored energy']],
+   src:'AMA Physician Practice Benchmark Survey · 60.1% in 2012 → 46.7% in 2022',
+   forces:1,fnew:'+ Fragmentation'},
   {yr:'2014',st:'RECORDED',cls:'',season:'spring',
-   event:'The ACA takes effect',
-   impact:'New coverage rules and value-based payment make independent practice costlier to sustain.',
-   narr:'American healthcare’s consolidation has a starting gun, and it is regulatory. The Affordable Care Act, passed in 2010 and fully in force by 2014, expanded coverage and began tying payment to measured value; MACRA deepened the shift in 2015, loading small practices with compliance work priced for institutions, not individuals. None of it ordered a single merger. It raised the cost of staying independent until, for more and more physicians, selling became the rational choice rather than the reluctant one.',
-   figs:[['2014','ACA provisions effective'],['2015','MACRA ties pay to value','sec']],forces:1,fnew:'+ Industry shock'},
-  {yr:'2019',st:'RECORDED',cls:'',season:'spring',
-   event:'Private equity and corporations start buying practices',
-   impact:'Outside capital turns a market of small practices into acquisition targets.',
-   narr:'By the end of the decade the buyers had arrived with capital. Private equity firms, insurers, and pharmacy chains began acquiring physician practices outright, not just hospitals. The first reliable count — the PAI/Avalere series — put 62.2% of U.S. physicians in hospital or corporate employment by January 2019. To a well-funded buyer, a market of tens of thousands of small practices is not a fragmented problem but an inventory.',
-   figs:[['62.2%','of physicians employed by a hospital or corporate entity'],['PAI ’19','the measured series begins','sec']],forces:2,fnew:'+ Capital liquidity'},
+   event:'The first release — the ACA and MACRA',
+   impact:'Reform did not create consolidation. It raised the cost of staying independent until the first friction gave way.',
+   narr:'The first ledge to break was regulatory. The Affordable Care Act, in force by 2014, and MACRA in 2015 tied payment to measured value and buried small practices in reporting priced for institutions, not individuals. Neither law ordered a merger. Each raised the cost of independence until selling became the rational choice rather than the reluctant one — the shock did not push the practice, it broke the ledge beneath it.',
+   figs:[['ACA','coverage + value-based payment: the first release'],['MACRA ’15','reporting priced for institutions','sec']],
+   src:'ACA enacted 2010, in force 2014 · MACRA 2015',
+   forces:2,fnew:'+ Industry shock'},
+  {yr:'2019',st:'RECORDED',cls:'',season:'summer',
+   event:'Capital moves in',
+   impact:'Private equity and corporate buyers turn a fragmented market into an inventory.',
+   narr:'Then the capital arrived to act on it. Private equity, insurers, and pharmacy chains began buying physician practices outright, not just hospitals. The first reliable measurement — PAI/Avalere — put 62.2% of U.S. physicians in hospital or corporate employment by January 2019, and the measured record only climbs from there. To a well-funded buyer, a market of tens of thousands of small practices is not a problem but an inventory.',
+   figs:[['62.2%','employed by a hospital or corporate entity'],['record','the measured series begins','sec']],
+   src:'PAI/Avalere · January 2019',
+   forces:3,fnew:'+ Capital liquidity'},
   {yr:'2021',st:'RECORDED',cls:'',season:'summer',
-   event:'COVID-19 breaks the economics of going it alone',
-   impact:'Owners sell under pressure; years of consolidation compress into months.',
-   narr:'Then came the shock that compressed the timeline. COVID-19 did not change the direction of consolidation; it accelerated it — draining the reserves that let independent practices survive a bad year and pushing exhausted owners toward a buyer. In the two years to January 2021 the employed share jumped nearly seven points, to 69.3%. What might have taken a decade happened in twenty-four months.',
-   figs:[['69.3%','employed — up 7 points in two years'],['108,700','newly employed since 2019','sec']],forces:3,fnew:'+ Market fragmentation exploited'},
-  {yr:'2022',st:'RECORDED',cls:'',season:'summer',
-   event:'Buyers grow by roll-up, under the radar',
-   impact:'Many small deals concentrate the market without ever triggering antitrust review.',
-   narr:'The mechanism doing the most work was also the hardest to see. Instead of one headline merger, buyers grew by roll-up: dozens of small acquisitions, each too minor to trigger federal review, that together concentrate a market. By January 2022, 74% of physicians were employed and corporate-owned practices had grown 86% since 2019. Antitrust was built to stop the single large deal — not to count a hundred small ones.',
-   figs:[['74%','employed by hospitals or corporate entities'],['+86%','corporate-owned practices since 2019','sec']],forces:4,fnew:'+ Enforcement vacancy'},
+   event:'The second release — COVID-19',
+   impact:'The pandemic drained the reserves that let independents survive a bad year.',
+   narr:'The second ledge broke in the pandemic. COVID-19 drained the cash that let an independent practice weather a bad year and pushed exhausted owners toward a buyer. Employment jumped nearly seven points in two years, to 69.3% by January 2021; by January 2022 it reached 74%, with corporate-owned practices up 86% since 2019. The shock did not change the direction — it compressed a decade of it into twenty-four months.',
+   figs:[['69.3%','employed — up 7 points in two years'],['24 mos','a decade of change, compressed','sec']],
+   src:'PAI/Avalere · January 2021 (74% by January 2022)',
+   forces:4,fnew:'+ Enforcement vacancy'},
   {yr:'2024',st:'RECORDED',cls:'',season:'autumn',
    event:'Integration goes vertical',
-   impact:'One owner controls insurance, delivery, and referrals — and prices go dark.',
-   narr:'Consolidation then turned from horizontal to vertical. The question stopped being how many practices an owner held and became how much of the patient’s journey it controlled — one company owning the insurer, the clinics, and the pharmacy benefit manager at once. By January 2024, 77.6% of physicians were employed, 58.5% of practices were owned, and for the first time corporate owners held more practices (30.1%) than hospitals (28.4%). When one entity sits on every side of a transaction, its prices stop being visible to anyone outside it.',
-   figs:[['77.6%','employed · 58.5% of practices owned'],['30.1% > 28.4%','corporate now owns more practices than hospitals','sec']],forces:4,fnew:'Opacity rising'},
+   impact:'One owner comes to hold the insurer, the clinics, and the pharmacy benefit manager — and the price disappears inside the structure.',
+   narr:'By 2024 consolidation had changed form, from horizontal to vertical. The question stopped being how many practices an owner held and became how much of the patient’s journey it controlled — insurer, clinic, and pharmacy benefit manager inside one company. 77.6% of physicians were employed, 58.5% of practices were owned, and for the first time corporate owners held more practices (30.1%) than hospitals (28.4%). When one entity sits on every side of a transaction, its price stops being visible to anyone outside it.',
+   figs:[['77.6%','employed · 58.5% of practices owned'],['30.1% > 28.4%','corporate now owns more practices than hospitals','sec']],
+   src:'PAI/Avalere · January 2024',
+   forces:4,fnew:'Opacity rising'},
   {yr:'2026',st:'YOU ARE HERE',cls:'current',season:'autumn',
-   event:'All five forces active at once',
-   impact:'Consolidation is no longer a risk to weigh — it is the baseline forecast.',
-   narr:'That is where the forecast stands today. Every condition that produces consolidation — a fragmented field, a system-wide shock, abundant capital, enforcement that lags the tactics, and prices no buyer can see — is active at once, and more than three-quarters of American physicians no longer work for themselves. When all five forces are present together, consolidation stops being a risk to weigh and becomes the base case: the weather you forecast, not the weather you hope to avoid.',
-   figs:[['5/5','market forces active'],['77%+','of physicians no longer independent','sec']],forces:5,fnew:'+ Pricing opacity'},
+   event:'Every condition active at once',
+   impact:'Consolidation is no longer a risk to weigh. It is the default.',
+   narr:'That is where the record ends and the forecast begins. Every condition is active at once — the stored fragmentation, both releases, abundant capital, enforcement that lags serial and vertical deals, and prices no buyer can see. More than three-quarters of American physicians no longer work for themselves. With every force present, consolidation stops being a risk to weigh and becomes the base case — the default a market reaches when nothing holds the frictions in place.',
+   figs:[['5/5','market forces active'],['77%+','of physicians no longer independent','sec']],
+   src:'5/5 is this analysis’s framework, not a published statistic',
+   forces:5,fnew:'+ Pricing opacity'},
   {yr:'~2028',st:'FORECAST',cls:'fc',season:'winter',
    event:'Serial acquisition becomes the engine',
    impact:'Growth by many small buys that regulators struggle to catch in time.',
    narr:'From here the path is projected — not a guess, but the current pattern extended. The next phase is serial acquisition as the main engine of growth: steady, sub-threshold buying that the 2023 federal merger guidelines flag and that enforcement still struggles to catch in time. The employed share keeps climbing, quietly, one small deal at a time.',
-   figs:[['↑','roll-ups, not headline mergers'],['2023','FTC/DOJ guidelines now flag this','sec']],forces:5,fnew:'5/5 sustained'},
+   figs:[['↑','roll-ups, not headline mergers'],['2023','FTC/DOJ guidelines now flag this','sec']],
+   src:'FTC/DOJ 2023 merger guidelines flag serial acquisition',
+   forces:5,fnew:'5/5 sustained'},
   {yr:'~2030',st:'FORECAST',cls:'fc',season:'winter',
    event:'Vertical integration expands',
    impact:'The same owner sits on both sides — payer and provider.',
    narr:'Vertical integration widens. The same owner increasingly sits on both sides, payer and provider, and uses that position to steer patients inside its own network — keeping the revenue and the data in-house. Competition, where it survives, happens between a few large systems rather than inside any of them.',
-   figs:[['↑','control of the full patient journey'],['Inside','referrals routed within the network','sec']],forces:5,fnew:'5/5 sustained'},
+   figs:[['↑','control of the full patient journey'],['Inside','referrals routed within the network','sec']],
+   src:'Projected · builds on existing payer–provider integration',
+   forces:5,fnew:'5/5 sustained'},
   {yr:'~2032',st:'FORECAST',cls:'fc',season:'winter',
    event:'Integration becomes infrastructure',
    impact:'Independent in name, dependent on someone else’s network to operate.',
    narr:'Integration hardens into infrastructure. A practice can stay legally independent and still depend on a dominant system — its referrals, its records, its contracts — simply to operate. Independence on paper coexists with dependence in fact, and the price of leaving the network becomes the price of losing your patients and your data.',
-   figs:[['↑','access set by the system'],['Lock-in','leaving means losing patients and data','sec']],forces:5,fnew:'5/5 sustained'},
+   figs:[['↑','access set by the system'],['Lock-in','leaving means losing patients and data','sec']],
+   src:'Projected · late-stage trajectory',
+   forces:5,fnew:'5/5 sustained'},
   {yr:'~2034',st:'FORECAST',cls:'fc',season:'winter',
    event:'Ecosystems compete, not hospitals',
    impact:'A few regional owners set prices instead of taking them.',
    narr:'The endpoint is not a bigger hospital. It is a market organized into a few regional ecosystems, each owning the full span of care, competing as whole systems and setting prices rather than taking them. A patient, an employer, or a physician who wants out finds there is no longer an outside to move to — which is the one part of this forecast still ours to change.',
-   figs:[['↑','the system is the competitor'],['Few','a handful of owners per region','sec']],forces:5,fnew:'5/5 sustained'}
+   figs:[['↑','the system is the competitor'],['Few','a handful of owners per region','sec']],
+   src:'Projected · scenario endpoint, not an event prediction',
+   forces:5,fnew:'5/5 sustained'}
  ];
  function bloomSVG(e){
   const petals=4+e.forces; let s='<svg viewBox="0 0 400 400">';
@@ -860,6 +932,7 @@
     '<div class="panel"><div class="phead"><span class="status">'+e.st+'</span><span class="yr">'+e.yr+'</span></div>'+
     '<div class="event">'+e.event+'</div><div class="impact">'+e.impact+'</div>'+
     '<div class="figs">'+figs+'</div>'+
+    (e.src?'<div class="src">Source — '+e.src+'</div>':'')+
     (e.narr?'<div class="narr">'+e.narr+'</div>':'')+
     '<div class="forces">'+segs+'<span class="n">'+e.forces+'/5</span><span class="fnew">'+e.fnew+'</span></div></div>';
   tl.appendChild(d);
@@ -884,38 +957,62 @@
 </script>
 
 <script>
-/* ===== The Bill — scroll reveal ===== */
+/* ===== The Bill + transition — scroll reveal ===== */
 (()=>{
  const io=new IntersectionObserver((ents)=>{ents.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');});},{threshold:.3});
- document.querySelectorAll('#bill .finding, #advisory .lcard').forEach(el=>io.observe(el));
+ document.querySelectorAll('#bill .finding, #advtrans .at-line').forEach(el=>io.observe(el));
 })();
 
-/* ===== The Advisory — interactive pressure gauge ===== */
+/* ===== The Advisory — Integration Ladder, single scroll-driven selector ===== */
 (()=>{
  const sec=document.getElementById('advisory'); if(!sec)return;
- const removable=new Set(['fragmentation','capital','enforcement','opacity']); // shock is permanent
- const applied=new Set(), cleared=new Set();
- const STEP=14, FLOOR=16;
- const bar=document.getElementById('gbar'), pct=document.getElementById('gpct'), status=document.getElementById('gstatus');
- function band(p){ if(p>=70)return['SEVERE','#ff3b30']; if(p>=45)return['ELEVATED','#F26419']; if(p>=25)return['EASING','#FFC83D']; return['CLEARING','#2ea04e']; }
- function update(){
-   const p=Math.max(FLOOR,100-applied.size*STEP);
-   pct.textContent=p+'%'; const[lbl,col]=band(p); status.textContent=lbl; status.style.color=col;
-   bar.style.width=p+'%'; bar.style.background=col;
-   sec.style.setProperty('--storm',(p/100).toFixed(2));
-   sec.querySelectorAll('.fchip').forEach(ch=>{ if(ch.dataset.f==='shock')return; ch.classList.toggle('off',cleared.has(ch.dataset.f)); });
+ const STATES=[
+  {head:'What capability are we actually buying the organization to obtain?',caps:[],rev:1,word:'—',
+   sm:'Name the capability first. Ownership is one way to get it — not the goal itself.'},
+  {head:'Contract / Shared Services / PSA',caps:['admin','data','purchasing'],rev:.95,word:'High',
+   sm:'Some integration problems are contractual problems, not ownership problems.'},
+  {head:'Clinically Integrated Network',caps:['admin','data','purchasing','clinical','continuity','contracting'],rev:.72,word:'High',
+   sm:'Independent organizations can share operating capability without becoming one owner.',
+   sc:'A network can still accumulate market power. Legal independence does not automatically preserve competition.'},
+  {head:'ACO / Shared Risk',caps:['admin','data','purchasing','clinical','continuity','contracting','risk'],rev:.55,word:'Moderate',
+   sm:'Coordination can create economic value without requiring maximum ownership scale.',
+   sc:'ACOs can create soft consolidation if they raise bargaining leverage without preserving contestability.',
+   se:'Medicare Shared Savings Program, 2024: about $2.5B in net savings after shared-savings payments. · Longitudinal JAMA evidence: physician-group ACOs showed larger spending reductions than hospital-associated ACOs.'},
+  {head:'Joint Operation',caps:['admin','data','purchasing','clinical','continuity','contracting','risk','capital'],rev:.35,word:'Limited',
+   sm:'Where coordination requirements exceed a network, deeper joint structures can still preserve separate ownership in some domains.',
+   sc:'Structurally heavier and governance-intensive — not a universally superior model.'},
+  {head:'Common Ownership',caps:['admin','data','purchasing','clinical','continuity','contracting','risk','capital'],rev:.12,word:'Low',
+   sm:'Sometimes ownership is the right answer. But ownership should be the result of the analysis — not the starting assumption.'}
+ ];
+ const NODEPOS=[10,30,50,70,90], TOTAL=8;
+ const ahead=document.getElementById('ahead'),capnote=document.getElementById('capnote'),
+   spectrum=document.getElementById('spectrum'),selector=document.getElementById('selector'),
+   revbar=document.getElementById('revbar'),revword=document.getElementById('revword'),statemsg=document.getElementById('statemsg');
+ const caps=[...sec.querySelectorAll('.capchip')],nodes=[...sec.querySelectorAll('.snode')];
+ let last=-1;
+ function render(p){
+  const idx=Math.max(0,Math.min(5,Math.floor(p*6)));
+  if(idx===last)return; last=idx;
+  const st=STATES[idx];
+  ahead.textContent=st.head;
+  caps.forEach(c=>c.classList.toggle('lit',st.caps.includes(c.dataset.cap)));
+  capnote.textContent = idx===0 ? '' : (idx>=5 ? 'All eight capabilities — now with common ownership.' : st.caps.length+' of '+TOTAL+' capabilities available before common ownership.');
+  spectrum.classList.toggle('muted',idx===0);
+  if(idx===0){selector.style.opacity=0;} else {selector.style.opacity=1;selector.style.left=NODEPOS[idx-1]+'%';}
+  nodes.forEach((nd,i)=>nd.classList.toggle('active',i===idx-1));
+  revbar.style.width=(st.rev*100)+'%'; revword.textContent=st.word;
+  let h='<div class="sm">'+st.sm+'</div>';
+  if(st.sc)h+='<div class="sc">'+st.sc+'</div>';
+  if(st.se)h+='<div class="se">'+st.se+'</div>';
+  statemsg.innerHTML=h;
  }
- sec.querySelectorAll('.apply').forEach(btn=>{
-   btn.addEventListener('click',()=>{
-     const card=btn.closest('.lcard'), id=card.dataset.id;
-     if(applied.has(id)){ applied.delete(id); card.classList.remove('applied'); btn.textContent='APPLY ▸'; }
-     else { applied.add(id); card.classList.add('applied','flash'); btn.textContent='APPLIED ✓'; setTimeout(()=>card.classList.remove('flash'),750); }
-     cleared.clear();
-     sec.querySelectorAll('.lcard.applied').forEach(c=>{ if(removable.has(c.dataset.force)) cleared.add(c.dataset.force); });
-     update();
-   });
- });
- update();
+ let t=false;
+ function onScroll(){ if(t)return; t=true; requestAnimationFrame(()=>{
+   const total=sec.offsetHeight-innerHeight;
+   const p=total>0?Math.min(Math.max(-sec.getBoundingClientRect().top,0),total)/total:0;
+   render(p); t=false;
+ }); }
+ addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); last=-1; render(0);
 })();
 </script>
 </body>
