@@ -316,81 +316,71 @@
   #bill .billclose em{font-style:normal;color:var(--ox)}
   @media(max-width:700px){#bill .finding{grid-template-columns:1fr;gap:.6rem}}
 
-  /* ===== TRANSITION — forecast to advisory ===== */
-  #advtrans{position:relative;background:#0b0b0e;padding:22vh 8vw;min-height:120vh;display:flex;flex-direction:column;justify-content:center;gap:34vh}
-  #advtrans .at-line{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.6rem,3.6vw,3rem);line-height:1.26;max-width:40ch;color:#f3efe8;opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
-  #advtrans .at-line.in{opacity:1;transform:none}
-  #advtrans .at2{align-self:flex-end;text-align:right;color:#FFC83D}
+  /* ===== SECTION 4 — THE ADVISORY · Traffic desk (video-backed) ===== */
+  #advisory{position:relative;background:#06090b;--teal:#2FBFA8;--tlbr:#7AE8D6;--org:#F26419;--gold:#FFC83D;--cream:#eef4f3;--dim:#9fb4b2}
+  #advisory .advbg{position:sticky;top:0;height:100vh;z-index:0;overflow:hidden;margin-bottom:-100vh}
+  #advisory .advbg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  #advisory .advbg .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,11,.62),rgba(6,9,11,.8) 60%,rgba(6,9,11,.9))}
+  #advisory .advbg .scan{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.028) 0 2px,transparent 2px 4px)}
+  #advisory .advwrap{position:relative;z-index:2}
+  /* hero title that moves in then out */
+  #advisory .advhero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 7vw}
+  #advisory .advhero .banner{display:inline-flex;align-items:center;gap:.6rem;background:var(--org);color:#fff;font-family:"Bebas Neue",sans-serif;font-size:clamp(1.3rem,3vw,2.3rem);letter-spacing:.05em;padding:.35rem 1.2rem;clip-path:polygon(0 0,100% 0,96% 100%,0 100%);opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  #advisory .advhero .banner::before{content:"\25B2";font-size:.8em}
+  #advisory .advhero h2{font-family:"Anton",sans-serif;font-size:clamp(3rem,9.5vw,8.4rem);line-height:.84;color:#fff;letter-spacing:.005em;margin:.7rem 0 0;max-width:16ch;text-shadow:0 .4rem 2.4rem rgba(0,0,0,.75);opacity:0;transform:translateY(28px);transition:opacity .8s ease .08s,transform .8s ease .08s}
+  #advisory .advhero.in .banner,#advisory .advhero.in h2{opacity:1;transform:none}
+  #advisory .advhero.out .banner,#advisory .advhero.out h2{opacity:0;transform:translateY(-34px)}
+  /* signs board */
+  #advisory .advboard{min-height:100vh;padding:7vh 6vw 13vh;max-width:1200px;margin:0 auto}
+  #advisory .boardkey{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(1.1rem,2.1vw,1.55rem);color:var(--cream);margin-bottom:3.4vh;max-width:40ch;line-height:1.3}
+  #advisory .boardkey b{color:var(--gold);font-weight:700}
+  #advisory .signs{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(.8rem,1.6vw,1.3rem)}
+  #advisory .sign{cursor:pointer;text-align:left;position:relative;background:linear-gradient(180deg,#103833,#0a2420);border:3px solid #eef4f3;border-radius:14px;padding:clamp(1.3rem,2.6vw,2.1rem);display:flex;flex-direction:column;gap:.7rem;min-height:clamp(150px,19vw,210px);transition:transform .14s,box-shadow .3s,border-color .3s,background .3s}
+  #advisory .sign:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+  #advisory .sign .shield{display:inline-flex;align-items:center;gap:.6rem;font-family:"Bebas Neue",sans-serif;font-size:clamp(1rem,1.8vw,1.35rem);letter-spacing:.04em;color:#bfe8d3}
+  #advisory .sign .shield b{display:inline-flex;align-items:center;justify-content:center;min-width:1.9em;height:1.7em;padding:0 .3em;background:var(--gold);color:#201a06;font-family:"Archivo Black",sans-serif;border-radius:5px;font-size:.85em}
+  #advisory .sign .snm{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.9rem,3.8vw,3.1rem);line-height:.88;color:#fff;letter-spacing:.01em;margin-top:auto}
+  #advisory .sign .skeys{font-family:"Oswald",sans-serif;font-weight:300;font-size:clamp(.88rem,1.5vw,1.05rem);color:#bfe8d3}
+  #advisory .sign.sel{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold),0 0 48px rgba(255,200,61,.4);background:linear-gradient(180deg,#17463f,#0e302c)}
+  /* dynamic message board */
+  #advisory .dms{margin-top:clamp(1.3rem,2.6vw,2rem);background:#0a0c08;border:3px solid #26281f;border-radius:14px;padding:clamp(1.5rem,3.2vw,2.6rem);min-height:240px;box-shadow:inset 0 0 6vh rgba(0,0,0,.6)}
+  #advisory .dms .dprompt{font-family:"Oswald",sans-serif;font-weight:300;font-size:clamp(1.05rem,2vw,1.4rem);color:#8a8f6a;display:flex;align-items:center;justify-content:center;text-align:center;min-height:180px;letter-spacing:.02em}
+  #advisory .dms .dcard{display:none}
+  #advisory .dms.full .dprompt{display:none}
+  #advisory .dms.full .dcard{display:block;animation:dispense .4s ease}
+  @keyframes dispense{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  #advisory .dms .dt{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:.9;color:var(--gold);letter-spacing:.03em;text-shadow:0 0 1.6rem rgba(255,200,61,.55)}
+  #advisory .dms .dmeans{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(1.12rem,2.2vw,1.6rem);color:#fff;line-height:1.34;margin:.7rem 0 1.3rem;max-width:58rem}
+  #advisory .dms .drow{display:flex;flex-wrap:wrap;gap:1.8rem}
+  #advisory .dms .seg{flex:1 1 260px;max-width:34rem}
+  #advisory .dms .seg b{display:block;font-family:"Bebas Neue",sans-serif;font-size:clamp(1rem,1.7vw,1.25rem);letter-spacing:.05em;color:var(--teal);margin-bottom:.25rem;font-weight:400}
+  #advisory .dms .seg span{font-family:"Libre Franklin",sans-serif;font-weight:400;font-size:clamp(.98rem,1.6vw,1.12rem);line-height:1.42;color:#dbe9e6}
+  #advisory .dms .delay{font-family:"Archivo Black",sans-serif;font-size:clamp(1rem,1.8vw,1.25rem);color:#ff8a5a;letter-spacing:.03em;margin-top:1.3rem}
+  @media(max-width:720px){#advisory .signs{grid-template-columns:1fr}#advisory .advhero h2{font-size:clamp(2.6rem,12vw,4rem)}}
 
-  /* ===== SECTION 4 — THE ADVISORY · The Dispenser (vending machine) ===== */
-  #advisory{position:relative;background:#0b1114;padding:12vh 5vw 14vh;--teal:#2FBFA8;--tlbr:#7AE8D6;--tldp:#1C8577;--cream:#eef4f3;--dim:#9fb4b2}
-  #advisory .vmhead{max-width:1100px;margin:0 auto 5vh}
-  #advisory .vmhead .ak{font-family:"JetBrains Mono",monospace;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
-  #advisory .vmhead h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.2rem,5.4vw,4.4rem);line-height:.92;color:#fff;letter-spacing:.01em;margin:.5rem 0 .8rem}
-  #advisory .vmhead h2 span{color:var(--teal)}
-  #advisory .vmhead p{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1.02rem,1.9vw,1.35rem);line-height:1.4;color:var(--dim);max-width:46rem}
-  /* cabinet */
-  #advisory .vending{max-width:1100px;margin:0 auto;background:linear-gradient(180deg,#141d20,#0d1416);border:2px solid #22312f;border-radius:18px;padding:clamp(1rem,2.5vw,2rem);box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04)}
-  #advisory .vmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(.6rem,1.4vw,1rem)}
-  #advisory .vmbtn{position:relative;text-align:left;cursor:pointer;background:#0c1416;border:2px solid #223230;border-radius:12px;padding:clamp(1rem,2.2vw,1.6rem) clamp(1rem,2vw,1.5rem);color:#cfe0dd;transition:transform .12s,border-color .3s,box-shadow .3s,background .3s;display:flex;flex-direction:column;gap:.6rem;min-height:clamp(140px,20vw,190px)}
-  #advisory .vmbtn:hover{border-color:#39544f;transform:translateY(-2px)}
-  #advisory .vmbtn.lit{border-color:var(--teal);background:#0e1a19;box-shadow:0 0 0 1px var(--teal),0 0 34px rgba(47,191,168,.28)}
-  #advisory .vmbtn .code{font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.16em;color:#6f8a86}
-  #advisory .vmbtn.lit .code{color:var(--tlbr)}
-  #advisory .vmbtn .vicon{width:clamp(44px,6vw,64px);height:clamp(44px,6vw,64px);stroke:#5f827c;fill:none;stroke-width:2.4;transition:stroke .3s}
-  #advisory .vmbtn.lit .vicon{stroke:var(--teal)}
-  #advisory .vmbtn .plabel{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.3rem,2.4vw,2rem);line-height:.95;letter-spacing:.01em;color:#fff;margin-top:auto}
-  #advisory .vmbtn .phold{font-family:"Oswald",sans-serif;font-weight:300;font-size:.82rem;color:#7f9a95;text-transform:uppercase;letter-spacing:.04em}
-  /* bottom rack — the footnote product */
-  #advisory .vmrack{margin-top:clamp(.6rem,1.4vw,1rem)}
-  #advisory .vmbtn.foot{grid-column:1/-1;flex-direction:row;align-items:center;gap:1.2rem;min-height:0;opacity:.9}
-  #advisory .vmbtn.foot .vicon{flex:0 0 auto;width:clamp(36px,4vw,46px);height:clamp(36px,4vw,46px)}
-  #advisory .vmbtn.foot .footwrap{display:flex;flex-direction:column;gap:.1rem}
-  #advisory .vmbtn.foot .plabel{margin-top:0;font-size:clamp(1.1rem,2vw,1.5rem)}
-  #advisory .vmbtn.foot .ftag{font-family:"Oswald",sans-serif;font-weight:300;font-size:.8rem;color:#7f9a95;text-transform:uppercase;letter-spacing:.06em;margin-left:auto;text-align:right}
-  /* dispensing tray */
-  #advisory .vmtray{margin-top:clamp(1rem,2vw,1.4rem);background:#060b0c;border:2px solid #22312f;border-top:4px solid var(--teal);border-radius:12px;padding:clamp(1.2rem,2.6vw,2rem);min-height:170px;position:relative}
-  #advisory .vmtray .tprompt{font-family:"Oswald",sans-serif;font-weight:300;font-size:clamp(1rem,1.9vw,1.3rem);color:#6f8a86;display:flex;align-items:center;gap:.7rem;height:120px;justify-content:center;text-align:center}
-  #advisory .vmtray .tcard{display:none}
-  #advisory .vmtray.full .tprompt{display:none}
-  #advisory .vmtray.full .tcard{display:block;animation:dispense .45s ease}
-  @keyframes dispense{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  #advisory .tcard .tcode{font-family:"JetBrains Mono",monospace;font-size:.8rem;letter-spacing:.16em;color:var(--tlbr)}
-  #advisory .tcard .ttitle{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.8rem,4vw,3rem);line-height:.92;color:#fff;letter-spacing:.01em;margin:.2rem 0 .7rem}
-  #advisory .tcard .tbody{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1.02rem,1.9vw,1.35rem);line-height:1.42;color:#e3eeec;max-width:62rem}
-  #advisory .tcard .tmeta{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.1rem}
-  #advisory .tcard .tmeta div{font-family:"Libre Franklin",sans-serif;font-size:.92rem;line-height:1.35;color:var(--dim)}
-  #advisory .tcard .tmeta b{display:block;font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#6f8a86;margin-bottom:.2rem;font-weight:400}
-  #advisory .tcard .tcost b{color:#caa15f}
-  @media(max-width:720px){#advisory .vmgrid{grid-template-columns:1fr}#advisory .vmbtn.foot{flex-wrap:wrap}#advisory .vmbtn.foot .ftag{margin-left:0}}
+  /* ===== summary verdict ===== */
+  #advsum{position:relative;background:#06090b;min-height:96vh;display:flex;align-items:center;justify-content:center;padding:14vh 7vw;overflow:hidden;--org:#F26419;--teal:#2FBFA8;--tlbr:#7AE8D6;--gold:#FFC83D;--dim:#9fb4b2}
+  #advsum .sumglow{position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 50%,rgba(47,191,168,.1),transparent 70%)}
+  #advsum .sumline{position:relative;z-index:2;font-family:"Anton",sans-serif;font-size:clamp(2.6rem,7vw,6rem);line-height:.98;color:#fff;letter-spacing:.004em;max-width:20ch;text-align:center}
+  #advsum .sumline .sh{color:var(--org)}
+  #advsum .sumline .pb{color:var(--teal)}
 
-  /* executive decision rule */
-  #advrule{background:#0a0f11;padding:16vh 6vw;text-align:center}
-  #advrule .rline{font-family:"Bebas Neue";font-size:clamp(1.5rem,3.8vw,3.1rem);letter-spacing:.03em;color:#fff}
-  #advrule .rline b{color:#2FBFA8;font-weight:400}
-  #advrule .rinstr{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.2rem,2.4vw,1.9rem);color:#7AE8D6;margin:2rem auto 0;max-width:40ch;line-height:1.3}
-  /* contestability */
-  #advtest{background:#0b1316;padding:16vh 6vw}
-  #advtest h3{font-family:"Bebas Neue";font-size:clamp(1.8rem,4vw,3rem);color:#fff;letter-spacing:.02em;max-width:26ch}
-  #advtest h3 span{color:#2FBFA8}
-  #advtest .qs{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:3vh;max-width:1000px}
-  #advtest .q{border:1px solid rgba(47,191,168,.22);background:rgba(255,255,255,.03);padding:1.25rem;font-family:"Libre Franklin";font-weight:500;font-size:clamp(1rem,1.9vw,1.3rem);color:#eef4f3;line-height:1.3;display:flex;gap:.8rem;align-items:baseline}
-  #advtest .q .qn{font-family:"Bebas Neue";font-size:1.7rem;color:#2FBFA8;line-height:.8}
-  #advtest .qnote{font-family:"Oswald";font-weight:300;font-size:1.05rem;color:#9fb4b2;margin-top:2rem;max-width:52rem;line-height:1.45}
-  @media(max-width:760px){#advtest .qs{grid-template-columns:1fr}}
-  /* five forces redesigned */
-  #advforces{background:#0a0f11;padding:14vh 6vw 16vh}
-  #advforces h3{font-family:"Bebas Neue";font-size:clamp(1.8rem,4vw,3rem);color:#fff;letter-spacing:.02em;margin-bottom:.5rem}
-  #advforces .intro{font-family:"Oswald";font-weight:300;font-size:1.05rem;color:#7AE8D6;max-width:52rem;margin-bottom:3vh;line-height:1.45}
-  #advforces .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:1.4rem;padding:1.4rem 0;border-top:1px solid rgba(47,191,168,.18)}
-  #advforces .fname{font-family:"Bebas Neue";font-size:clamp(1.2rem,2.2vw,1.7rem);color:#2FBFA8;letter-spacing:.02em}
-  #advforces .fdesign{font-family:"Libre Franklin";font-weight:400;font-size:clamp(.95rem,1.7vw,1.1rem);line-height:1.45;color:#dbe9f0}
-  #advforces .fnote{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.1rem,2.2vw,1.5rem);color:#fff;margin-top:3vh;max-width:48rem;line-height:1.35}
-  @media(max-width:700px){#advforces .frow{grid-template-columns:1fr;gap:.4rem}}
-  /* closing principle + bibliography */
-  #advclose{background:#0b1114;padding:18vh 6vw 6vh;text-align:center}
-  #advclose .principle{font-family:"Bebas Neue";font-size:clamp(2.4rem,6.5vw,4.8rem);line-height:.96;color:#fff;letter-spacing:.015em;max-width:24ch;margin:0 auto;text-shadow:3px 4px 0 rgba(0,0,0,.35)}
-  #advclose .principle span{color:#2FBFA8}
+  /* ===== Thiel / Arrow diptych ===== */
+  #advduo{background:#06090b;padding:3vh 0 0;--org:#F26419;--teal:#2FBFA8;--tlbr:#7AE8D6;--gold:#FFC83D;--dim:#9fb4b2}
+  #advduo .duo{display:grid;grid-template-columns:1fr 1fr;min-height:96vh}
+  #advduo .pane{display:flex;flex-direction:column;justify-content:center;padding:10vh clamp(2rem,5vw,5rem);position:relative}
+  #advduo .pane.left{background:linear-gradient(160deg,#2a1206,#140a06);border-right:1px solid rgba(255,255,255,.08)}
+  #advduo .pane.right{background:linear-gradient(160deg,#07201d,#061013)}
+  #advduo .mark{font-family:"Anton",sans-serif;font-size:clamp(3rem,6vw,5rem);line-height:.8;opacity:.25}
+  #advduo .pane.left .mark{color:var(--org)}
+  #advduo .pane.right .mark{color:var(--teal)}
+  #advduo .qt{font-family:"Crimson Pro",Georgia,serif;font-style:italic;font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.18;color:#fff;margin:1.4rem 0 1.8rem}
+  #advduo .by{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.3rem,2.2vw,1.9rem);letter-spacing:.03em}
+  #advduo .pane.left .by{color:var(--org)}
+  #advduo .pane.right .by{color:var(--tlbr)}
+  #advduo .bywho{font-family:"Oswald",sans-serif;font-weight:300;font-size:clamp(.85rem,1.4vw,1rem);color:var(--dim);margin-top:.25rem}
+  #advduo .duorule{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:clamp(44px,5vw,66px);height:clamp(44px,5vw,66px);border-radius:50%;background:#06090b;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:clamp(1rem,1.6vw,1.4rem);color:#9fb4b2}
+  @media(max-width:760px){#advduo .duo{grid-template-columns:1fr}#advduo .pane.left{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}#advduo .duorule{display:none}}
   #advbib{background:#0b1114;padding:8vh 6vw 18vh}
   #advbib h3{font-family:"Bebas Neue";font-size:clamp(1.4rem,3vw,2.2rem);color:#fff;letter-spacing:.02em;margin-bottom:1.2rem;max-width:62rem;margin-left:auto;margin-right:auto}
   #advbib .refs{max-width:62rem;margin:0 auto}
@@ -568,103 +558,66 @@
   </div>
 </section>
 
-<!-- ===== TRANSITION — forecast to advisory ===== -->
-<section id="advtrans">
-  <div class="at-line at1">The problem is not that healthcare is integrating. It is what we have required healthcare to become in order to integrate.</div>
-  <div class="at-line at2">What were we actually trying to get from consolidation?</div>
-</section>
-
-<!-- ===== SECTION 4 — THE ADVISORY · The Dispenser ===== -->
+<!-- ===== SECTION 4 — THE ADVISORY · Traffic desk ===== -->
 <section id="advisory">
-  <div class="vmhead">
-    <div class="ak">Consolidation advisory for healthcare · Q5 — what are the alternatives</div>
-    <h2>Concentration is close to inevitable.<br>The only question left is <span>who holds the price.</span></h2>
-    <p>These are the real responses, not firm-level restraint. Each one names who holds the lever and what it costs. Pick one.</p>
+  <div class="advbg">
+    <video loop muted autoplay playsinline preload="auto"><source src="assets/wx/traffic.mp4" type="video/mp4"></video>
+    <div class="tint"></div><div class="scan"></div>
   </div>
-
-  <div class="vending">
-    <div class="vmgrid">
-      <button class="vmbtn" data-vm="A1">
-        <span class="code">A1</span>
-        <svg class="vicon" viewBox="0 0 48 48"><line x1="24" y1="9" x2="24" y2="39"/><path d="M14 18 L6 24 L14 30"/><path d="M34 18 L42 24 L34 30"/></svg>
-        <span class="phold">Antitrust · Congress</span>
-        <span class="plabel">Restore competition</span>
-      </button>
-      <button class="vmbtn" data-vm="A2">
-        <span class="code">A2</span>
-        <svg class="vicon" viewBox="0 0 48 48"><path d="M4 24 C12 12 36 12 44 24 C36 36 12 36 4 24 Z"/><circle cx="24" cy="24" r="6"/></svg>
-        <span class="phold">Regulators · purchasers</span>
-        <span class="plabel">Make the price visible</span>
-      </button>
-      <button class="vmbtn" data-vm="B1">
-        <span class="code">B1</span>
-        <svg class="vicon" viewBox="0 0 48 48"><line x1="8" y1="12" x2="40" y2="12"/><path d="M24 40 L24 21 M16 29 L24 21 L32 29"/></svg>
-        <span class="phold">States</span>
-        <span class="plabel">Cap the price</span>
-      </button>
-      <button class="vmbtn" data-vm="B2">
-        <span class="code">B2</span>
-        <svg class="vicon" viewBox="0 0 48 48"><path d="M6 24 L21 24 M15 18 L21 24 L15 30"/><path d="M42 24 L27 24 M33 18 L27 24 L33 30"/></svg>
-        <span class="phold">Government</span>
-        <span class="plabel">Build countervailing power</span>
-      </button>
+  <div class="advwrap">
+    <div class="advhero" id="advhero">
+      <div class="banner">TRAFFIC ADVISORY</div>
+      <h2>Healthcare Consolidation Advisory</h2>
     </div>
 
-    <div class="vmrack">
-      <button class="vmbtn foot" data-vm="C1">
-        <svg class="vicon" viewBox="0 0 48 48"><circle cx="19" cy="24" r="11"/><circle cx="29" cy="24" r="11"/></svg>
-        <span class="footwrap">
-          <span class="plabel">Integrate without owning</span>
-          <span class="phold">The firm-level move</span>
-        </span>
-        <span class="ftag">Clearance rack<br>the weakest answer here</span>
-      </button>
-    </div>
+    <div class="advboard">
+      <div class="boardkey">Four responses to the forecast. Each one answers to someone different.</div>
+      <div class="signs" id="signs">
+        <button class="sign" data-ex="E1"><div class="shield"><b>1</b>EXIT 1</div><div class="snm">Restore competition</div><div class="skeys">FTC · DOJ · Congress</div></button>
+        <button class="sign" data-ex="E2"><div class="shield"><b>2</b>EXIT 2</div><div class="snm">Make the price visible</div><div class="skeys">Regulators · purchasers</div></button>
+        <button class="sign" data-ex="E3"><div class="shield"><b>3</b>EXIT 3</div><div class="snm">Cap the price</div><div class="skeys">States</div></button>
+        <button class="sign" data-ex="E4"><div class="shield"><b>4</b>EXIT 4</div><div class="snm">Build countervailing power</div><div class="skeys">Government</div></button>
+      </div>
 
-    <div class="vmtray" id="vmtray">
-      <div class="tprompt">Press a button. Each response dispenses what it is, who holds the lever, and what it costs.</div>
-      <div class="tcard" id="tcard">
-        <div class="tcode" id="tcode"></div>
-        <div class="ttitle" id="ttitle"></div>
-        <div class="tbody" id="tbody"></div>
-        <div class="tmeta">
-          <div class="thold"><b>Who holds the lever</b><span id="thold"></span></div>
-          <div class="tcost"><b>What it costs</b><span id="tcost"></span></div>
-          <div class="tinstance"><b>Where it is real</b><span id="tinstance"></span></div>
+      <div class="dms" id="dms">
+        <div class="dprompt">Select a route. Each advisory gives what it means, where it is real, who can order it, and the delay.</div>
+        <div class="dcard">
+          <div class="dt" id="dt"></div>
+          <div class="dmeans" id="dmeans"></div>
+          <div class="drow">
+            <div class="seg"><b>Where it is real</b><span id="dprec"></span></div>
+            <div class="seg"><b>Who holds the keys</b><span id="dkeys"></span></div>
+          </div>
+          <div class="delay" id="ddelay"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- contestability test -->
-<section id="advtest">
-  <h3>Integration can preserve competition — or quietly end it. The test is <span>contestability</span>.</h3>
-  <div class="qs">
-    <div class="q"><span class="qn">1</span>Can a new competitor still enter?</div>
-    <div class="q"><span class="qn">2</span>Can a physician or organization leave?</div>
-    <div class="q"><span class="qn">3</span>Can a payer or purchaser contract around the structure?</div>
-    <div class="q"><span class="qn">4</span>Can a patient meaningfully choose around it?</div>
-    <div class="q"><span class="qn">5</span>Can the arrangement be unwound without destroying the capability it created?</div>
+<!-- ===== summary verdict ===== -->
+<section id="advsum">
+  <div class="sumglow"></div>
+  <div class="sumline">Someone will hold the price of American healthcare. The only question is whether they answer to <span class="sh">shareholders</span>, or to <span class="pb">the public</span>.</div>
+</section>
+
+<!-- ===== Thiel / Arrow diptych — launches Q&A ===== -->
+<section id="advduo">
+  <div class="duo">
+    <div class="pane left">
+      <div class="mark">&ldquo;</div>
+      <div class="qt">Competition is for losers.</div>
+      <div class="by">Peter Thiel</div>
+      <div class="bywho">Zero to One, 2014</div>
+    </div>
+    <div class="pane right">
+      <div class="mark">&ldquo;</div>
+      <div class="qt">The very word, &lsquo;profit,&rsquo; is a signal that denies the trust relations.</div>
+      <div class="by">Kenneth Arrow</div>
+      <div class="bywho">Uncertainty and the Welfare Economics of Medical Care, 1963</div>
+    </div>
+    <div class="duorule">vs</div>
   </div>
-  <div class="qnote">When the answer to these disappears, the market can lose competition even while the legal entities stay separate.</div>
-</section>
-
-<!-- five forces → better market design -->
-<section id="advforces">
-  <h3>The same five forces, redesigned</h3>
-  <div class="intro">Not five forces matched to five fixes — a diagnostic of how better market design changes the incentives underneath consolidation.</div>
-  <div class="frow"><div class="fname">Fragmentation</div><div class="fdesign">Make independence economically viable without isolation. Shared infrastructure and networks reduce the penalty for staying independent while preserving exit and competition.</div></div>
-  <div class="frow"><div class="fname">Industry shock</div><div class="fdesign">Build shared risk, infrastructure, liquidity support, and coordinated response that do not require an ownership transfer to absorb a disruption.</div></div>
-  <div class="frow"><div class="fname">Capital liquidity</div><div class="fdesign">Change what earns the return. Reduce structures that reward acquisition independent of operating improvement — site-neutral payment is one concrete example.</div></div>
-  <div class="frow"><div class="fname">Enforcement vacancy</div><div class="fdesign">Evaluate cumulative market control — serial, vertical, and below-threshold aggregation — not only individual headline transactions.</div></div>
-  <div class="frow"><div class="fname">Pricing opacity</div><div class="fdesign">Move past disclosure toward usable comparability: standardized price, quality, and episode definitions that let purchasers actually act.</div></div>
-  <div class="fnote">The goal is not to reduce these forces to zero. It is to reduce the extent to which they make ownership the default answer to every integration problem.</div>
-</section>
-
-<!-- closing principle -->
-<section id="advclose">
-  <div class="principle">Integrate what must be integrated. <span>Consolidate only what must be owned.</span></div>
 </section>
 
 <!-- bibliography -->
@@ -672,13 +625,20 @@
   <h3>Sources</h3>
   <div class="refs">
     <div class="ref">American Medical Association. (2025). <em>Physician practice benchmark survey.</em> AMA. <a href="https://www.ama-assn.org/about/research/physician-practice-benchmark-survey" target="_blank" rel="noopener">ama-assn.org</a></div>
+    <div class="ref">Arrow, K. J. (1963). Uncertainty and the welfare economics of medical care. <em>The American Economic Review, 53</em>(5), 941–973. <a href="https://www.jstor.org/stable/1812044" target="_blank" rel="noopener">jstor.org/stable/1812044</a></div>
     <div class="ref">Beaulieu, N. D., Dafny, L. S., Landon, B. E., Dalton, J. B., Kuye, I., &amp; McWilliams, J. M. (2020). Changes in quality of care after hospital mergers and acquisitions. <em>New England Journal of Medicine, 382</em>(1), 51–59. <a href="https://doi.org/10.1056/NEJMsa1901383" target="_blank" rel="noopener">doi.org/10.1056/NEJMsa1901383</a></div>
     <div class="ref">Capps, C., Dranove, D., &amp; Ody, C. (2018). The effect of hospital acquisitions of physician practices on prices and spending. <em>Journal of Health Economics, 59</em>, 139–152. <a href="https://doi.org/10.1016/j.jhealeco.2018.04.001" target="_blank" rel="noopener">doi.org/10.1016/j.jhealeco.2018.04.001</a></div>
     <div class="ref">Centers for Medicare &amp; Medicaid Services. (2024). <em>Medicare Shared Savings Program: Performance year 2024 results.</em> CMS. <a href="https://www.cms.gov/newsroom/press-releases" target="_blank" rel="noopener">cms.gov</a></div>
     <div class="ref">Cooper, Z., Craig, S. V., Gaynor, M., &amp; Van Reenen, J. (2019). The price ain't right? Hospital prices and health spending on the privately insured. <em>The Quarterly Journal of Economics, 134</em>(1), 51–107. <a href="https://doi.org/10.1093/qje/qjy020" target="_blank" rel="noopener">doi.org/10.1093/qje/qjy020</a></div>
+    <div class="ref">Federal Trade Commission. (2023). <em>FTC challenges private equity firm's scheme to suppress competition for anesthesia services (FTC v. U.S. Anesthesia Partners).</em> <a href="https://www.ftc.gov/news-events/news/press-releases/2023/09/ftc-challenges-private-equity-firms-scheme-suppress-competition-anesthesiology-services-across-texas" target="_blank" rel="noopener">ftc.gov</a></div>
+    <div class="ref">Galbraith, J. K. (1952). <em>American capitalism: The concept of countervailing power.</em> Houghton Mifflin.</div>
+    <div class="ref">Maryland Health Services Cost Review Commission. (2024). <em>Maryland total cost of care model.</em> HSCRC. <a href="https://hscrc.maryland.gov" target="_blank" rel="noopener">hscrc.maryland.gov</a></div>
     <div class="ref">Physicians Advocacy Institute &amp; Avalere Health. (2024). <em>Changes in physician employment and practice ownership, 2019–2024.</em> PAI. <a href="https://www.physiciansadvocacyinstitute.org/PAI-Research" target="_blank" rel="noopener">physiciansadvocacyinstitute.org</a></div>
+    <div class="ref">Robinson, J. C., &amp; Brown, T. T. (2013). Increases in consumer cost sharing redirect patient volumes and reduce hospital prices for orthopedic surgery. <em>Health Affairs, 32</em>(8), 1392–1397. <a href="https://doi.org/10.1377/hlthaff.2013.0188" target="_blank" rel="noopener">doi.org/10.1377/hlthaff.2013.0188</a></div>
     <div class="ref">Schneider, E. C., Shah, A., Doty, M. M., Tikkanen, R., Fields, K., &amp; Williams, R. D. (2021). <em>Mirror, mirror 2021: Reflecting poorly — health care in the U.S. compared to other high-income countries.</em> The Commonwealth Fund. <a href="https://www.commonwealthfund.org/publications/fund-reports/2021/aug/mirror-mirror-2021-reflecting-poorly" target="_blank" rel="noopener">commonwealthfund.org</a></div>
     <div class="ref">Shrank, W. H., Rogstad, T. L., &amp; Parekh, N. (2019). Waste in the US health care system: Estimated costs and potential for savings. <em>JAMA, 322</em>(15), 1501–1509. <a href="https://doi.org/10.1001/jama.2019.13978" target="_blank" rel="noopener">doi.org/10.1001/jama.2019.13978</a></div>
+    <div class="ref">Thiel, P., &amp; Masters, B. (2014). <em>Zero to one: Notes on startups, or how to build the future.</em> Crown Business.</div>
+    <div class="ref">Washington State Health Care Authority. (2021). <em>Cascade Care: Washington's public option.</em> <a href="https://www.hca.wa.gov/about-hca/programs-and-initiatives/cascade-care" target="_blank" rel="noopener">hca.wa.gov</a></div>
   </div>
 </section>
 
@@ -1030,49 +990,54 @@
  document.querySelectorAll('#bill .finding, #advtrans .at-line').forEach(el=>io.observe(el));
 })();
 
-/* ===== The Advisory — The Dispenser, click-to-dispense ===== */
+/* ===== The Advisory — Traffic desk: hero in/out + sign click ===== */
 (()=>{
  const sec=document.getElementById('advisory'); if(!sec)return;
- const VM={
-  A1:{title:'Restore competition',
-    body:'Block the deals, unwind the worst of them, and pay the same price wherever the care is delivered. The classic antitrust answer.',
-    hold:'Antitrust enforcers and Congress.',
-    cost:'It fights the tide the forecast just measured, and enforcement has been losing for a decade. Site-neutral payment is the one piece with live bipartisan support.',
-    instance:'FTC and DOJ merger challenges; proposed site-neutral Medicare payment.'},
-  A2:{title:'Make the price visible',
-    body:'Give buyers a price they can actually compare and act on, not a disclosure buried in a spreadsheet. Supply the one condition this market has never had.',
-    hold:'Regulators and large purchasers.',
-    cost:'Necessary but not sufficient on its own. Visibility only bites when a buyer can walk.',
-    instance:'Hospital price-transparency rules; employer reference pricing. This is the condition craft beer kept.'},
-  B1:{title:'Cap the price',
-    body:'Stop fighting the concentration and regulate it like a utility: one rate every payer pays, set in public, with a global budget per system.',
-    hold:'States.',
-    cost:'You concede the market, and you freeze in whatever inefficiency you regulate.',
-    instance:'Maryland has run all-payer hospital global budgets since 2014; Vermont has piloted the model.'},
-  B2:{title:'Build countervailing power',
-    body:'Concentrate the buyer to stand against the concentrated seller: single payer, or an all-payer public option. A monopsony against the monopoly. This is the honest version of "it will consolidate anyway."',
-    hold:'Government.',
-    cost:'Politically enormous. It does not remove the concentration of power; it moves it to someone who answers to voters.',
-    instance:'Medicare as the template; every peer nation on the Mirror Mirror ranking runs a version of it.'},
-  C1:{title:'Integrate without owning',
-    body:'The firm-level move: get the coordination through contracts, clinically integrated networks, and shared-risk ACOs instead of acquisition.',
-    hold:'Individual systems, voluntarily.',
-    cost:'It is the weakest answer here, because it depends on the restraint of the players with the least reason to restrain.',
-    instance:'Medicare Shared Savings ACOs returned about $2.5B in 2024, physician-led groups outperforming hospital-led.'}
+ const hero=document.getElementById('advhero');
+ // hero title fades/moves in, then out, as it scrolls through center
+ let t1=false;
+ function heroScroll(){ if(t1)return; t1=true; requestAnimationFrame(()=>{
+   const b=hero.getBoundingClientRect(), vh=innerHeight;
+   const center=b.top+b.height/2;
+   hero.classList.toggle('in', center<vh*0.92 && center>vh*0.12);
+   hero.classList.toggle('out', center<=vh*0.12);
+   t1=false;
+ }); }
+ addEventListener('scroll',heroScroll,{passive:true}); addEventListener('resize',heroScroll); heroScroll();
+
+ const MOVES={
+  E1:{title:'Restore competition',
+    means:'Block the mergers, unwind the worst, and pay the same rate wherever care is delivered—so buying a practice stops being an automatic price increase.',
+    prec:'The FTC’s 2023 case against U.S. Anesthesia Partners, its first direct challenge to a private-equity roll-up of a specialty.',
+    keys:'FTC, DOJ Antitrust, and state attorneys general; Congress and CMS for site-neutral payment.',
+    delay:'DELAY — HEAVY. Fights the tide, and enforcement has been losing for a decade.'},
+  E2:{title:'Make the price visible',
+    means:'Give patients and employers a price they can compare and act on—a standard price for a procedure, not a chargemaster no one can read.',
+    prec:'CalPERS set a reference price for hip and knee replacements in 2011; patients moved to lower-cost hospitals and prices fell.',
+    keys:'CMS and regulators write the rules; large employers and purchasers set the reference price.',
+    delay:'DELAY — MODERATE. Necessary, but visibility only bites when a buyer can walk.'},
+  E3:{title:'Cap the price',
+    means:'Stop fighting the concentration and regulate it like a utility—one rate every payer pays, a fixed global budget per hospital.',
+    prec:'Maryland has set hospital rates for all payers since the 1970s and put every hospital on a global budget in 2014—the only all-payer system in the country.',
+    keys:'States, through a rate-setting commission under a federal CMS waiver.',
+    delay:'DELAY — STRUCTURAL. Concede the market, and freeze in whatever inefficiency you regulate.'},
+  E4:{title:'Build countervailing power',
+    means:'Concentrate the buyer to match the concentrated seller—single payer, all-payer, or a strong public option—so someone negotiates the price with equal weight.',
+    prec:'Galbraith named this “countervailing power” in 1952. Washington launched a state public option in 2021; Medicare already sets prices for the largest buyer pool in the country.',
+    keys:'The federal government (Medicare, single payer); states (a public option).',
+    delay:'DELAY — SEVERE. Politically enormous. Moves the power, does not remove it—to someone who answers to voters.'}
  };
- const tray=document.getElementById('vmtray');
- const $=id=>document.getElementById(id);
- const btns=[...sec.querySelectorAll('.vmbtn')];
- btns.forEach(b=>b.addEventListener('click',()=>{
-   const d=VM[b.dataset.vm]; if(!d)return;
-   btns.forEach(x=>x.classList.toggle('lit',x===b));
-   $('tcode').textContent=b.dataset.vm;
-   $('ttitle').textContent=d.title;
-   $('tbody').textContent=d.body;
-   $('thold').textContent=d.hold;
-   $('tcost').textContent=d.cost;
-   $('tinstance').textContent=d.instance;
-   tray.classList.remove('full'); void tray.offsetWidth; tray.classList.add('full');
+ const dms=document.getElementById('dms'), $=id=>document.getElementById(id);
+ const signs=[...sec.querySelectorAll('.sign')];
+ signs.forEach(s=>s.addEventListener('click',()=>{
+   const d=MOVES[s.dataset.ex]; if(!d)return;
+   signs.forEach(x=>x.classList.toggle('sel',x===s));
+   $('dt').textContent=d.title;
+   $('dmeans').textContent=d.means;
+   $('dprec').textContent=d.prec;
+   $('dkeys').textContent=d.keys;
+   $('ddelay').textContent=d.delay;
+   dms.classList.remove('full'); void dms.offsetWidth; dms.classList.add('full');
  }));
 })();
 </script>
