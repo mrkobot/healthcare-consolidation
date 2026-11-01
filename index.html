@@ -121,7 +121,10 @@
   .citycard{max-height:90vh;overflow:auto}
   .citycard .cardimg{position:relative;height:150px;margin:-1.7rem -1.8rem 1.1rem;overflow:hidden;background:#12181c}
   .citycard .cardimg img{width:100%;height:100%;object-fit:cover;display:block}
-  .citycard .cardimg .imgfallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;text-align:center;padding:0 1.2rem;font-family:"Archivo Black",sans-serif;font-size:clamp(1.3rem,4vw,1.9rem);line-height:1;color:#f3efe8;background:linear-gradient(135deg,#1c242b,#0b0b0e)}
+  .citycard .cardimg .imgfallback{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 1.4rem;gap:.55rem;background:linear-gradient(135deg,#1c242b,#0b0b0e)}
+  .citycard .cardimg .wmname{font-family:"Archivo Black",sans-serif;font-size:clamp(1.05rem,3.3vw,1.5rem);line-height:1.1;color:#f3efe8;letter-spacing:-.01em}
+  .citycard .cardimg .wmrule{width:2.2rem;height:2px;background:var(--accent-hot)}
+  .citycard .cardimg .wmsub{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:.8rem;line-height:1.3;color:#aeb9c0;max-width:26rem}
   .citycard .cardimg.nofile img{display:none}
   .citycard .cardimg.nofile .imgfallback{display:flex}
   .citycard h2{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:2.3rem;line-height:.95;margin:0 0 .25rem;color:#f3efe8}
@@ -429,7 +432,7 @@
 
       <aside class="citycard" id="citycard" aria-live="polite">
         <button class="close" id="cardClose" aria-label="Close">×</button>
-        <div class="cardimg" id="cardImg"><img id="cardImgPic" alt=""><span class="imgfallback" id="cardWordmark"></span></div>
+        <div class="cardimg" id="cardImg"><img id="cardImgPic" alt=""><div class="imgfallback" id="cardWordmark"><div class="wmname" id="wmName"></div><div class="wmrule"></div><div class="wmsub" id="wmSub"></div></div></div>
         <div class="statuschip"><span class="chip" id="cardChip"></span><span class="chipnote" id="cardChipNote"></span></div>
         <h2 id="cardName"></h2>
         <div class="yrs" id="cardYears"></div>
@@ -624,28 +627,28 @@
 <script>
   const BAND=t=>t>=110?getComputedStyle(document.documentElement).getPropertyValue('--hot2'):t>=100?'#C2410C':t>=90?'#CA6A3C':t>=80?'#B9924F':'#1B3A5C';
   const cities=[
-    {ind:'Healthcare',x:52,y:60,hi:118,lo:69,status:'storm',years:'2010–present',g:[3,3,3,3,3],cool:false,img:'healthcare',brand:'UnitedHealth · Optum',
+    {ind:'Healthcare',x:52,y:60,hi:118,lo:69,status:'storm',years:'2010–present',g:[3,3,3,3,3],cool:false,img:'healthcare',wm:'UnitedHealth · Optum',wmsub:'largest U.S. insurer + largest physician employer',
       move:'In 2012 roughly three-quarters of U.S. physicians were independent; by 2024 roughly three-quarters were employed by hospitals or corporations. The wall between insurer, provider, and pharmacy fell — Optum now insures patients, employs doctors, and runs the pharmacy benefit manager inside one company.',
       now:'A live storm. Prices in concentrated markets have risen past 20% with no measured gain in quality, and the integration is still deepening.'},
-    {ind:'Eyewear',x:50,y:30,hi:99,lo:94,status:'entrenched',years:'1995–present',g:[1,2,3,3,3],cool:false,img:'eyewear',brand:'EssilorLuxottica',
+    {ind:'Eyewear',x:50,y:30,hi:99,lo:94,status:'entrenched',years:'1995–present',g:[1,2,3,3,3],cool:false,img:'eyewear',wm:'EssilorLuxottica',wmsub:'~28% of the U.S. market — and owns the insurer',
       move:'One company came to own the frames, the stores, and the vision insurer that pays for them: Ray-Ban, Oakley, LensCrafters, Sunglass Hut, and EyeMed — lens to frame to store to reimbursement, all EssilorLuxottica.',
       now:'Entrenched. A single firm sits on every step of the transaction, and prices move with little competitive check.'},
-    {ind:'Airlines',x:64,y:74,hi:92,lo:84,status:'entrenched',years:'2008–2013',g:[2,3,2,2,2],cool:false,img:'airlines',brand:'The Big Four',
+    {ind:'Airlines',x:64,y:74,hi:92,lo:84,status:'entrenched',years:'2008–2013',g:[2,3,2,2,2],cool:false,img:'airlines',wm:'Delta · United · American · Southwest',wmsub:'four carriers · ~80% of the domestic market',
       move:'Deregulation in 1978 drew dozens of carriers into the market. A merger wave from 2008 to 2013 — Delta–Northwest, United–Continental, American–US Airways — closed the field to four.',
       now:'Entrenched. Four carriers hold roughly 80% of the domestic market; fares rose where the mergers concentrated routes.'},
-    {ind:'Cell phones',x:56,y:68,hi:95,lo:88,status:'entrenched',years:'2005–2020',g:[1,2,3,3,2],cool:false,img:'cellphones',brand:'Verizon · AT&T · T-Mobile',
+    {ind:'Cell phones',x:56,y:68,hi:95,lo:88,status:'entrenched',years:'2005–2020',g:[1,2,3,3,2],cool:false,img:'cellphones',wm:'Verizon · AT&T · T-Mobile',wmsub:'four national carriers, now three',
       move:'Spectrum and tower costs reward scale, and contracts lock customers in. In 2020 regulators approved T-Mobile’s purchase of Sprint, cutting four national carriers to three.',
       now:'Entrenched. Three carriers hold the field, and the 2020 merger cleared with little resistance.'},
-    {ind:'Movie studios',x:26,y:37,hi:106,lo:80,status:'storm',years:'2025–2026',g:[1,2,3,2,2],cool:false,img:'studios',brand:'Paramount Skydance + WBD',
+    {ind:'Movie studios',x:26,y:37,hi:106,lo:80,status:'storm',years:'2025–2026',g:[1,2,3,2,2],cool:false,img:'studios',wm:'Paramount Skydance · Warner Bros. Discovery',wmsub:'two of the five majors, combined',
       move:'In October 2026 Paramount Skydance closed its $110B purchase of Warner Bros. Discovery, combining two of the five majors — Paramount and Warner Bros., Paramount+ and HBO Max, CBS and CNN.',
       now:'A live storm. Twelve state attorneys general sued to block it. It cleared anyway.'},
-    {ind:'DoorDash + Instacart',x:39,y:50,hi:103,lo:79,status:'storm',years:'2026',g:[2,2,3,3,2],cool:false,img:'delivery',brand:'DoorDash + Instacart',
+    {ind:'DoorDash + Instacart',x:39,y:50,hi:103,lo:79,status:'storm',years:'2026',g:[2,2,3,3,2],cool:false,img:'delivery',wm:'DoorDash · Instacart',wmsub:'largest delivery + largest grocery, combined',
       move:'DoorDash acquired Instacart in a roughly $17B deal, pairing the largest restaurant-delivery network with the largest grocery one.',
       now:'A forming duopoly with Uber Eats. DoorDash’s share of major-app delivery spending climbed from 44% in 2021 to 59% in 2026; Instacart’s fell to 18%.'},
-    {ind:'Home services (PE)',x:70,y:41,hi:101,lo:74,status:'brewing',years:'2022–present',g:[3,2,3,3,1],cool:false,img:'homeservices',brand:'Private-equity roll-ups',
+    {ind:'Home services (PE)',x:70,y:41,hi:101,lo:74,status:'brewing',years:'2022–present',g:[3,2,3,3,1],cool:false,img:'homeservices',wm:'Private-equity roll-ups',wmsub:'~800 firms bought since 2022',
       move:'Since 2022 private equity has bought roughly 800 HVAC, plumbing, and electrical firms, assembling regional platforms out of local trades.',
       now:'Brewing. The market is still split among 100,000-plus contractors — the capital has arrived, the fragmentation has not yet closed.'},
-    {ind:'Craft beer',x:27,y:70,hi:73,lo:66,status:'resisted',years:'1980s–present',g:[3,1,3,2,0],cool:true,img:'craftbeer',brand:'Craft beer',
+    {ind:'Craft beer',x:27,y:70,hi:73,lo:66,status:'resisted',years:'1980s–present',g:[3,1,3,2,0],cool:true,img:'craftbeer',wm:'Anheuser-Busch InBev',wmsub:'bought craft labels — its share still fell 78% → 64%',
       move:'U.S. breweries bottomed at 89 in 1978 and passed 7,400 by 2018. The two largest brewers bought up craft labels aggressively.',
       now:'Resisted. Even so, the giants’ combined share fell from 78% to 64% — every condition for a storm was present except one: you could always see the price.'}
   ];
@@ -679,7 +682,7 @@
     const chip=$('cardChip'); chip.textContent=st.label; chip.style.background=st.color;
     $('cardChipNote').textContent=st.note; $('cardName').textContent=c.ind; $('cardYears').textContent=c.years;
     $('cardMove').textContent=c.move; $('cardNow').textContent=c.now;
-    const wm=$('cardWordmark'); wm.textContent=c.brand||c.ind;
+    $('wmName').textContent=c.wm||c.ind; $('wmSub').textContent=c.wmsub||'';
     const im=$('cardImgPic'); $('cardImg').classList.remove('nofile'); im.onerror=()=>$('cardImg').classList.add('nofile'); im.src='assets/img/industry/'+c.img+'.jpg';
     $('cardHi').textContent=c.hi+'°'; $('cardLo').textContent=c.lo+'°'; $('cardSpread').textContent=swing+'°';
     const gh=$('cardGauges'); gh.innerHTML='';
