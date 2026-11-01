@@ -316,6 +316,21 @@
   #bill .billclose em{font-style:normal;color:var(--ox)}
   @media(max-width:700px){#bill .finding{grid-template-columns:1fr;gap:.6rem}}
 
+  /* ===== OUTCOME BEAT (3.6) — AN EXCEPTION ===== */
+  #exception{position:relative;background:#081210;padding:16vh 6vw 17vh;--gd:#2FBFA8;--gdb:#7AE8D6}
+  #exception .exwrap{max-width:1040px;margin:0 auto}
+  #exception .exhead{font-family:"Anton";text-transform:uppercase;font-size:clamp(2.6rem,7.5vw,5.8rem);line-height:.85;color:#f3efe8;margin:0}
+  #exception .exhead em{font-style:normal;color:var(--gd)}
+  #exception .exsub{font-family:"Libre Franklin";font-weight:500;font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.45;color:#9fb6b0;max-width:48rem;margin:1.7rem 0 7vh}
+  #exception .exfind{display:grid;grid-template-columns:30% 1fr;gap:2.4rem;align-items:start;padding:2.4rem 0;border-top:1px solid rgba(255,255,255,.13);opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+  #exception .exfind.in{opacity:1;transform:none}
+  #exception .exorg{font-family:"Anton";font-size:clamp(1.8rem,4.6vw,3.4rem);line-height:.84;color:var(--gd);text-transform:uppercase;overflow-wrap:anywhere}
+  #exception .exclaim{font-family:"Archivo Black";font-size:clamp(1.1rem,2.1vw,1.65rem);line-height:1.2;color:#f3efe8}
+  #exception .exsrc{font-family:"Libre Franklin";font-weight:500;font-size:.85rem;color:#8795a0;margin-top:.8rem}
+  #exception .exclose{font-family:"Libre Franklin";font-weight:600;font-size:clamp(1.3rem,2.7vw,2.05rem);line-height:1.3;color:#f3efe8;margin-top:8vh;max-width:44rem}
+  #exception .exclose em{font-style:normal;color:var(--gdb)}
+  @media(max-width:700px){#exception .exfind{grid-template-columns:1fr;gap:.6rem}}
+
   /* ===== SECTION 4 — THE ADVISORY · Traffic desk (video-backed) ===== */
   #advisory{position:relative;background:#06090b;--teal:#2FBFA8;--tlbr:#7AE8D6;--org:#F26419;--gold:#FFC83D;--cream:#eef4f3;--dim:#9fb4b2}
   #advisory .advbg{position:sticky;top:0;height:100vh;z-index:0;overflow:hidden;margin-bottom:-100vh}
@@ -558,6 +573,32 @@
   </div>
 </section>
 
+<!-- ===== OUTCOME BEAT (3.6) — AN EXCEPTION ===== -->
+<section id="exception">
+  <div class="exwrap">
+    <h2 class="exhead">An <em>Exception</em></h2>
+    <p class="exsub">The pattern has one. A few systems consolidated and the market got value—lower cost, better outcomes. The difference between them and the Bill is the whole argument.</p>
+
+    <div class="exfind">
+      <div class="exorg">Kaiser</div>
+      <div class="extxt">
+        <div class="exclaim">Kaiser Permanente is the insurer and the provider at once, so it earns by keeping members well, not by billing more care. It holds top-quartile quality at lower hospital use.</div>
+        <div class="exsrc">McCarthy, Mueller &amp; Wrenn · The Commonwealth Fund, 2009</div>
+      </div>
+    </div>
+
+    <div class="exfind">
+      <div class="exorg">Geisinger</div>
+      <div class="extxt">
+        <div class="exclaim">Geisinger's ProvenCare put a warranty on cardiac surgery—one fixed price, with complications on Geisinger—and readmissions, complications, and length of stay all fell.</div>
+        <div class="exsrc">Casale et al. · Annals of Surgery, 2007</div>
+      </div>
+    </div>
+
+    <p class="exclose">They did not integrate to own the price. They integrated to own the outcome, and were paid to keep it low. <em>Same structure, opposite incentive, opposite result.</em></p>
+  </div>
+</section>
+
 <!-- ===== SECTION 4 — THE ADVISORY · Traffic desk ===== -->
 <section id="advisory">
   <div class="advbg">
@@ -612,7 +653,7 @@
     </div>
     <div class="pane right">
       <div class="mark">&ldquo;</div>
-      <div class="qt">The very word, &lsquo;profit,&rsquo; is a signal that denies the trust relations.</div>
+      <div class="qt">It is the general social consensus, clearly, that the laissez-faire solution for medicine is intolerable.</div>
       <div class="by">Kenneth Arrow</div>
       <div class="bywho">Uncertainty and the Welfare Economics of Medical Care, 1963</div>
     </div>
@@ -628,11 +669,13 @@
     <div class="ref">Arrow, K. J. (1963). Uncertainty and the welfare economics of medical care. <em>The American Economic Review, 53</em>(5), 941–973. <a href="https://www.jstor.org/stable/1812044" target="_blank" rel="noopener">jstor.org/stable/1812044</a></div>
     <div class="ref">Beaulieu, N. D., Dafny, L. S., Landon, B. E., Dalton, J. B., Kuye, I., &amp; McWilliams, J. M. (2020). Changes in quality of care after hospital mergers and acquisitions. <em>New England Journal of Medicine, 382</em>(1), 51–59. <a href="https://doi.org/10.1056/NEJMsa1901383" target="_blank" rel="noopener">doi.org/10.1056/NEJMsa1901383</a></div>
     <div class="ref">Capps, C., Dranove, D., &amp; Ody, C. (2018). The effect of hospital acquisitions of physician practices on prices and spending. <em>Journal of Health Economics, 59</em>, 139–152. <a href="https://doi.org/10.1016/j.jhealeco.2018.04.001" target="_blank" rel="noopener">doi.org/10.1016/j.jhealeco.2018.04.001</a></div>
+    <div class="ref">Casale, A. S., Paulus, R. A., Selna, M. J., Doll, M. C., Bothe, A. E., McKinley, K. E., … Steele, G. D. (2007). ProvenCare: A provider-driven pay-for-performance program for acute episodic cardiac surgical care. <em>Annals of Surgery, 246</em>(4), 613–623. <a href="https://doi.org/10.1097/SLA.0b013e318155a996" target="_blank" rel="noopener">doi.org/10.1097/SLA.0b013e318155a996</a></div>
     <div class="ref">Centers for Medicare &amp; Medicaid Services. (2024). <em>Medicare Shared Savings Program: Performance year 2024 results.</em> CMS. <a href="https://www.cms.gov/newsroom/press-releases" target="_blank" rel="noopener">cms.gov</a></div>
     <div class="ref">Cooper, Z., Craig, S. V., Gaynor, M., &amp; Van Reenen, J. (2019). The price ain't right? Hospital prices and health spending on the privately insured. <em>The Quarterly Journal of Economics, 134</em>(1), 51–107. <a href="https://doi.org/10.1093/qje/qjy020" target="_blank" rel="noopener">doi.org/10.1093/qje/qjy020</a></div>
     <div class="ref">Federal Trade Commission. (2023). <em>FTC challenges private equity firm's scheme to suppress competition for anesthesia services (FTC v. U.S. Anesthesia Partners).</em> <a href="https://www.ftc.gov/news-events/news/press-releases/2023/09/ftc-challenges-private-equity-firms-scheme-suppress-competition-anesthesiology-services-across-texas" target="_blank" rel="noopener">ftc.gov</a></div>
     <div class="ref">Galbraith, J. K. (1952). <em>American capitalism: The concept of countervailing power.</em> Houghton Mifflin.</div>
     <div class="ref">Maryland Health Services Cost Review Commission. (2024). <em>Maryland total cost of care model.</em> HSCRC. <a href="https://hscrc.maryland.gov" target="_blank" rel="noopener">hscrc.maryland.gov</a></div>
+    <div class="ref">McCarthy, D., Mueller, K., &amp; Wrenn, J. (2009). <em>Kaiser Permanente: Bridging the quality divide with integrated practice, group accountability, and health information technology.</em> The Commonwealth Fund. <a href="https://www.commonwealthfund.org/publications/case-study/2009/jun/kaiser-permanente-bridging-quality-divide-integrated-practice" target="_blank" rel="noopener">commonwealthfund.org</a></div>
     <div class="ref">Physicians Advocacy Institute &amp; Avalere Health. (2024). <em>Changes in physician employment and practice ownership, 2019–2024.</em> PAI. <a href="https://www.physiciansadvocacyinstitute.org/PAI-Research" target="_blank" rel="noopener">physiciansadvocacyinstitute.org</a></div>
     <div class="ref">Robinson, J. C., &amp; Brown, T. T. (2013). Increases in consumer cost sharing redirect patient volumes and reduce hospital prices for orthopedic surgery. <em>Health Affairs, 32</em>(8), 1392–1397. <a href="https://doi.org/10.1377/hlthaff.2013.0188" target="_blank" rel="noopener">doi.org/10.1377/hlthaff.2013.0188</a></div>
     <div class="ref">Schneider, E. C., Shah, A., Doty, M. M., Tikkanen, R., Fields, K., &amp; Williams, R. D. (2021). <em>Mirror, mirror 2021: Reflecting poorly — health care in the U.S. compared to other high-income countries.</em> The Commonwealth Fund. <a href="https://www.commonwealthfund.org/publications/fund-reports/2021/aug/mirror-mirror-2021-reflecting-poorly" target="_blank" rel="noopener">commonwealthfund.org</a></div>
@@ -987,7 +1030,7 @@
 /* ===== The Bill + transition — scroll reveal ===== */
 (()=>{
  const io=new IntersectionObserver((ents)=>{ents.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');});},{threshold:.3});
- document.querySelectorAll('#bill .finding, #advtrans .at-line').forEach(el=>io.observe(el));
+ document.querySelectorAll('#bill .finding, #exception .exfind').forEach(el=>io.observe(el));
 })();
 
 /* ===== The Advisory — Traffic desk: hero in/out + sign click ===== */
