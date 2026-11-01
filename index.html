@@ -322,37 +322,47 @@
   #advtrans .at-line.in{opacity:1;transform:none}
   #advtrans .at2{align-self:flex-end;text-align:right;color:#FFC83D}
 
-  /* ===== SECTION 4 — THE ADVISORY · The Climb (teal, near-black) ===== */
-  #advisory{position:relative;background:#0b1114;--teal:#2FBFA8;--tlbr:#7AE8D6;--tldp:#1C8577;--cream:#eef4f3;--dim:#9fb4b2}
-  #advisory .climb{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:3vw;padding:0 6vw}
-  #advisory .rail{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;gap:2rem;z-index:2}
-  #advisory .rrung{display:flex;align-items:center;gap:.8rem;font-family:"Bebas Neue",sans-serif;font-size:1.25rem;letter-spacing:.03em;color:#51666a;transition:color .4s}
-  #advisory .rrung .rd{width:14px;height:14px;border-radius:50%;background:#1c2a2d;border:2px solid #33484c;transition:.4s;flex:0 0 auto}
-  #advisory .rrung.done{color:#8fb8b2} #advisory .rrung.done .rd{background:var(--tldp);border-color:var(--tldp)}
-  #advisory .rrung.on{color:#fff} #advisory .rrung.on .rd{background:var(--teal);border-color:var(--teal);box-shadow:0 0 16px var(--teal);transform:scale(1.3)}
-  #advisory .ahead{min-height:72vh;display:flex;flex-direction:column;justify-content:center}
-  #advisory .ahead .ak{font-family:"JetBrains Mono",monospace;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
-  #advisory .ahead h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.6rem,6.5vw,5.4rem);line-height:.9;color:#fff;margin:.5rem 0 1rem;letter-spacing:.01em}
-  #advisory .ahead p{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1.1rem,2vw,1.5rem);line-height:1.4;color:var(--dim);max-width:36rem}
-  #advisory .ahead p b{color:#fff;font-weight:700}
-  #advisory .rung{min-height:88vh;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
-  #advisory .rung.in{opacity:1;transform:none}
-  #advisory .rkick{font-family:"JetBrains Mono",monospace;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
-  #advisory .rname{font-family:"Bebas Neue",sans-serif;font-size:clamp(3rem,8vw,7rem);line-height:.84;color:#fff;letter-spacing:.01em;margin:.2rem 0 .3rem}
-  #advisory .rcount{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin:.5rem 0}
-  #advisory .rcount .rc{font-family:"Anton",sans-serif;font-size:clamp(4rem,11vw,9rem);line-height:.78;color:var(--teal)}
-  #advisory .rcount .rcl{font-family:"Archivo Black",sans-serif;font-size:clamp(1rem,1.8vw,1.4rem);text-transform:uppercase;color:#fff;max-width:20rem;line-height:1.05}
-  #advisory .rcaps{display:flex;gap:.5rem;margin:.7rem 0 1.1rem}
-  #advisory .rcaps i{width:2.4rem;height:.6rem;background:#1c2a2d;display:block;border-radius:1px;transition:.4s}
-  #advisory .rcaps i.lit{background:var(--teal);box-shadow:0 0 8px rgba(47,191,168,.5)}
-  #advisory .rmsg{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1.05rem,2vw,1.45rem);line-height:1.4;color:#dfeae8;max-width:40rem}
-  #advisory .rcav{font-family:"Libre Franklin",sans-serif;font-weight:400;font-size:.95rem;line-height:1.4;color:var(--dim);border-left:3px solid var(--tldp);padding-left:.8rem;margin-top:.8rem;max-width:38rem}
-  #advisory .rstat{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(1rem,1.8vw,1.25rem);color:var(--tlbr);margin-top:1rem;max-width:38rem}
-  #advisory .rrev{margin-top:1.4rem;max-width:30rem}
-  #advisory .rrev .rl{display:flex;justify-content:space-between;font-family:"Oswald",sans-serif;font-weight:400;font-size:.85rem;color:var(--dim)}
-  #advisory .rrev .rb{height:10px;background:rgba(255,255,255,.08);margin-top:.4rem;position:relative;overflow:hidden}
-  #advisory .rrev .rb i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--teal),var(--tldp))}
-  @media(max-width:820px){#advisory .climb{grid-template-columns:1fr}#advisory .rail{position:static;height:auto;flex-direction:row;flex-wrap:wrap;gap:.7rem;justify-content:center;padding:5vh 0 0}#advisory .ahead{min-height:70vh}#advisory .rung{min-height:80vh}}
+  /* ===== SECTION 4 — THE ADVISORY · The Dispenser (vending machine) ===== */
+  #advisory{position:relative;background:#0b1114;padding:12vh 5vw 14vh;--teal:#2FBFA8;--tlbr:#7AE8D6;--tldp:#1C8577;--cream:#eef4f3;--dim:#9fb4b2}
+  #advisory .vmhead{max-width:1100px;margin:0 auto 5vh}
+  #advisory .vmhead .ak{font-family:"JetBrains Mono",monospace;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+  #advisory .vmhead h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.2rem,5.4vw,4.4rem);line-height:.92;color:#fff;letter-spacing:.01em;margin:.5rem 0 .8rem}
+  #advisory .vmhead h2 span{color:var(--teal)}
+  #advisory .vmhead p{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1.02rem,1.9vw,1.35rem);line-height:1.4;color:var(--dim);max-width:46rem}
+  /* cabinet */
+  #advisory .vending{max-width:1100px;margin:0 auto;background:linear-gradient(180deg,#141d20,#0d1416);border:2px solid #22312f;border-radius:18px;padding:clamp(1rem,2.5vw,2rem);box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04)}
+  #advisory .vmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(.6rem,1.4vw,1rem)}
+  #advisory .vmbtn{position:relative;text-align:left;cursor:pointer;background:#0c1416;border:2px solid #223230;border-radius:12px;padding:clamp(1rem,2.2vw,1.6rem) clamp(1rem,2vw,1.5rem);color:#cfe0dd;transition:transform .12s,border-color .3s,box-shadow .3s,background .3s;display:flex;flex-direction:column;gap:.6rem;min-height:clamp(140px,20vw,190px)}
+  #advisory .vmbtn:hover{border-color:#39544f;transform:translateY(-2px)}
+  #advisory .vmbtn.lit{border-color:var(--teal);background:#0e1a19;box-shadow:0 0 0 1px var(--teal),0 0 34px rgba(47,191,168,.28)}
+  #advisory .vmbtn .code{font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.16em;color:#6f8a86}
+  #advisory .vmbtn.lit .code{color:var(--tlbr)}
+  #advisory .vmbtn .vicon{width:clamp(44px,6vw,64px);height:clamp(44px,6vw,64px);stroke:#5f827c;fill:none;stroke-width:2.4;transition:stroke .3s}
+  #advisory .vmbtn.lit .vicon{stroke:var(--teal)}
+  #advisory .vmbtn .plabel{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.3rem,2.4vw,2rem);line-height:.95;letter-spacing:.01em;color:#fff;margin-top:auto}
+  #advisory .vmbtn .phold{font-family:"Oswald",sans-serif;font-weight:300;font-size:.82rem;color:#7f9a95;text-transform:uppercase;letter-spacing:.04em}
+  /* bottom rack — the footnote product */
+  #advisory .vmrack{margin-top:clamp(.6rem,1.4vw,1rem)}
+  #advisory .vmbtn.foot{grid-column:1/-1;flex-direction:row;align-items:center;gap:1.2rem;min-height:0;opacity:.9}
+  #advisory .vmbtn.foot .vicon{flex:0 0 auto;width:clamp(36px,4vw,46px);height:clamp(36px,4vw,46px)}
+  #advisory .vmbtn.foot .footwrap{display:flex;flex-direction:column;gap:.1rem}
+  #advisory .vmbtn.foot .plabel{margin-top:0;font-size:clamp(1.1rem,2vw,1.5rem)}
+  #advisory .vmbtn.foot .ftag{font-family:"Oswald",sans-serif;font-weight:300;font-size:.8rem;color:#7f9a95;text-transform:uppercase;letter-spacing:.06em;margin-left:auto;text-align:right}
+  /* dispensing tray */
+  #advisory .vmtray{margin-top:clamp(1rem,2vw,1.4rem);background:#060b0c;border:2px solid #22312f;border-top:4px solid var(--teal);border-radius:12px;padding:clamp(1.2rem,2.6vw,2rem);min-height:170px;position:relative}
+  #advisory .vmtray .tprompt{font-family:"Oswald",sans-serif;font-weight:300;font-size:clamp(1rem,1.9vw,1.3rem);color:#6f8a86;display:flex;align-items:center;gap:.7rem;height:120px;justify-content:center;text-align:center}
+  #advisory .vmtray .tcard{display:none}
+  #advisory .vmtray.full .tprompt{display:none}
+  #advisory .vmtray.full .tcard{display:block;animation:dispense .45s ease}
+  @keyframes dispense{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  #advisory .tcard .tcode{font-family:"JetBrains Mono",monospace;font-size:.8rem;letter-spacing:.16em;color:var(--tlbr)}
+  #advisory .tcard .ttitle{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.8rem,4vw,3rem);line-height:.92;color:#fff;letter-spacing:.01em;margin:.2rem 0 .7rem}
+  #advisory .tcard .tbody{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1.02rem,1.9vw,1.35rem);line-height:1.42;color:#e3eeec;max-width:62rem}
+  #advisory .tcard .tmeta{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.1rem}
+  #advisory .tcard .tmeta div{font-family:"Libre Franklin",sans-serif;font-size:.92rem;line-height:1.35;color:var(--dim)}
+  #advisory .tcard .tmeta b{display:block;font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#6f8a86;margin-bottom:.2rem;font-weight:400}
+  #advisory .tcard .tcost b{color:#caa15f}
+  @media(max-width:720px){#advisory .vmgrid{grid-template-columns:1fr}#advisory .vmbtn.foot{flex-wrap:wrap}#advisory .vmbtn.foot .ftag{margin-left:0}}
 
   /* executive decision rule */
   #advrule{background:#0a0f11;padding:16vh 6vw;text-align:center}
@@ -564,79 +574,67 @@
   <div class="at-line at2">What were we actually trying to get from consolidation?</div>
 </section>
 
-<!-- ===== SECTION 4 — THE ADVISORY · The Climb ===== -->
+<!-- ===== SECTION 4 — THE ADVISORY · The Dispenser ===== -->
 <section id="advisory">
-  <div class="climb">
-    <div class="rail">
-      <div class="rrung" data-rail="0"><span class="rd"></span>Contract</div>
-      <div class="rrung" data-rail="1"><span class="rd"></span>Network</div>
-      <div class="rrung" data-rail="2"><span class="rd"></span>Shared Risk</div>
-      <div class="rrung" data-rail="3"><span class="rd"></span>Joint Operation</div>
-      <div class="rrung" data-rail="4"><span class="rd"></span>Ownership</div>
+  <div class="vmhead">
+    <div class="ak">Consolidation advisory for healthcare · Q5 — what are the alternatives</div>
+    <h2>Concentration is close to inevitable.<br>The only question left is <span>who holds the price.</span></h2>
+    <p>These are the real responses, not firm-level restraint. Each one names who holds the lever and what it costs. Pick one.</p>
+  </div>
+
+  <div class="vending">
+    <div class="vmgrid">
+      <button class="vmbtn" data-vm="A1">
+        <span class="code">A1</span>
+        <svg class="vicon" viewBox="0 0 48 48"><line x1="24" y1="9" x2="24" y2="39"/><path d="M14 18 L6 24 L14 30"/><path d="M34 18 L42 24 L34 30"/></svg>
+        <span class="phold">Antitrust · Congress</span>
+        <span class="plabel">Restore competition</span>
+      </button>
+      <button class="vmbtn" data-vm="A2">
+        <span class="code">A2</span>
+        <svg class="vicon" viewBox="0 0 48 48"><path d="M4 24 C12 12 36 12 44 24 C36 36 12 36 4 24 Z"/><circle cx="24" cy="24" r="6"/></svg>
+        <span class="phold">Regulators · purchasers</span>
+        <span class="plabel">Make the price visible</span>
+      </button>
+      <button class="vmbtn" data-vm="B1">
+        <span class="code">B1</span>
+        <svg class="vicon" viewBox="0 0 48 48"><line x1="8" y1="12" x2="40" y2="12"/><path d="M24 40 L24 21 M16 29 L24 21 L32 29"/></svg>
+        <span class="phold">States</span>
+        <span class="plabel">Cap the price</span>
+      </button>
+      <button class="vmbtn" data-vm="B2">
+        <span class="code">B2</span>
+        <svg class="vicon" viewBox="0 0 48 48"><path d="M6 24 L21 24 M15 18 L21 24 L15 30"/><path d="M42 24 L27 24 M33 18 L27 24 L33 30"/></svg>
+        <span class="phold">Government</span>
+        <span class="plabel">Build countervailing power</span>
+      </button>
     </div>
 
-    <div class="climbcol">
-      <div class="ahead">
-        <div class="ak">Consolidation advisory for healthcare</div>
-        <h2>Name the capability<br>before you buy the company.</h2>
-        <p>Healthcare does need integration—coordinated care, shared data, risk management, scale. The question a board should ask is not whether to integrate. It is <b>what capability are we actually buying the organization to obtain</b>—and what is the least permanent structure that delivers it.</p>
-      </div>
+    <div class="vmrack">
+      <button class="vmbtn foot" data-vm="C1">
+        <svg class="vicon" viewBox="0 0 48 48"><circle cx="19" cy="24" r="11"/><circle cx="29" cy="24" r="11"/></svg>
+        <span class="footwrap">
+          <span class="plabel">Integrate without owning</span>
+          <span class="phold">The firm-level move</span>
+        </span>
+        <span class="ftag">Clearance rack<br>the weakest answer here</span>
+      </button>
+    </div>
 
-      <div class="rung" data-rung="0">
-        <div class="rkick">Rung 1 of 5 · shared services · PSA</div>
-        <div class="rname">Contract</div>
-        <div class="rcount"><span class="rc">3/8</span><span class="rcl">capabilities, no ownership</span></div>
-        <div class="rcaps"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="rmsg">A service contract or professional-services agreement closes a technology, staffing, or administrative gap outright. No one acquires anyone.</div>
-        <div class="rrev"><div class="rl"><span>Reversible · contestable</span><span>95%</span></div><div class="rb"><i style="width:95%"></i></div></div>
-      </div>
-
-      <div class="rung" data-rung="1">
-        <div class="rkick">Rung 2 of 5 · clinically integrated network</div>
-        <div class="rname">Network</div>
-        <div class="rcount"><span class="rc">6/8</span><span class="rcl">capabilities, still independent</span></div>
-        <div class="rcaps"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i></i><i></i></div>
-        <div class="rmsg">A clinically integrated network coordinates care, shares data, and negotiates jointly across practices that each stay independently owned.</div>
-        <div class="rcav">Clinical integration has to be real—shared protocols and accountability—or joint contracting becomes price-fixing.</div>
-        <div class="rrev"><div class="rl"><span>Reversible · contestable</span><span>72%</span></div><div class="rb"><i style="width:72%"></i></div></div>
-      </div>
-
-      <div class="rung" data-rung="2">
-        <div class="rkick">Rung 3 of 5 · ACO · shared savings</div>
-        <div class="rname">Shared Risk</div>
-        <div class="rcount"><span class="rc">7/8</span><span class="rcl">capabilities, and no one owns anyone</span></div>
-        <div class="rcaps"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i></i></div>
-        <div class="rmsg">An accountable care organization adds shared financial risk—the strongest alignment short of a merger.</div>
-        <div class="rstat">$2.5B in net Medicare savings from shared-savings ACOs in 2024, with physician-led groups outperforming hospital-led ones.</div>
-        <div class="rrev"><div class="rl"><span>Reversible · contestable</span><span>55%</span></div><div class="rb"><i style="width:55%"></i></div></div>
-      </div>
-
-      <div class="rung" data-rung="3">
-        <div class="rkick">Rung 4 of 5 · joint operating structure</div>
-        <div class="rname">Joint Operation</div>
-        <div class="rcount"><span class="rc">8/8</span><span class="rcl">capabilities reached before ownership</span></div>
-        <div class="rcaps"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i></div>
-        <div class="rmsg">A joint operating agreement pools capital and operations under shared governance. Every capability on the board is now active, and the companies are still legally separate.</div>
-        <div class="rrev"><div class="rl"><span>Reversible · contestable</span><span>35%</span></div><div class="rb"><i style="width:35%"></i></div></div>
-      </div>
-
-      <div class="rung" data-rung="4">
-        <div class="rkick">Rung 5 of 5 · common ownership</div>
-        <div class="rname">Ownership</div>
-        <div class="rcount"><span class="rc">8/8</span><span class="rcl">capabilities — zero added</span></div>
-        <div class="rcaps"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i></div>
-        <div class="rmsg">Ownership adds no capability the rung below had not already reached. What it adds is permanence—the one thing that cannot be undone if the integration fails to deliver.</div>
-        <div class="rcav">Sometimes ownership is the right answer—but as the result of the analysis, not the starting assumption.</div>
-        <div class="rrev"><div class="rl"><span>Reversible · contestable</span><span>12%</span></div><div class="rb"><i style="width:12%"></i></div></div>
+    <div class="vmtray" id="vmtray">
+      <div class="tprompt">Press a button. Each response dispenses what it is, who holds the lever, and what it costs.</div>
+      <div class="tcard" id="tcard">
+        <div class="tcode" id="tcode"></div>
+        <div class="ttitle" id="ttitle"></div>
+        <div class="tbody" id="tbody"></div>
+        <div class="tmeta">
+          <div class="thold"><b>Who holds the lever</b><span id="thold"></span></div>
+          <div class="tcost"><b>What it costs</b><span id="tcost"></span></div>
+          <div class="tinstance"><b>Where it is real</b><span id="tinstance"></span></div>
+        </div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- executive decision rule -->
-<section id="advrule">
-  <div class="rline">Contract <b>→</b> Network <b>→</b> Shared Risk <b>→</b> Joint Operation <b>→</b> Ownership</div>
-  <div class="rinstr">Move right only when the structure to the left cannot deliver the capability you need.</div>
 </section>
 
 <!-- contestability test -->
@@ -1032,27 +1030,50 @@
  document.querySelectorAll('#bill .finding, #advtrans .at-line').forEach(el=>io.observe(el));
 })();
 
-/* ===== The Advisory — The Climb, scroll-driven rung reveal + rail tracking ===== */
+/* ===== The Advisory — The Dispenser, click-to-dispense ===== */
 (()=>{
  const sec=document.getElementById('advisory'); if(!sec)return;
- const rungs=[...sec.querySelectorAll('.rung')];
- const rails=[...sec.querySelectorAll('.rrung')];
- const io=new IntersectionObserver(es=>{
-   es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
- },{threshold:.35});
- rungs.forEach(r=>io.observe(r));
- let t=false;
- function track(){ if(t)return; t=true; requestAnimationFrame(()=>{
-   const mid=innerHeight*0.5; let cur=-1;
-   rungs.forEach((r,i)=>{ const b=r.getBoundingClientRect(); if(b.top<=mid && b.bottom>=mid) cur=i; });
-   if(cur<0){ // before first rung or past last
-     const first=rungs[0].getBoundingClientRect();
-     cur = first.top>mid ? -1 : rungs.length-1;
-   }
-   rails.forEach((rl,i)=>{ rl.classList.toggle('on',i===cur); rl.classList.toggle('done',i<cur); });
-   t=false;
- }); }
- addEventListener('scroll',track,{passive:true}); addEventListener('resize',track); track();
+ const VM={
+  A1:{title:'Restore competition',
+    body:'Block the deals, unwind the worst of them, and pay the same price wherever the care is delivered. The classic antitrust answer.',
+    hold:'Antitrust enforcers and Congress.',
+    cost:'It fights the tide the forecast just measured, and enforcement has been losing for a decade. Site-neutral payment is the one piece with live bipartisan support.',
+    instance:'FTC and DOJ merger challenges; proposed site-neutral Medicare payment.'},
+  A2:{title:'Make the price visible',
+    body:'Give buyers a price they can actually compare and act on, not a disclosure buried in a spreadsheet. Supply the one condition this market has never had.',
+    hold:'Regulators and large purchasers.',
+    cost:'Necessary but not sufficient on its own. Visibility only bites when a buyer can walk.',
+    instance:'Hospital price-transparency rules; employer reference pricing. This is the condition craft beer kept.'},
+  B1:{title:'Cap the price',
+    body:'Stop fighting the concentration and regulate it like a utility: one rate every payer pays, set in public, with a global budget per system.',
+    hold:'States.',
+    cost:'You concede the market, and you freeze in whatever inefficiency you regulate.',
+    instance:'Maryland has run all-payer hospital global budgets since 2014; Vermont has piloted the model.'},
+  B2:{title:'Build countervailing power',
+    body:'Concentrate the buyer to stand against the concentrated seller: single payer, or an all-payer public option. A monopsony against the monopoly. This is the honest version of "it will consolidate anyway."',
+    hold:'Government.',
+    cost:'Politically enormous. It does not remove the concentration of power; it moves it to someone who answers to voters.',
+    instance:'Medicare as the template; every peer nation on the Mirror Mirror ranking runs a version of it.'},
+  C1:{title:'Integrate without owning',
+    body:'The firm-level move: get the coordination through contracts, clinically integrated networks, and shared-risk ACOs instead of acquisition.',
+    hold:'Individual systems, voluntarily.',
+    cost:'It is the weakest answer here, because it depends on the restraint of the players with the least reason to restrain.',
+    instance:'Medicare Shared Savings ACOs returned about $2.5B in 2024, physician-led groups outperforming hospital-led.'}
+ };
+ const tray=document.getElementById('vmtray');
+ const $=id=>document.getElementById(id);
+ const btns=[...sec.querySelectorAll('.vmbtn')];
+ btns.forEach(b=>b.addEventListener('click',()=>{
+   const d=VM[b.dataset.vm]; if(!d)return;
+   btns.forEach(x=>x.classList.toggle('lit',x===b));
+   $('tcode').textContent=b.dataset.vm;
+   $('ttitle').textContent=d.title;
+   $('tbody').textContent=d.body;
+   $('thold').textContent=d.hold;
+   $('tcost').textContent=d.cost;
+   $('tinstance').textContent=d.instance;
+   tray.classList.remove('full'); void tray.offsetWidth; tray.classList.add('full');
+ }));
 })();
 </script>
 </body>
