@@ -114,7 +114,8 @@
   .citycard{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.98);width:min(32rem,88vw);background:#0b0b0e;color:#f3efe8;
     border:0;border-top:.7rem solid var(--accent-hot);padding:1.7rem 1.8rem 1.8rem;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;z-index:5;box-shadow:0 1.6rem 4rem rgba(0,0,0,.5)}
   .citycard.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-  .citycard .close{position:absolute;top:.7rem;right:1rem;border:0;background:none;font-family:var(--mono);font-size:1.2rem;color:#8a8a84;cursor:pointer}
+  .citycard .close{position:absolute;top:.6rem;right:.6rem;z-index:4;width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid rgba(255,255,255,.7);background:rgba(0,0,0,.6);font-family:var(--sans);font-size:1.5rem;line-height:1;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .12s}
+  .citycard .close:hover{background:var(--accent-hot);border-color:var(--accent-hot);transform:scale(1.08)}
   .statuschip{display:flex;align-items:center;gap:.7rem;margin-bottom:.55rem}
   .statuschip .chip{font-family:"Archivo Black",sans-serif;font-size:.8rem;letter-spacing:.02em;color:#0b0b0e;padding:.4em .8em}
   .statuschip .chipnote{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:.85rem;color:#9fb0ba}
@@ -753,6 +754,13 @@
   }
   $('cardClose').addEventListener('click',()=>card.classList.remove('open'));
   document.addEventListener('keydown',e=>{if(e.key==='Escape')card.classList.remove('open');});
+  // click anywhere outside the card closes it (a pin click still switches industries)
+  document.addEventListener('click',e=>{
+    if(!card.classList.contains('open'))return;
+    if(card.contains(e.target))return;
+    if(e.target.closest && e.target.closest('.pin'))return;
+    card.classList.remove('open');
+  });
 
   // ---- dolly: camera into the glass, finishes early, then arrived layer takes over ----
   const dolly=$('dolly'),scene=$('scene'),glass=document.querySelector('.glass'),bcast=$('bcast'),crt=$('crt'),room=$('room'),titlecard=$('titlecard'),hint=$('hint');
