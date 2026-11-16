@@ -220,10 +220,10 @@
   #hcfactors .hchead h2{font-family:"Anton",sans-serif;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:.9;color:#fff;letter-spacing:.01em;text-transform:uppercase;margin:0}
   #hcfactors .hchead h2 em{font-style:normal;color:var(--am)}
   #hcfactors .hchead p{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(.9rem,1.6vw,1.15rem);color:#cfd8dc;margin:.55rem 0 0}
-  #hcfactors .hcpanel{position:relative;z-index:2;display:grid;grid-template-columns:minmax(300px,44%) 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;max-width:1260px;width:100%;margin:0 auto;padding:1vh 6vw 6vh}
+  #hcfactors .hcpanel{position:relative;z-index:2;display:grid;grid-template-columns:minmax(340px,47%) 1fr;gap:clamp(1.6rem,4vw,4rem);align-items:center;max-width:1320px;width:100%;margin:0 auto;padding:5vh 6vw 8vh}
   /* wheel */
   #hcfactors .hcwheel{display:flex;justify-content:center}
-  #hcfactors .hcwheel svg{width:100%;max-width:470px;height:auto;overflow:visible}
+  #hcfactors .hcwheel svg{width:100%;max-width:600px;height:auto;overflow:visible}
   #hcfactors .wseg{cursor:pointer}
   #hcfactors .wseg .wp{fill:rgba(255,255,255,.055);stroke:rgba(232,161,58,.4);stroke-width:1.5;transition:fill .3s,stroke .3s}
   #hcfactors .wseg:hover .wp{fill:rgba(232,161,58,.18)}
@@ -545,6 +545,7 @@
             <li>U.S. health spending hit $5.3 trillion in 2024 — about 18% of GDP.<span class="hcsrc">KFF, 2025</span></li>
             <li>By 2024, roughly <b>78%</b> of physicians were employed by a hospital or corporation, up from 62% in 2019.<span class="hcsrc">PAI / Avalere, 2024</span></li>
             <li>Scale buys leverage: larger systems negotiate higher payer rates. The top reason practices sold was better payer rates (70%).<span class="hcsrc">AMA, 2024</span></li>
+            <li>Rising labor and rent, post-COVID wage inflation, and younger physicians choosing work-life balance all push independents to sell — while Medicare physician pay has fallen <b>33%</b> since 2001 and hospitals, unlike physicians, get rate updates tied to inflation.<span class="hcsrc">AMA, 2025</span></li>
           </ul>
         </div>
         <div class="hcslide" data-i="1">
@@ -553,21 +554,25 @@
             <li>Antitrust review reaches only deals above <b>$126.4M</b>, so sub-threshold roll-ups escape scrutiny.<span class="hcsrc">GAO, 2025</span></li>
             <li>Medicare pays more for the same procedure in a hospital outpatient department than in a physician office — a standing incentive to buy practices.<span class="hcsrc">Bipartisan Policy Center, 2025</span></li>
             <li>The ACA and the turn to value-based payment raised the cost of staying independent.</li>
+            <li>Oregon is pushing back: SB 951 restricts private-equity control through management-services organizations, and its Health Care Market Oversight program can block transactions outright.<span class="hcsrc">Bab et al., 2025</span></li>
           </ul>
         </div>
         <div class="hcslide" data-i="2">
           <h3>Competitive</h3>
           <ul>
-            <li>In nearly half of U.S. metro areas, one or two systems control the entire inpatient market.<span class="hcsrc">KFF / Godwin, 2026</span></li>
+            <li>In <b>47%</b> of U.S. metro areas (2024), one or two systems control the entire inpatient market.<span class="hcsrc">KFF, 2025</span></li>
             <li>Hospital mergers have raised prices anywhere from <b>3% to 65%</b> across studies — up to 40–50% in concentrated markets.<span class="hcsrc">RAND, 2022; FTC</span></li>
-            <li>Optum alone employs about <b>90,000</b> physicians — the country's largest physician employer — across insurer, provider, and pharmacy.<span class="hcsrc">Center for American Progress, 2024</span></li>
+            <li>Optum alone employs about <b>90,000</b> physicians — the largest physician employer in the country — and new entrants like CVS/Oak Street and Amazon/One Medical are buying in.<span class="hcsrc">Center for American Progress, 2024</span></li>
+            <li>After private-equity acquisition, primary-care billing rose (services +30%, labs +12.9%; Singh 2026), and hospitals cut ED/ICU staffing 16–18% — ED deaths rose <b>13%</b>.<span class="hcsrc">Singh et al., 2026; Kannan et al., 2025</span></li>
           </ul>
         </div>
         <div class="hcslide" data-i="3">
           <h3>Technological</h3>
           <ul>
-            <li>Electronic health records cost a solo practice about <b>$1,200</b> per user a year, but an 11-plus-provider group about <b>$685</b> — scale the small cannot match.<span class="hcsrc">Software Path, 2022</span></li>
-            <li>Consolidation improved data exchange, but not interoperability — and not downstream outcomes.<span class="hcsrc">Chen et al., 2026</span></li>
+            <li>HITECH and Meaningful Use forced EHR adoption, and the cost scales against the small — about <b>$1,200</b> per user for a solo practice vs <b>$685</b> for an 11-plus group.<span class="hcsrc">Software Path, 2022</span></li>
+            <li>But consolidation does not deliver the integration it promises: after acquisition, a third of hospitals switched to the acquirer's EHR and 44% stayed on a different one.<span class="hcsrc">Holmgren &amp; Adler-Milstein, 2019</span></li>
+            <li>AI and automation demand capital and IT that small practices cannot carry alone.</li>
+            <li>Data exchange improved, but not interoperability — and not downstream outcomes.<span class="hcsrc">Chen et al., 2026</span></li>
           </ul>
         </div>
       </div>
@@ -725,6 +730,7 @@
     <div class="ref">American Medical Association. (2025). <em>Physician practice benchmark survey.</em> AMA. <a href="https://www.ama-assn.org/about/research/physician-practice-benchmark-survey" target="_blank" rel="noopener">ama-assn.org</a></div>
     <div class="ref">Arrow, K. J. (1963). Uncertainty and the welfare economics of medical care. <em>The American Economic Review, 53</em>(5), 941–973. <a href="https://www.jstor.org/stable/1812044" target="_blank" rel="noopener">jstor.org/stable/1812044</a></div>
     <div class="ref">Auerbach, A. J. (1989, February 8). A public-utility approach to health care. <em>Chicago Tribune.</em></div>
+    <div class="ref">Bab, A., Rinker, K., Gilber, S., &amp; Levine, H. (2025, June 12). <em>Oregon imposes significant restrictions on private equity investment in healthcare.</em> Debevoise &amp; Plimpton. <a href="https://www.debevoise.com/insights/publications/2025/06/oregon-imposes-significant-restrictions-on-private" target="_blank" rel="noopener">debevoise.com</a></div>
     <div class="ref">Beaulieu, N. D., Dafny, L. S., Landon, B. E., Dalton, J. B., Kuye, I., &amp; McWilliams, J. M. (2020). Changes in quality of care after hospital mergers and acquisitions. <em>New England Journal of Medicine, 382</em>(1), 51–59. <a href="https://doi.org/10.1056/NEJMsa1901383" target="_blank" rel="noopener">doi.org/10.1056/NEJMsa1901383</a></div>
     <div class="ref">Bipartisan Policy Center (Patzman, A.). (2025). <em>Site neutrality in Medicare payment.</em> BPC. <a href="https://bipartisanpolicy.org/issue-brief/site-neutrality-in-medicare-payment/" target="_blank" rel="noopener">bipartisanpolicy.org</a></div>
     <div class="ref">Borsa, A., Bejarano, G., Ellen, M., &amp; Bruch, J. D. (2023). Evaluating trends in private equity ownership and impacts on health outcomes, costs, and quality: Systematic review. <em>BMJ, 382</em>, e075244. <a href="https://doi.org/10.1136/bmj-2023-075244" target="_blank" rel="noopener">doi.org/10.1136/bmj-2023-075244</a></div>
@@ -742,6 +748,8 @@
     <div class="ref">Georgetown University Center on Health Insurance Reforms. (2023). <em>A progress report on Washington's public option plans.</em> <a href="https://chir.georgetown.edu" target="_blank" rel="noopener">chir.georgetown.edu</a></div>
     <div class="ref">Godwin, J., Levinson, Z., &amp; Neuman, T. (2026). One or two health systems controlled the entire market for inpatient hospital care in nearly half of metropolitan areas. <em>KFF.</em> <a href="https://www.kff.org/health-costs/" target="_blank" rel="noopener">kff.org</a></div>
     <div class="ref">Henry, T. A. (2025, April 21). <em>Medicare physician pay has plummeted since 2001. Find out why.</em> American Medical Association. <a href="https://www.ama-assn.org" target="_blank" rel="noopener">ama-assn.org</a></div>
+    <div class="ref">Holmgren, A. J., &amp; Adler-Milstein, J. (2019, March 7). Does electronic health record consolidation follow hospital consolidation? <em>Health Affairs.</em> <a href="https://www.healthaffairs.org/content/forefront/does-electronic-health-record-consolidation-follow-hospital-consolidation" target="_blank" rel="noopener">healthaffairs.org</a></div>
+    <div class="ref">Kannan, S., Bruch, J. D., Zubizarreta, J., Stevens, J., &amp; Song, Z. (2025). Hospital staffing and patient outcomes after private equity acquisition. <em>Annals of Internal Medicine, 178</em>(11). <a href="https://doi.org/10.7326/ANNALS-24-03471" target="_blank" rel="noopener">doi.org/10.7326/ANNALS-24-03471</a></div>
     <div class="ref">KFF. (2020). <em>What we know about provider consolidation.</em> <a href="https://www.kff.org/health-costs/what-we-know-about-provider-consolidation/" target="_blank" rel="noopener">kff.org</a></div>
     <div class="ref">KFF. (2025). <em>National health expenditures: 2024 data.</em> <a href="https://www.kff.org/health-costs/" target="_blank" rel="noopener">kff.org</a></div>
     <div class="ref">Maryland Health Services Cost Review Commission. (2024). <em>Maryland total cost of care model.</em> HSCRC. <a href="https://hscrc.maryland.gov" target="_blank" rel="noopener">hscrc.maryland.gov</a></div>
@@ -754,6 +762,7 @@
     <div class="ref">Robinson, J. C., &amp; Brown, T. T. (2013). Increases in consumer cost sharing redirect patient volumes and reduce hospital prices for orthopedic surgery. <em>Health Affairs, 32</em>(8), 1392–1397. <a href="https://doi.org/10.1377/hlthaff.2013.0188" target="_blank" rel="noopener">doi.org/10.1377/hlthaff.2013.0188</a></div>
     <div class="ref">Schneider, E. C., Shah, A., Doty, M. M., Tikkanen, R., Fields, K., &amp; Williams, R. D. (2021). <em>Mirror, mirror 2021: Reflecting poorly — health care in the U.S. compared to other high-income countries.</em> The Commonwealth Fund. <a href="https://www.commonwealthfund.org/publications/fund-reports/2021/aug/mirror-mirror-2021-reflecting-poorly" target="_blank" rel="noopener">commonwealthfund.org</a></div>
     <div class="ref">Shrank, W. H., Rogstad, T. L., &amp; Parekh, N. (2019). Waste in the US health care system: Estimated costs and potential for savings. <em>JAMA, 322</em>(15), 1501–1509. <a href="https://doi.org/10.1001/jama.2019.13978" target="_blank" rel="noopener">doi.org/10.1001/jama.2019.13978</a></div>
+    <div class="ref">Singh, Y., et al. (2026). <em>Private-equity acquisition of primary care practices and changes in utilization.</em></div>
     <div class="ref">Software Path. (2022). <em>EHR software report: Pricing by practice size.</em> <a href="https://softwarepath.com/guides/ehr-report" target="_blank" rel="noopener">softwarepath.com</a></div>
     <div class="ref">Thiel, P., &amp; Masters, B. (2014). <em>Zero to one: Notes on startups, or how to build the future.</em> Crown Business.</div>
     <div class="ref">U.S. Government Accountability Office. (2025). <em>Health care consolidation: Published estimates of the extent and effects of physician consolidation</em> (GAO-25-107450). <a href="https://www.gao.gov/products/gao-25-107450" target="_blank" rel="noopener">gao.gov</a></div>
