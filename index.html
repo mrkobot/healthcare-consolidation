@@ -212,15 +212,15 @@
 
   /* ===== SECTION 2b — Healthcare-specific forces (sticky rail scrolly) ===== */
   #hcfactors{position:relative;min-height:100vh;background:#06090b;overflow:hidden;--am:#E8A13A;--amb:#F4C06A}
-  #hcfactors .hcstage{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+  #hcfactors .hcstage{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start}
   #hcfactors .hcbg{position:absolute;inset:0;z-index:0}
   #hcfactors .hcbg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   #hcfactors .hcbg .tint{position:absolute;inset:0;background:radial-gradient(120% 95% at 28% 0,rgba(6,9,11,.42),rgba(6,9,11,.88) 72%)}
-  #hcfactors .hchead{position:relative;z-index:3;text-align:center;padding:4.2vh 6vw 1vh}
+  #hcfactors .hchead{position:relative;z-index:3;text-align:center;padding:4vh 6vw 2vh;flex:0 0 auto}
   #hcfactors .hchead h2{font-family:"Anton",sans-serif;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:.9;color:#fff;letter-spacing:.01em;text-transform:uppercase;margin:0}
   #hcfactors .hchead h2 em{font-style:normal;color:var(--am)}
   #hcfactors .hchead p{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(.9rem,1.6vw,1.15rem);color:#cfd8dc;margin:.55rem 0 0}
-  #hcfactors .hcpanel{position:relative;z-index:2;display:grid;grid-template-columns:minmax(340px,47%) 1fr;gap:clamp(1.6rem,4vw,4rem);align-items:center;max-width:1320px;width:100%;margin:0 auto;padding:5vh 6vw 8vh}
+  #hcfactors .hcpanel{position:relative;z-index:2;flex:1 1 auto;display:grid;grid-template-columns:minmax(340px,47%) 1fr;gap:clamp(1.6rem,4vw,4rem);align-items:center;max-width:1320px;width:100%;margin:0 auto;padding:1vh 6vw 4vh}
   /* wheel */
   #hcfactors .hcwheel{display:flex;justify-content:center}
   #hcfactors .hcwheel svg{width:100%;max-width:600px;height:auto;overflow:visible}
@@ -234,12 +234,12 @@
   #hcfactors .whub{fill:#0c1513;stroke:rgba(255,255,255,.22);stroke-width:1.5}
   #hcfactors .hubt{fill:#fff;font-family:"Bebas Neue",sans-serif;font-size:17px;text-anchor:middle;letter-spacing:.3px;pointer-events:none}
   /* detail */
-  #hcfactors .hcdetail{position:relative;min-height:46vh}
+  #hcfactors .hcdetail{position:relative;min-height:62vh;display:flex;align-items:center}
   #hcfactors .hcslide{position:absolute;inset:0;opacity:0;transform:translateY(26px);transition:opacity .5s ease,transform .5s ease;pointer-events:none;display:flex;flex-direction:column;justify-content:center}
   #hcfactors .hcslide.show{opacity:1;transform:none;pointer-events:auto}
-  #hcfactors .hcslide h3{font-family:"Anton",sans-serif;font-size:clamp(2.4rem,6vw,5rem);line-height:.85;color:var(--am);text-transform:uppercase;margin:0 0 1.2rem}
-  #hcfactors .hcslide ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
-  #hcfactors .hcslide li{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1.05rem,1.9vw,1.5rem);line-height:1.34;color:#eef2f3;padding-left:1.2rem;position:relative;max-width:42rem}
+  #hcfactors .hcslide h3{font-family:"Anton",sans-serif;font-size:clamp(2.1rem,4.4vw,3.8rem);line-height:.86;color:var(--am);text-transform:uppercase;margin:0 0 .85rem}
+  #hcfactors .hcslide ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem}
+  #hcfactors .hcslide li{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(1rem,1.6vw,1.28rem);line-height:1.32;color:#eef2f3;padding-left:1.2rem;position:relative;max-width:42rem}
   #hcfactors .hcslide li::before{content:"";position:absolute;left:0;top:.5em;width:.55rem;height:.55rem;background:var(--am);border-radius:1px}
   #hcfactors .hcslide li b{color:#fff;font-weight:800}
   #hcfactors .hcslide .hcsrc{display:block;font-family:"Libre Franklin",sans-serif;font-weight:400;font-size:.82rem;color:#92a3a9;margin-top:.3rem}
