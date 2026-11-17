@@ -210,47 +210,49 @@
   .bumper .l2 em{font-style:normal;color:var(--accent)}
   @media(max-width:900px){.cards3{flex-wrap:wrap;gap:1.6vw;padding:9vh 4vw}.card3{flex:1 1 44%;max-width:45vw;height:38vh}}
 
-  /* ===== SECTION 2b — Healthcare-specific forces (storm radar scrollytelling) ===== */
-  #hcfactors{position:relative;background:#06090b;--rg:#2FE38C;--rgb:#8CF6C6}
+  /* ===== SECTION 2b — Healthcare-specific forces (storm radar, portrait frame, click) ===== */
+  #hcfactors{position:relative;min-height:100vh;background:#06090b;display:flex;align-items:center;justify-content:center;padding:2vh 0;--rg:#2FE38C;--rgb:#8CF6C6}
+  #hcfactors .rdr-frame{position:relative;height:96vh;max-height:96vh;aspect-ratio:3/4;max-width:94vw;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.6);padding:clamp(3rem,9.5vh,7rem) clamp(1rem,3vw,2.2rem)}
   #hcfactors .rdr-bg{position:absolute;inset:0;z-index:0}
   #hcfactors .rdr-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
-  #hcfactors .rdr-bg .tint{position:absolute;inset:0;background:radial-gradient(120% 92% at 50% 8%,rgba(6,9,11,.5),rgba(5,10,9,.93) 72%)}
-  #hcfactors .rdr-sticky{position:sticky;top:0;height:100vh;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden}
-  #hcfactors .rdr-head{position:relative;z-index:4;text-align:center;padding:5vh 6vw 1vh;flex:0 0 auto}
-  #hcfactors .rdr-head h2{font-family:"Anton",sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:.9;color:#fff;text-transform:uppercase;margin:0}
+  #hcfactors .rdr-bg .tint{position:absolute;inset:0;background:radial-gradient(125% 95% at 50% 10%,rgba(6,9,11,.5),rgba(5,10,9,.94) 74%)}
+  #hcfactors .rdr-head{position:relative;z-index:4;text-align:center;flex:0 0 auto}
+  #hcfactors .rdr-head h2{font-family:"Anton",sans-serif;font-size:clamp(1.7rem,3.6vw,3rem);line-height:.9;color:#fff;text-transform:uppercase;margin:0}
   #hcfactors .rdr-head h2 em{font-style:normal;color:var(--rg)}
-  #hcfactors .rdr-head p{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(.85rem,1.5vw,1.1rem);color:#cfd8dc;margin:.5rem 0 0}
-  #hcfactors .rdr-wrap{position:relative;flex:1 1 auto;width:min(92vw,66vh);max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  #hcfactors .rdr-head p{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(.78rem,1.3vw,1rem);color:#cfd8dc;margin:.5rem 0 0}
+  #hcfactors .rdr-wrap{position:relative;flex:1 1 auto;width:100%;max-width:540px;margin:0 auto;display:flex;align-items:center;justify-content:center}
   #hcfactors .rdr-svg{width:100%;height:auto;overflow:visible}
+  #hcfactors .rseg{cursor:pointer}
   #hcfactors .rseg .rp{fill:rgba(47,227,140,.05);stroke:rgba(47,227,140,.32);stroke-width:1.5;transition:fill .4s,stroke .4s}
+  #hcfactors .rseg:hover .rp{fill:rgba(47,227,140,.17)}
   #hcfactors .rseg.on .rp{fill:rgba(47,227,140,.26);stroke:var(--rgb);stroke-width:3}
-  #hcfactors .rseg .rl{fill:#dfeae5;font-family:"Bebas Neue",sans-serif;font-size:20px;text-anchor:middle;dominant-baseline:middle;letter-spacing:.6px;transition:fill .4s}
+  #hcfactors .rseg .rl{fill:#dfeae5;font-family:"Bebas Neue",sans-serif;font-size:20px;text-anchor:middle;dominant-baseline:middle;letter-spacing:.6px;transition:fill .4s;pointer-events:none}
   #hcfactors .rseg.on .rl{fill:#fff}
   #hcfactors .rring{fill:none;stroke:rgba(47,227,140,.13);stroke-width:1.5}
   #hcfactors .rspoke{stroke:rgba(47,227,140,.16);stroke-width:1}
   #hcfactors .rdr-sweep{position:absolute;top:50%;left:50%;width:86%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 0deg,rgba(47,227,140,.34),rgba(47,227,140,.05) 55deg,transparent 120deg);animation:rdrspin 5.5s linear infinite;pointer-events:none;z-index:1}
   @keyframes rdrspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-  #hcfactors .rdr-eye{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#0c1513,#05080b);border:2px solid var(--rg);box-shadow:0 0 40px rgba(47,227,140,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:3;transition:opacity .4s}
+  #hcfactors .rdr-eye{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#0c1513,#05080b);border:2px solid var(--rg);box-shadow:0 0 40px rgba(47,227,140,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:3;transition:opacity .4s;pointer-events:none}
   #hcfactors .rdr-eye .el{font-family:"Bebas Neue",sans-serif;font-size:clamp(15px,2.3vw,23px);line-height:.98;color:#fff}
   #hcfactors .rdr-eye .es{font-family:"Libre Franklin",sans-serif;font-weight:700;font-size:10px;letter-spacing:3px;color:var(--rg);margin-top:6px}
-  #hcfactors .rdr-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-48%) scale(.96);width:min(92vw,560px);max-height:76vh;overflow:auto;background:rgba(8,14,12,.97);border:2px solid var(--rg);border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 50px rgba(47,227,140,.22);padding:clamp(1.1rem,3vw,2rem);opacity:0;pointer-events:none;transition:opacity .45s ease,transform .45s ease;z-index:5}
+  #hcfactors .rdr-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-48%) scale(.96);width:min(94%,500px);max-height:72vh;overflow:auto;background:rgba(8,14,12,.97);border:2px solid var(--rg);border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 50px rgba(47,227,140,.22);padding:clamp(1.2rem,3vw,2rem);opacity:0;pointer-events:none;transition:opacity .45s ease,transform .45s ease;z-index:5}
   #hcfactors .rdr-card.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+  #hcfactors .rdr-x{position:absolute;top:10px;right:12px;width:34px;height:34px;border:0;background:rgba(47,227,140,.16);color:var(--rg);font-family:"Libre Franklin",sans-serif;font-size:20px;font-weight:700;line-height:1;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2}
+  #hcfactors .rdr-x:hover{background:rgba(47,227,140,.34)}
   #hcfactors .rdr-card .cardset{display:none}
   #hcfactors .rdr-card .cardset.on{display:block}
-  #hcfactors .rdr-card h3{font-family:"Anton",sans-serif;font-size:clamp(1.8rem,4.2vw,2.8rem);line-height:.9;color:var(--rg);text-transform:uppercase;margin:0 0 .8rem}
+  #hcfactors .rdr-card h3{font-family:"Anton",sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:.9;color:var(--rg);text-transform:uppercase;margin:0 2rem .8rem 0}
   #hcfactors .rdr-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem}
-  #hcfactors .rdr-card li{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(.9rem,1.45vw,1.08rem);line-height:1.3;color:#eef2f3;padding-left:1.1rem;position:relative}
+  #hcfactors .rdr-card li{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:clamp(.88rem,1.4vw,1.05rem);line-height:1.3;color:#eef2f3;padding-left:1.1rem;position:relative}
   #hcfactors .rdr-card li::before{content:"";position:absolute;left:0;top:.5em;width:.5rem;height:.5rem;background:var(--rg);border-radius:1px}
   #hcfactors .rdr-card li b{color:#fff;font-weight:800}
   #hcfactors .rdr-card .hcsrc{display:block;font-family:"Libre Franklin",sans-serif;font-weight:400;font-size:.78rem;color:#8fa39b;margin-top:.25rem}
-  #hcfactors .rdr-alert{position:relative;z-index:4;flex:0 0 auto;margin:0 auto 4vh;display:inline-flex;align-items:center;gap:12px;background:var(--rg);color:#06201a;font-family:"Bebas Neue",sans-serif;font-size:clamp(1rem,2.2vw,1.5rem);letter-spacing:2px;padding:10px 26px;border-radius:5px}
+  #hcfactors .rdr-alert{position:relative;z-index:4;flex:0 0 auto;display:inline-flex;align-items:center;gap:12px;background:var(--rg);color:#06201a;font-family:"Bebas Neue",sans-serif;font-size:clamp(1rem,2.2vw,1.45rem);letter-spacing:2px;padding:10px 26px;border-radius:5px}
   #hcfactors .rdr-alert .pulse{font-family:"Libre Franklin",sans-serif;font-weight:700;font-size:.78rem;letter-spacing:2px}
-  #hcfactors .rdr-dots{position:absolute;right:clamp(12px,3vw,34px);top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:12px}
-  #hcfactors .rdr-dots b{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.2);transition:.3s}
+  #hcfactors .rdr-dots{position:absolute;right:clamp(10px,2.5vw,22px);top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:12px}
+  #hcfactors .rdr-dots b{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.2);transition:.3s;cursor:pointer}
   #hcfactors .rdr-dots b.on{background:var(--rg);box-shadow:0 0 12px var(--rg)}
-  #hcfactors .rdr-steps{position:relative;z-index:1}
-  #hcfactors .rdr-step{height:100vh}
-  @media(max-width:820px){#hcfactors .rdr-wrap{width:min(94vw,54vh)}}
+  @media(max-width:820px){#hcfactors .rdr-frame{height:auto;min-height:94vh;aspect-ratio:auto;width:94vw}#hcfactors .rdr-wrap{max-width:92vw}}
   @media(max-width:720px){.tv{width:92vw}.panel{width:62vw}.legendnote{display:none}}
   /* ===== SECTION 3 — THE FORECAST TIMELINE (blooming stem + seasons) ===== */
   #fc3{position:relative;background:#0b0b0e;--fc:#E63512;--fc2:#9A2B0A;--fcam:#E8A13A;--fcam2:#B9791F;--fcc:#f3efe8;--fcd:#9fb0ba;font-family:"Libre Franklin",sans-serif;color:var(--fcc);-webkit-font-smoothing:antialiased}
@@ -522,7 +524,7 @@
 
 <!-- ===== SECTION 2b — HEALTHCARE-SPECIFIC DRIVERS ===== -->
 <section id="hcfactors">
-  <div class="rdr-sticky">
+  <div class="rdr-frame">
     <div class="rdr-bg">
       <video loop muted autoplay playsinline preload="auto"><source src="assets/wx/haboob.mp4" type="video/mp4"></video>
       <div class="tint"></div>
@@ -548,6 +550,7 @@
       <div class="rdr-sweep"></div>
       <div class="rdr-eye"><div class="el">INDEPENDENT<br>PRACTICE</div><div class="es">THE EYE</div></div>
       <div class="rdr-card" id="rdrCard">
+        <button class="rdr-x" id="rdrClose" aria-label="Close">&times;</button>
         <div class="cardset" data-i="0">
           <h3>Economic</h3>
           <ul>
@@ -588,12 +591,6 @@
     </div>
     <div class="rdr-alert"><span>SEVERE CONSOLIDATION WATCH</span><span class="pulse">IN EFFECT</span></div>
     <div class="rdr-dots"><b data-i="0"></b><b data-i="1"></b><b data-i="2"></b><b data-i="3"></b></div>
-  </div>
-  <div class="rdr-steps">
-    <div class="rdr-step" data-i="0"></div>
-    <div class="rdr-step" data-i="1"></div>
-    <div class="rdr-step" data-i="2"></div>
-    <div class="rdr-step" data-i="3"></div>
   </div>
 </section>
 
@@ -1150,9 +1147,9 @@
  const segs=[...sec.querySelectorAll('.rseg')];
  const sets=[...sec.querySelectorAll('.cardset')];
  const dots=[...sec.querySelectorAll('.rdr-dots b')];
- const steps=[...sec.querySelectorAll('.rdr-step')];
  const card=sec.querySelector('#rdrCard');
  const eye=sec.querySelector('.rdr-eye');
+ const closeBtn=sec.querySelector('#rdrClose');
  let cur=-2;
  function set(i){
    if(i===cur)return; cur=i;
@@ -1160,14 +1157,11 @@
    sets.forEach(s=>s.classList.toggle('on',+s.dataset.i===i));
    dots.forEach(d=>d.classList.toggle('on',+d.dataset.i===i));
    if(i<0){card.classList.remove('show');if(eye)eye.style.opacity='1';}
-   else{card.classList.add('show');if(eye)eye.style.opacity='0';}
+   else{card.classList.add('show');if(eye)eye.style.opacity='0';card.scrollTop=0;}
  }
- const vis=new Set();
- const io=new IntersectionObserver(es=>{
-   es.forEach(e=>{const i=+e.target.dataset.i; if(e.isIntersecting)vis.add(i); else vis.delete(i);});
-   set(vis.size?Math.min(...vis):-1);
- },{rootMargin:'-50% 0px -50% 0px',threshold:0});
- steps.forEach(s=>io.observe(s));
+ segs.forEach(s=>s.addEventListener('click',()=>set(+s.dataset.i)));
+ dots.forEach(d=>d.addEventListener('click',()=>set(+d.dataset.i)));
+ if(closeBtn)closeBtn.addEventListener('click',()=>set(-1));
  set(-1);
 })();
 
