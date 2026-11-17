@@ -211,8 +211,11 @@
   @media(max-width:900px){.cards3{flex-wrap:wrap;gap:1.6vw;padding:9vh 4vw}.card3{flex:1 1 44%;max-width:45vw;height:38vh}}
 
   /* ===== SECTION 2b — Healthcare-specific forces (storm radar, portrait frame, click) ===== */
-  #hcfactors{position:relative;min-height:100vh;background:#06090b;display:flex;align-items:center;justify-content:center;padding:2vh 0;--rg:#2FE38C;--rgb:#8CF6C6}
-  #hcfactors .rdr-frame{position:relative;height:96vh;max-height:96vh;aspect-ratio:3/4;max-width:94vw;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.6);padding:clamp(3rem,9.5vh,7rem) clamp(1rem,3vw,2.2rem)}
+  #hcfactors{position:relative;min-height:100vh;background:#06090b;display:flex;align-items:center;justify-content:center;padding:2vh 0;overflow:hidden;--rg:#2FE38C;--rgb:#8CF6C6}
+  #hcfactors .rdr-ambient{position:absolute;inset:0;z-index:0}
+  #hcfactors .rdr-ambient video{width:100%;height:100%;object-fit:cover;filter:blur(30px) brightness(.38) saturate(.85);transform:scale(1.12)}
+  #hcfactors .rdr-ambient .ambtint{position:absolute;inset:0;background:rgba(5,8,10,.5)}
+  #hcfactors .rdr-frame{position:relative;z-index:1;width:min(98vh,98vw);height:min(98vh,98vw);display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;border-radius:12px;box-shadow:0 0 0 1px rgba(47,227,140,.12),0 30px 90px rgba(0,0,0,.55);padding:clamp(2.5rem,7vh,5.5rem) clamp(1.2rem,3vw,2.6rem)}
   #hcfactors .rdr-bg{position:absolute;inset:0;z-index:0}
   #hcfactors .rdr-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
   #hcfactors .rdr-bg .tint{position:absolute;inset:0;background:radial-gradient(125% 95% at 50% 10%,rgba(6,9,11,.5),rgba(5,10,9,.94) 74%)}
@@ -524,6 +527,10 @@
 
 <!-- ===== SECTION 2b — HEALTHCARE-SPECIFIC DRIVERS ===== -->
 <section id="hcfactors">
+  <div class="rdr-ambient">
+    <video loop muted autoplay playsinline preload="auto"><source src="assets/wx/haboob.mp4" type="video/mp4"></video>
+    <div class="ambtint"></div>
+  </div>
   <div class="rdr-frame">
     <div class="rdr-bg">
       <video loop muted autoplay playsinline preload="auto"><source src="assets/wx/haboob.mp4" type="video/mp4"></video>
