@@ -485,10 +485,6 @@
         <div class="yrs" id="cardYears"></div>
         <p class="csum"><b>The consolidation —</b> <span id="cardMove"></span></p>
         <p class="csum now"><b>Where it stands now —</b> <span id="cardNow"></span></p>
-        <div class="forecast">
-          <div class="hi" id="cardHi"></div>
-          <div class="lohs">Low&nbsp;<b id="cardLo"></b><br>Swing&nbsp;<b id="cardSpread"></b></div>
-        </div>
         <div class="gauges" id="cardGauges"></div>
       </aside>
     </div>
@@ -836,13 +832,12 @@
 
   const card=document.getElementById('citycard'), $=id=>document.getElementById(id);
   function openCard(i){
-    const c=cities[i], swing=c.hi-c.lo, st=STATUS[c.status];
+    const c=cities[i], st=STATUS[c.status];
     const chip=$('cardChip'); chip.textContent=st.label; chip.style.background=st.color;
     $('cardChipNote').textContent=st.note; $('cardName').textContent=c.ind; $('cardYears').textContent=c.years;
     $('cardMove').textContent=c.move; $('cardNow').textContent=c.now;
     $('wmName').textContent=c.wm||c.ind; $('wmSub').textContent=c.wmsub||'';
     const im=$('cardImgPic'); $('cardImg').classList.remove('nofile'); im.onerror=()=>$('cardImg').classList.add('nofile'); im.src='assets/img/industry/'+c.img+'.jpg';
-    $('cardHi').textContent=c.hi+'°'; $('cardLo').textContent=c.lo+'°'; $('cardSpread').textContent=swing+'°';
     const gh=$('cardGauges'); gh.innerHTML='';
     c.g.forEach((val,k)=>{let s='';for(let j=0;j<3;j++)s+=`<span class="seg ${j<val?'on':''} ${c.cool?'cool':''}"></span>`;
       gh.insertAdjacentHTML('beforeend',`<div class="gauge"><span class="gname">${GNAMES[k]}</span><span class="bar">${s}</span></div>`);});
