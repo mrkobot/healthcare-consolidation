@@ -419,7 +419,9 @@
   #advisory .dms .seg{flex:1 1 260px;max-width:34rem}
   #advisory .dms .seg b{display:block;font-family:"Bebas Neue",sans-serif;font-size:clamp(1rem,1.7vw,1.25rem);letter-spacing:.05em;color:var(--teal);margin-bottom:.25rem;font-weight:400}
   #advisory .dms .seg span{font-family:"Libre Franklin",sans-serif;font-weight:400;font-size:clamp(.98rem,1.6vw,1.12rem);line-height:1.42;color:#dbe9e6}
-  #advisory .dms .delay{font-family:"Archivo Black",sans-serif;font-size:clamp(1rem,1.8vw,1.25rem);color:#ff8a5a;letter-spacing:.03em;margin-top:1.3rem}
+  #advisory .dms .delay{margin-top:1.4rem}
+  #advisory .dms .delay b{display:block;font-family:"Archivo Black",sans-serif;font-size:clamp(1rem,1.8vw,1.25rem);color:#ff8a5a;letter-spacing:.03em;text-transform:uppercase;margin-bottom:.3rem}
+  #advisory .dms .delay span{font-family:"Libre Franklin",sans-serif;font-weight:400;font-size:clamp(.98rem,1.6vw,1.12rem);line-height:1.42;color:#f0cdbd}
   @media(max-width:820px){#advisory .advboard{grid-template-columns:1fr;gap:1.4rem}#advisory .advhero h2{font-size:clamp(2.6rem,12vw,4rem)}}
   #advbib{background:#0b1114;padding:8vh 6vw 18vh}
   #advbib h3{font-family:"Bebas Neue";font-size:clamp(1.4rem,3vw,2.2rem);color:#fff;letter-spacing:.02em;margin-bottom:1.2rem;max-width:62rem;margin-left:auto;margin-right:auto}
@@ -726,7 +728,7 @@
             <div class="seg"><b>Where it is real</b><span id="dprec"></span></div>
             <div class="seg"><b>Who holds the keys</b><span id="dkeys"></span></div>
           </div>
-          <div class="delay" id="ddelay"></div>
+          <div class="delay"><b>What stands in the way</b><span id="ddelay"></span></div>
         </div>
       </div>
     </div>
@@ -1181,27 +1183,27 @@
     means:'Block the mergers, unwind the worst, and pay the same rate wherever care is delivered—so buying a practice no longer comes with a built-in raise.',
     prec:'FTC v. U.S. Anesthesia Partners (2023), the first challenge to a PE specialty roll-up, settled in April 2026. Medicare’s 2026 rule pays hospital-owned off-campus infusion clinics the physician-office rate.',
     keys:'FTC, DOJ Antitrust, and state attorneys general; Congress and CMS for site-neutral payment.',
-    delay:'DELAY — HEAVY. Enforcers can only move one deal at a time, and most roll-ups are too small to trigger a review.'},
+    delay:'Enforcers can only move one deal at a time, and most roll-ups are too small to trigger a review.'},
   E2:{title:'Make the price visible',
     means:'Give patients and employers a price they can compare and act on—a standard price for a procedure, not a chargemaster no one can read.',
     prec:'CalPERS set a reference price for hip and knee replacements in 2011; high-price hospitals cut prices 34% to keep CalPERS patients.',
     keys:'CMS and regulators write the rules; large employers and purchasers set the reference price.',
-    delay:'DELAY — MODERATE. Necessary, but a visible price only matters if the buyer can take their business elsewhere.'},
+    delay:'A visible price changes nothing unless the buyer has somewhere else to take their business.'},
   E3:{title:'Cap the price',
     means:'Stop fighting the concentration and regulate it like a utility—one rate every payer pays, a fixed global budget per hospital.',
     prec:'Maryland has set hospital rates for all payers since the 1970s, put every hospital on a global budget in 2014, and moved into CMS’s AHEAD model in January 2026—the only all-payer system in the country. Medicare Part A/B spending fell about 2.1% per beneficiary, 2019 to 2022 (Mathematica, 2024).',
     keys:'States, through a rate-setting commission under a federal CMS waiver.',
-    delay:'DELAY — STRUCTURAL. You give up on competition and lock in whatever the regulator gets wrong.'},
+    delay:'It means giving up on competition and trusting a regulator to set the right price, then living with it when they do not.'},
   E4:{title:'Build countervailing power',
     means:'Build up the buying side to match sellers who already hold all the leverage—single payer, all-payer, or a strong public option—so someone bargains back on even terms.',
     prec:'Galbraith named this “countervailing power” in 1952. Washington’s public option (2021) is capped at 160% of Medicare and was the cheapest silver plan in 31 counties by 2024, though premium savings have been modest (Georgetown CHIR). Medicare already sets prices for the largest buyer pool in the country.',
     keys:'The federal government (Medicare, single payer); states (a public option).',
-    delay:'DELAY — SEVERE. Politically enormous. It hands the power to someone who answers to voters, but the power stays just as concentrated.'},
+    delay:'Politically enormous, and it moves the concentration rather than ending it, now into the hands of whoever answers to voters.'},
   E5:{title:'Protect independent practices',
     means:'The supply-side answer the other four miss: keep physicians able to practice on their own. Pay the same rate regardless of where care is delivered, lift reporting built for institutions, and give small practices shared back-office and capital so they can reach scale without selling.',
     prec:'Named as a distinct lever in Fuse Brown et al. (Health Affairs, 2024); independent practice associations and clinically integrated networks already let physicians share scale without common ownership. Oregon’s SB 951 (2025) limits private-equity control of practices. Medicare physician pay has fallen 33% since 2001 after adjusting for practice costs (AMA, 2025).',
     keys:'Congress and CMS (site-neutral payment, reporting relief); state policy; physician associations.',
-    delay:'DELAY — MODERATE. It goes after the root the other four only manage after the fact, but it runs up against the same payment rules that make selling the easy choice.'}
+    delay:'It runs up against the same payment rules that make selling the easy choice in the first place.'}
  };
  const dms=document.getElementById('dms'), $=id=>document.getElementById(id);
  const signs=[...sec.querySelectorAll('.sign')];
