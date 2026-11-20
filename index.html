@@ -167,7 +167,7 @@
   .wv.landfall.on{opacity:.82}
   .altitude3{position:absolute;top:3.4vh;left:50%;transform:translateX(-50%);z-index:6;font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:clamp(.95rem,1.7vw,1.25rem);letter-spacing:.01em;color:#e9edf0;text-align:center;max-width:92vw;text-shadow:0 1px 12px rgba(0,0,0,.85)}
   .altitude3 b{font-family:"Archivo Black",sans-serif;font-weight:400;color:#f3efe8}
-  .forceex{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:.9rem;line-height:1.45;color:#f0c3ac;margin-top:.85rem;border-top:1px solid rgba(255,255,255,.14);padding-top:.7rem}
+  .forceex{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:.88rem;line-height:1.35;color:#f0c3ac;margin-top:.7rem;border-top:1px solid rgba(255,255,255,.14);padding-top:.6rem}
   .forceex b{color:#fff;font-weight:700}
   .s3opening{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem;transition:opacity .7s ease;pointer-events:none}
   .s3opening.gone{opacity:0}
@@ -189,7 +189,7 @@
   .forcename{font-family:"Archivo Black",sans-serif;font-weight:400;font-size:1.75rem;line-height:.95;margin:0;color:#f3efe8}
   .frule{height:3px;width:34%;background:var(--accent-hot);margin:.6rem 0 .7rem}
   .forcesub{font-family:"Libre Franklin",sans-serif;font-weight:500;font-size:.95rem;color:#e9b79e;margin-bottom:.9rem}
-  .cbody{font-family:var(--sans);font-weight:700;font-size:1.08rem;line-height:1.4;color:#f3efe8}
+  .cbody{font-family:var(--sans);font-weight:700;font-size:1rem;line-height:1.3;color:#f3efe8}
   .back3 .forcename{font-size:1.45rem}
   .back3 .frule{background:#E8A13A}
   .hclabel3{font-family:"Libre Franklin",sans-serif;font-weight:600;font-size:.95rem;color:#E8A13A;margin-bottom:.55rem}
@@ -898,24 +898,24 @@
 (function(){
   const CARDS=[
     {force:'Fragmentation',sub:'many small players',k:'heat',
-     p1:'A market split among many small players, none big enough to set the terms.',
-     ex:'<b>Home services</b>—HVAC, plumbing, electrical—are still run by more than 100,000 local contractors, and since 2022 private equity has been rolling them up into regional platforms, one acquisition at a time.',
+     p1:'Many small players, none big enough to set the terms.',
+     ex:'<b>Home services</b>: 100,000-plus local HVAC and plumbing firms, now being rolled up by private equity into regional chains.',
      p2:'Healthcare was built fragmented—independent hospitals, solo physicians, thin margins. In 2012, 60% of U.S. physicians still worked in private practice. The energy had nowhere to go but up.'},
     {force:'Industry shock',sub:'deregulation or a payment shift',k:'front',
-     p1:'A sudden change—a new law, a new technology, a new way of paying—that makes the old, scattered way of doing business untenable overnight.',
-     ex:'<b>Airlines</b>: deregulation in 1978 opened the routes, and a merger wave from 2008 to 2013 closed the field—Delta–Northwest, United–Continental, American–US Airways. Four carriers now fly roughly 80% of the country, and fares rose where the mergers erased the overlap.',
+     p1:'A sudden change in law, technology, or payment that breaks the old model overnight.',
+     ex:'<b>Airlines</b>: deregulated in 1978, then a 2008–2013 merger wave. Four carriers now fly about 80% of the country.',
      p2:'Healthcare\'s shock was the Affordable Care Act and the turn to value-based payment. The new rules rewarded scale and punished the small and independent. It arrived in 2010.'},
     {force:'Capital liquidity',sub:'cheap, abundant money',k:'moisture',
      p1:'Cheap, abundant money looking for somewhere to go.',
-     ex:'<b>Veterinary clinics</b>: a decade of near-zero interest rates met private equity, and in 2017 Mars bought VCA for $9.1 billion—one of thousands of clinics rolled up in a few years. Much of American pet care now sits inside a handful of corporate owners, and studies find prices rose after the buyouts.',
+     ex:'<b>Veterinary clinics</b>: near-zero rates met private equity, and in 2017 Mars bought VCA for $9.1 billion. Studies find prices rose after the buyouts.',
      p2:'A decade of cheap money and private equity met the shock. By 2024, corporate owners—insurers, PE, pharmacy chains—held more physician practices than hospitals did.'},
     {force:'Enforcement vacancy',sub:'weak or absent antitrust',k:'updraft',
      p1:'Antitrust regulators who look the other way.',
-     ex:'<b>Wireless</b>: in 2020, regulators approved T-Mobile\'s purchase of Sprint, cutting four national carriers to three. Three companies now hold the field, and the deal cleared with little resistance.',
+     ex:'<b>Wireless</b>: in 2020, regulators let T-Mobile buy Sprint—four national carriers down to three, with little resistance.',
      p2:'Regulators blocked the obvious horizontal deals—the insurer mergers that would have cut five national carriers to three. The vertical deals cleared. The wave routed through the opening.'},
     {force:'Pricing opacity',sub:'a price no buyer can see',k:'haboob',
-     p1:'A price the buyer cannot compare or trace back to what the product actually costs to make, so no one can say what a fair price would be.',
-     ex:'<b>Hearing aids</b> average about $4,000 a pair, up to $7,000, while the hardware inside costs a fraction of that. Six manufacturers control about 90% of the market, and the price is bundled with the fitting, so the buyer never sees the device cost alone. No one sees the markup, so no rival can undercut it.',
+     p1:'A price you cannot trace to what the thing costs to make.',
+     ex:'<b>Hearing aids</b>: about $4,000 a pair, the hardware a fraction of that. Six firms control ~90%, and the price is bundled with the fitting—so no one sees the markup.',
      p2:'No patient sees the price: care billed against a chargemaster no one reads, through a PBM spread no one sees, inside entities that price against themselves. The bill comes all at once.'}
   ];
   const cardsEl=document.getElementById('cards3');
